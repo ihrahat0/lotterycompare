@@ -147,7 +147,8 @@ function App() {
               <Route path="/contest" element={<Contest />} />
               <Route path="/contest-details" element={<ContestDetails />} />
               <Route path="/lottery-results" element={<LotteryResults />} />
-              <Route path="/firstbtclottery" element={<firstbtclottery />} />
+              <Route path="/firstbtclottery" element={<Affiliate />} />
+              <Route path="/affiliate" element={<Affiliate />} />
               <Route path="/winner-list" element={<WinnerList />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/dashboard" element={<Dashboard />} />
