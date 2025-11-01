@@ -65,7 +65,7 @@ const Header = () => {
                                                     <Link to="/lottery-results">Lottery Results</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/affiliate">Affiliate</Link>
+                                                    <Link to="/affiliate">FIRSTBTCLottery</Link>
                                                 </li>
                                                 <li>
                                                     <Link to="/how-to-work">How it works</Link>
@@ -165,8 +165,8 @@ const Header = () => {
                                             <Link to="/lottery-results" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
                                                 Lottery Results
                                             </Link>
-                                            <Link to="/affiliate" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
-                                                Affiliate
+                                            <Link to="/firstbtclottery" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
+                                                FirstBTCLottery
                                             </Link>
                                             <Link to="/how-to-work" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
                                                 How it works

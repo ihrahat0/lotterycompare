@@ -6,10 +6,11 @@ import StructuredData from '../components/StructuredData';
 import BlockStatus from '../components/BlockStatus';
 import CasinoCard from '../components/CasinoCard';
 import BlockResultCard from '../components/BlockResultCard';
-import { casinos as fallbackCasinos, bonuses, blogPosts } from '../data/casinos';
+import { casinos as fallbackCasinos, bonuses, blogPosts as fallbackBlogPosts } from '../data/casinos';
 
 const NewHome = () => {
     const [casinos, setCasinos] = useState(fallbackCasinos);
+    const [blogPosts, setBlogPosts] = useState(fallbackBlogPosts);
     const [pageElements, setPageElements] = useState({});
     const [loading, setLoading] = useState(true);
 
@@ -22,6 +23,16 @@ const NewHome = () => {
                     const data = await casinosRes.json();
                     if (data && data.length > 0) {
                         setCasinos(data);
+                    }
+                }
+                
+                // Fetch real blog posts from API
+                const blogRes = await fetch('/api/frontend/blog-posts');
+                if (blogRes.ok) {
+                    const blogData = await blogRes.json();
+                    if (blogData && Array.isArray(blogData) && blogData.length > 0) {
+                        // Limit to latest 3 posts for the homepage
+                        setBlogPosts(blogData.slice(0, 3));
                     }
                 }
                 
@@ -521,26 +532,61 @@ const NewHome = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="grid-column-3 mt-40">
-                            {blogPosts.map((post, index) => (
-                                <div key={post.id} className="blog-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
-                                    <div className="blog-image">
-                                        <img src={post.image} alt={post.title} />
-                                        <span className="blog-category">{post.category}</span>
-                                    </div>
-                                    <div className="blog-content">
-                                        <div className="blog-meta">
-                                            <span>{post.author}</span> • <span>{post.date}</span>
+                        {blogPosts.length > 0 ? (
+                            <div className="grid-column-3 mt-40">
+                                {blogPosts.map((post, index) => (
+                                    <div key={post.id} className="blog-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
+                                        <div className="blog-image">
+                                            {post.image ? (
+                                                <img src={post.image} alt={post.title} />
+                                            ) : (
+                                                <div style={{
+                                                    width: '100%',
+                                                    height: '200px',
+                                                    background: 'linear-gradient(135deg, #5c27fe 0%, #c165dd 100%)',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    color: 'white',
+                                                    fontSize: '48px',
+                                                    fontWeight: '700'
+                                                }}>
+                                                    {post.title ? post.title.charAt(0).toUpperCase() : 'B'}
+                                                </div>
+                                            )}
+                                            {post.category && (
+                                                <span className="blog-category">{post.category}</span>
+                                            )}
                                         </div>
-                                        <h4><Link to={`/blog/${post.slug}`}>{post.title}</Link></h4>
-                                        <p>{post.excerpt}</p>
-                                        <Link to={`/blog/${post.slug}`} className="read-more">
-                                            Read More <i className="icon-right"></i>
-                                        </Link>
+                                        <div className="blog-content">
+                                            <div className="blog-meta">
+                                                {post.author && <span>{post.author}</span>}
+                                                {post.author && post.date && <span> • </span>}
+                                                {post.date && (
+                                                    <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                                )}
+                                            </div>
+                                            <h4><Link to={`/blog/${post.slug}`}>{post.title}</Link></h4>
+                                            {post.excerpt && <p>{post.excerpt}</p>}
+                                            <Link to={`/blog/${post.slug}`} className="read-more">
+                                                Read More <i className="icon-right"></i>
+                                            </Link>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="text-center mt-40">
+                                <p>No blog posts available at the moment. Check back soon!</p>
+                            </div>
+                        )}
+                        {blogPosts.length > 0 && (
+                            <div className="text-center mt-40">
+                                <Link to="/blog" className="tf-btn">
+                                    View All Posts <i className="icon-right"></i>
+                                </Link>
+                            </div>
+                        )}
                     </div>
                 </section>
 

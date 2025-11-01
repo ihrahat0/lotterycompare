@@ -149,18 +149,10 @@ const WinnerList = () => {
                 <div className="wrapper">
                   <div className="content">
                     <div className="title wow fadeInUp">Play the lottery anytime, <br/> anywhere, even on the go</div>
-                    <p className="wow fadeInUp">Play the lottery anytime, anywhere with our convenient mobile app. <br/>Download now and start winning!</p>
-                  </div>
-                  <div className="bottom wow fadeInUp">
-                    <div className="btn-dowload ">
-                      <a href="#"><img src={require('../assets/images/item/Android.jpg')} alt=""/></a>
                     </div>
-                    <div className="btn-dowload">
-                      <a href="#"><img src={require('../assets/images/item/IOS.jpg')} alt=""/></a>
-                    </div>
-                  </div>
+            
                   <div className="item-1 wow fadeInRight" data-wow-delay="0.3s" data-wow-duration="4s">
-                    <img src={require('../assets/images/item/phone.png')} alt=""/>
+                    <img src={require('../assets/images/item/footer-banner.png')} alt=""/>
                   </div>
                   <div className="item coin-1 wow fadeInDown" data-wow-delay="0.5s" data-wow-duration="3s">
                     <img src={require('../assets/images/item/coin-1.png')} alt=""/>
