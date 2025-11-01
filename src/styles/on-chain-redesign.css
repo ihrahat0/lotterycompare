@@ -1,0 +1,365 @@
+/* ===== ON-CHAIN VERIFIABLE LOTTERY DRAWS - CREATIVE REDESIGN ===== */
+
+.on-chain-section {
+  position: relative;
+  padding: 80px 0;
+  background: linear-gradient(180deg, var(--Bg) 0%, var(--Bg-10) 100%);
+  overflow: hidden;
+}
+
+.on-chain-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--Main-color), transparent);
+}
+
+.on-chain-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Left side - Block Result Card Enhancement */
+.on-chain-left {
+  position: relative;
+}
+
+.block-result-enhanced {
+  background: linear-gradient(145deg, var(--Bg-2) 0%, var(--Bg-11) 100%);
+  border: 1px solid var(--Border-1);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.block-result-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--Main-color), var(--Sub-color-3), var(--Sub-color-2), var(--Main-color));
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Right side - Information Card */
+.on-chain-info-card {
+  background: linear-gradient(145deg, rgba(254, 140, 69, 0.05) 0%, rgba(149, 76, 223, 0.03) 100%);
+  border: 1px solid var(--Border-1);
+  border-radius: 24px;
+  padding: 50px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.on-chain-info-card::after {
+  content: '⛓️';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  font-size: 200px;
+  opacity: 0.03;
+  pointer-events: none;
+  transform: rotate(15deg);
+}
+
+.on-chain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, var(--Main-color), var(--Sub-color-3));
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(254, 140, 69, 0.4);
+}
+
+.on-chain-badge::before {
+  content: '⛓️';
+  font-size: 16px;
+}
+
+.on-chain-info-card h3 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--Text);
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--Text), var(--Main-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.on-chain-info-card > p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--Text-6);
+  margin-bottom: 30px;
+}
+
+.on-chain-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+}
+
+.on-chain-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--Border-1);
+  transition: all 0.3s ease;
+}
+
+.on-chain-features li:last-child {
+  border-bottom: none;
+}
+
+.on-chain-features li:hover {
+  padding-left: 10px;
+  border-bottom-color: var(--Main-color);
+}
+
+.on-chain-features li::before {
+  content: '✓';
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--Main-color), var(--Sub-color-3));
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 4px 12px rgba(254, 140, 69, 0.3);
+}
+
+.on-chain-features li span {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--Text);
+  font-weight: 500;
+}
+
+.on-chain-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--Main-color), var(--Sub-color-3));
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(254, 140, 69, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.on-chain-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.on-chain-cta:hover::before {
+  left: 100%;
+}
+
+.on-chain-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(254, 140, 69, 0.5);
+}
+
+.on-chain-cta:active {
+  transform: translateY(-1px);
+}
+
+.on-chain-cta i {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.on-chain-cta:hover i {
+  transform: translateX(5px);
+}
+
+/* Trust indicators */
+.trust-indicators {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--Border-1);
+}
+
+.trust-item {
+  flex: 1;
+  text-align: center;
+}
+
+.trust-item-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.trust-item-label {
+  font-size: 12px;
+  color: var(--Text-6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.trust-item-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--Main-color);
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .on-chain-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .on-chain-section {
+    padding: 60px 0;
+  }
+
+  .on-chain-info-card {
+    padding: 40px 30px;
+  }
+
+  .on-chain-info-card h3 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .on-chain-section {
+    padding: 50px 0;
+  }
+
+  .on-chain-info-card {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+
+  .on-chain-info-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .on-chain-info-card > p {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .on-chain-features li {
+    padding: 12px 0;
+  }
+
+  .on-chain-features li::before {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .on-chain-features li span {
+    font-size: 14px;
+  }
+
+  .on-chain-cta {
+    padding: 14px 28px;
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .trust-indicators {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .block-result-enhanced {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .on-chain-info-card h3 {
+    font-size: 20px;
+  }
+
+  .on-chain-badge {
+    font-size: 11px;
+    padding: 6px 16px;
+  }
+}
+
+/* Animation for elements */
+.on-chain-animate-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse animation for badge */
+.on-chain-badge {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(254, 140, 69, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(254, 140, 69, 0.6);
+  }
+}
+
