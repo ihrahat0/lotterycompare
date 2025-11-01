@@ -8,8 +8,7 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
-  const [name, setName] = useState('');
+  // Registration removed from frontend
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,43 +34,14 @@ const AdminLogin = () => {
       const data = await response.json();
       localStorage.setItem('adminToken', data.token);
       localStorage.setItem('adminUser', JSON.stringify(data.user));
-      navigate('/admin/dashboard');
+      navigate('/secretdoor/dashboard');
     } catch (err) {
       setError('Connection error. Please try again.');
       setLoading(false);
     }
   };
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password, name })
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        setError(data.error || 'Registration failed');
-        setLoading(false);
-        return;
-      }
-
-      setError('');
-      setShowRegister(false);
-      setPassword('');
-      alert('Registration successful! Please log in.');
-    } catch (err) {
-      setError('Connection error. Please try again.');
-      setLoading(false);
-    }
-  };
+  // Registration handler removed
 
   return (
     <div className="admin-login-wrapper">
@@ -81,20 +51,7 @@ const AdminLogin = () => {
           
           {error && <div className="admin-alert admin-alert-danger">{error}</div>}
           
-          <form onSubmit={showRegister ? handleRegister : handleLogin}>
-            {showRegister && (
-              <div className="admin-form-group">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  className="admin-form-control"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  disabled={loading}
-                />
-              </div>
-            )}
+          <form onSubmit={handleLogin}>
             
             <div className="admin-form-group">
               <label>Email</label>
@@ -125,24 +82,10 @@ const AdminLogin = () => {
               className="admin-btn admin-btn-primary"
               disabled={loading}
             >
-              {loading ? 'Loading...' : showRegister ? 'Register' : 'Login'}
+              {loading ? 'Loading...' : 'Login'}
             </button>
           </form>
-
-          <div className="admin-login-footer">
-            <button
-              type="button"
-              className="admin-link-btn"
-              onClick={() => {
-                setShowRegister(!showRegister);
-                setError('');
-                setPassword('');
-                setName('');
-              }}
-            >
-              {showRegister ? 'Back to Login' : 'Create Admin Account'}
-            </button>
-          </div>
+          
         </div>
       </div>
     </div>

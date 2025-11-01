@@ -106,7 +106,7 @@ function App() {
       <Router>
         <div id="wrapper">
           <Preloader />
-          {!window.location.pathname.startsWith('/admin') && <Header />}
+          {!window.location.pathname.startsWith('/admin') && !window.location.pathname.startsWith('/secretdoor') && <Header />}
           <Suspense fallback={
             <div style={{ 
               display: 'flex', 
@@ -126,9 +126,9 @@ function App() {
             </div>
           }>
             <Routes>
-              {/* Admin Routes */}
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin/*" element={<AdminRoute><AdminPanel /></AdminRoute>} />
+              {/* Admin Routes (hidden) */}
+              <Route path="/secretdoor/login" element={<AdminLogin />} />
+              <Route path="/secretdoor/*" element={<AdminRoute><AdminPanel /></AdminRoute>} />
               
               {/* New Crypto Lottery Comparison Site Routes */}
               <Route path="/" element={<NewHome />} />
@@ -158,7 +158,7 @@ function App() {
               <Route path="/old-home" element={<Home />} />
             </Routes>
           </Suspense>
-          {!window.location.pathname.startsWith('/admin') && <Footer />}
+          {!window.location.pathname.startsWith('/admin') && !window.location.pathname.startsWith('/secretdoor') && <Footer />}
           <ScrollProgress />
         </div>
       </Router>

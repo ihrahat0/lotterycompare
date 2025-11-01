@@ -67,8 +67,8 @@ const Contact = () => {
                                         </div>
                                         <div className="content">
                                             <div className="title"><a href="#">Phone</a></div>
-                                            <p className="text-1">Hotline: (319) 555-0115</p>
-                                            <p>Fax: (201) 555-0124</p>
+                                            <p className="text-1">Will be available soon</p>
+                        
                                         </div>
                                     </div>
                                 </div>
@@ -81,8 +81,7 @@ const Contact = () => {
                                         </div>
                                         <div className="content">
                                             <div className="title"><a href="#">Email</a></div>
-                                            <p className="text-2">Service: lode@support.com</p>
-                                            <p>Job: hr@lode.com</p>
+                                            <p className="text-2"><a href="mailto:lottocompare@gmail.com">lottocompare@gmail.com</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -100,33 +99,7 @@ const Contact = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-12">
-                                <div className="wg-social">
-                                    <p className="caption fw-9 fs-20">Follow us on socials media</p>
-                                    <ul className="list-social">
-                                        <li className="item">
-                                            <a href="#">
-                                                <i className="icon-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li className="item">
-                                            <a href="#">
-                                                <i className="icon-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li className="item">
-                                            <a href="#">
-                                                <i className="icon-tiktok"></i>
-                                            </a>
-                                        </li>
-                                        <li className="item">
-                                            <a href="#">
-                                                <i className="icon-youtube"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </section>

@@ -40,7 +40,7 @@ const AdminRoute = ({ children }) => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/admin/login" replace />;
+    return <Navigate to="/secretdoor/login" replace />;
   }
 
   return children;
