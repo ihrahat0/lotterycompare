@@ -157,16 +157,22 @@
 .casino-logo-small {
     width: 40px;
     height: 40px;
+    object-fit: contain;
+    border-radius: 6px;
 }
 
 .casino-logo-medium {
     width: 80px;
     height: 80px;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 .casino-logo-large {
     width: 120px;
     height: 120px;
+    object-fit: contain;
+    border-radius: 12px;
 }
 
 .bonus-text {
@@ -1245,6 +1251,30 @@
 }
 
 /* Responsive */
+/* Base Desktop Styles - Prevent Logo Clipping */
+.section-featured-reviews .wg-game .wg-game-image {
+    overflow: visible !important;
+    position: relative;
+}
+
+.section-featured-reviews .wg-game .wg-game-image img {
+    height: auto !important;
+    max-height: 120px;
+    object-fit: contain !important;
+}
+
+.section-bonuses .bonus-card .bonus-header,
+.section-bonuses .bonus-card-full .bonus-card-header {
+    overflow: visible !important;
+    position: relative;
+}
+
+.section-bonuses .bonus-card .casino-logo-small,
+.section-bonuses .bonus-card-full .casino-logo-medium {
+    height: auto !important;
+    object-fit: contain !important;
+}
+
 @media (max-width: 768px) {
     .casino-comparison-table {
         font-size: 0.85em;
@@ -1260,6 +1290,346 @@
     
     .final-scores {
         grid-template-columns: 1fr;
+    }
+    
+    .comparison-table-full .table-responsive {
+        display: none;
+    }
+    
+    .grid-column-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Featured Casino Reviews - Tablet Optimization */
+    .section-featured-reviews .wg-game .wg-game-image img {
+        max-width: 100px !important;
+        width: 100px !important;
+        height: auto !important;
+        max-height: 100px !important;
+    }
+    
+    .section-featured-reviews .wg-game .wg-game-image {
+        overflow: visible;
+        min-height: 130px;
+        padding: 15px 10px;
+    }
+    
+    /* Bonus Section - Tablet Optimization */
+    .section-bonuses .bonus-card .casino-logo-small {
+        width: 95px !important;
+        height: auto !important;
+        max-width: 95px !important;
+        max-height: 95px !important;
+    }
+    
+    .section-bonuses .bonus-card .bonus-header {
+        overflow: visible;
+        min-height: 150px;
+        padding: 20px 15px;
+    }
+    
+    .section-bonuses .bonus-card-full .bonus-card-header .casino-logo-medium {
+        width: 105px !important;
+        height: auto !important;
+        max-width: 105px !important;
+        max-height: 105px !important;
+    }
+    
+    .section-bonuses .bonus-card-full .bonus-card-header {
+        overflow: visible;
+        min-height: 170px;
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .casino-comparison-table {
+        font-size: 0.75em;
+    }
+    
+    .casino-comparison-table th,
+    .casino-comparison-table td {
+        padding: 10px 8px;
+    }
+    
+    .casino-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .casino-logo {
+        max-width: 40px !important;
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Top Casinos Mobile - Ensure Logos Visible */
+    .section-casinos-list .casino-comparison-table .casino-logo {
+        width: 50px !important;
+        height: 50px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .section-casinos-list .casino-comparison-table .casino-info {
+        display: flex !important;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .section-casinos-list .casino-comparison-table .casino-info img {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .action-buttons .tf-btn {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+    }
+    
+    .bonus-text {
+        font-size: 12px;
+    }
+    
+    .grid-column-3 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Mobile responsive for bonus cards */
+    .bonus-card, .bonus-card-full {
+        padding: 20px;
+    }
+    
+    .bonus-card-header, .bonus-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .casino-logo-small {
+        width: 50px !important;
+        height: 50px !important;
+        max-width: 50px;
+    }
+    
+    .casino-logo-medium {
+        width: 70px !important;
+        height: 70px !important;
+        max-width: 70px;
+    }
+    
+    .bonus-offer, .bonus-offer-large {
+        font-size: 1em;
+    }
+    
+    .bonus-card h3, .bonus-card-full h3 {
+        font-size: 1.1em;
+    }
+    
+    .bonus-card h4, .bonus-card-full h4 {
+        font-size: 0.95em;
+    }
+    
+    .bonus-card p, .bonus-card-full p {
+        font-size: 0.9em;
+    }
+    
+    /* Featured Casino Reviews - Mobile Logo Optimization */
+    .section-featured-reviews .wg-game .wg-game-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 50px;
+        padding: 15px 10px;
+        background: rgba(92, 39, 254, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(92, 39, 254, 0.15);
+        position: relative;
+        overflow: visible;
+        min-height: 120px;
+    }
+    
+    .section-featured-reviews .wg-game .wg-game-image img {
+        max-width: 90px !important;
+        width: 90px !important;
+        height: auto !important;
+        max-height: 90px !important;
+        object-fit: contain !important;
+        border-radius: 12px;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: block;
+    }
+    
+    .section-featured-reviews .wg-game .badge-featured {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        padding: 4px 10px;
+        white-space: nowrap;
+        z-index: 10;
+    }
+    
+    /* Bonus Section - Mobile Logo Optimization */
+    .section-bonuses .bonus-card .bonus-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 20px 15px;
+        background: rgba(92, 39, 254, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(92, 39, 254, 0.15);
+        margin-bottom: 20px;
+        overflow: visible;
+        min-height: 140px;
+    }
+    
+    .section-bonuses .bonus-card .casino-logo-small {
+        width: 90px !important;
+        height: auto !important;
+        max-width: 90px !important;
+        max-height: 90px !important;
+        object-fit: contain !important;
+        border-radius: 12px;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: block;
+    }
+    
+    .section-bonuses .bonus-card .badge-hot {
+        margin-top: 8px;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    
+    /* Bonus Card Full - Mobile Logo Optimization */
+    .section-bonuses .bonus-card-full .bonus-card-header .casino-logo-medium {
+        width: 100px !important;
+        height: auto !important;
+        max-width: 100px !important;
+        max-height: 100px !important;
+        object-fit: contain !important;
+        border-radius: 14px;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: block;
+    }
+    
+    .section-bonuses .bonus-card-full .bonus-card-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 25px 20px;
+        background: rgba(92, 39, 254, 0.05);
+        border-radius: 14px;
+        border: 1px solid rgba(92, 39, 254, 0.15);
+        margin-bottom: 20px;
+        position: relative;
+        overflow: visible;
+        min-height: 160px;
+    }
+    
+    .section-bonuses .bonus-card-full .bonus-card-header .badges {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 360px) {
+    .casino-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .casino-logo-small {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    .casino-logo-medium {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .casino-logo-large {
+        width: 90px !important;
+        height: 90px !important;
+    }
+    
+    .bonus-card, .bonus-card-full {
+        padding: 16px;
+    }
+    
+    .bonus-card h3, .bonus-card-full h3 {
+        font-size: 1em;
+    }
+    
+    .bonus-offer, .bonus-offer-large {
+        font-size: 0.95em;
+    }
+    
+    /* Featured Casino Reviews - Extra Small Mobile */
+    .section-featured-reviews .wg-game .wg-game-image {
+        padding: 12px 8px;
+        min-height: 110px;
+    }
+    
+    .section-featured-reviews .wg-game .wg-game-image img {
+        max-width: 75px !important;
+        width: 75px !important;
+        height: auto !important;
+        max-height: 75px !important;
+        padding: 4px;
+    }
+    
+    /* Bonus Section - Extra Small Mobile */
+    .section-bonuses .bonus-card .bonus-header {
+        padding: 15px 12px;
+        min-height: 130px;
+        gap: 10px;
+    }
+    
+    .section-bonuses .bonus-card .casino-logo-small {
+        width: 75px !important;
+        height: auto !important;
+        max-width: 75px !important;
+        max-height: 75px !important;
+        padding: 4px;
+    }
+    
+    .section-bonuses .bonus-card-full .bonus-card-header .casino-logo-medium {
+        width: 85px !important;
+        height: auto !important;
+        max-width: 85px !important;
+        max-height: 85px !important;
+        padding: 5px;
+    }
+    
+    .section-bonuses .bonus-card-full .bonus-card-header {
+        padding: 20px 16px;
+        min-height: 150px;
+        gap: 12px;
     }
 }
 
@@ -1390,44 +1760,59 @@
 .brc-winning {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 0;
+    gap: 12px;
+    margin-top: 8px;
+    background: rgba(92, 39, 254, 0.05);
+    border: 1px solid rgba(92, 39, 254, 0.15);
+    border-radius: 12px;
+    padding: 12px;
 }
 
 .brc-winning .brc-key {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .brc-digits {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 5px;
+    gap: 8px;
 }
 
 .digit-box {
-    background: #2d2d4a;
-    border: 1px solid rgba(119, 145, 186, 0.2);
-    border-radius: 8px;
-    padding: 10px 4px;
+    background: linear-gradient(135deg, rgba(92, 39, 254, 0.2) 0%, rgba(193, 101, 221, 0.1) 100%);
+    border: 2px solid rgba(92, 39, 254, 0.3);
+    border-radius: 10px;
+    padding: 12px 6px;
     text-align: center;
     color: #fff;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 800;
     font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+}
+
+.digit-box:hover {
+    background: linear-gradient(135deg, rgba(92, 39, 254, 0.3) 0%, rgba(193, 101, 221, 0.2) 100%);
+    border-color: rgba(92, 39, 254, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(92, 39, 254, 0.3);
 }
 
 .brc-cta {
-    margin-top: 0;
+    margin-top: 8px;
 }
 
 .brc-btn {
     display: block;
     width: 100%;
-    background: linear-gradient(90deg, #ff0080 0%, #ff4d94 100%);
+    background: linear-gradient(90deg, #5c27fe 0%, #c165dd 100%);
     color: #fff;
     text-align: center;
-    padding: 12px 20px;
+    padding: 13px 20px;
     border-radius: 10px;
     font-size: 14px;
     font-weight: 700;
@@ -1438,65 +1823,85 @@
 }
 
 .brc-btn:hover {
-    background: linear-gradient(90deg, #e6006f 0%, #ff3d87 100%);
+    background: linear-gradient(90deg, #4a1fd8 0%, #b14dce 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(255, 0, 128, 0.4);
+    box-shadow: 0 6px 24px rgba(92, 39, 254, 0.4);
     color: #fff;
 }
 
 .brc-breakdown {
-    background: rgba(45, 45, 74, 0.3);
-    border: 1px solid rgba(119, 145, 186, 0.1);
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 0;
+    background: linear-gradient(180deg, rgba(92, 39, 254, 0.08) 0%, rgba(193, 101, 221, 0.05) 100%);
+    border: 1px solid rgba(92, 39, 254, 0.15);
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 4px;
 }
 
 .brc-breakdown-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(92, 39, 254, 0.1);
 }
 
 .brc-breakdown-label {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .brc-total-winners {
     color: #00ff9d;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 800;
+    background: rgba(0, 255, 157, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
 }
 
 .brc-break-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
 }
 
 .brc-break-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
-    padding: 4px 3px;
+    gap: 6px;
+    padding: 10px 6px;
     background: rgba(255,255,255,0.05);
-    border-radius: 6px;
+    border: 1px solid rgba(119, 145, 186, 0.1);
+    border-radius: 8px;
     text-align: center;
+    transition: all 0.3s ease;
+}
+
+.brc-break-item:hover {
+    background: rgba(92, 39, 254, 0.1);
+    border-color: rgba(92, 39, 254, 0.3);
 }
 
 .break-digits {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 10px;
-    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: capitalize;
 }
 
 .break-count {
     color: #fff;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #5c27fe 0%, #c165dd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Mobile Responsive Styles */
@@ -1636,7 +2041,7 @@
     }
 
     .brc-break-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 8px;
     }
 
@@ -1713,10 +2118,11 @@
 
     .brc-winning {
         gap: 8px;
+        padding: 10px;
     }
 
     .brc-winning .brc-key {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .brc-digits {
@@ -1724,9 +2130,9 @@
     }
 
     .digit-box {
-        padding: 8px 3px;
-        font-size: 15px;
-        border-radius: 6px;
+        padding: 0px 3px;
+        font-size: 16px;
+        border-radius: 8px;
     }
 
     .brc-btn {
@@ -1736,12 +2142,13 @@
     }
 
     .brc-breakdown {
-        padding: 10px;
-        border-radius: 8px;
+        padding: 12px;
+        border-radius: 10px;
     }
 
     .brc-breakdown-header {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
     }
 
     .brc-breakdown-label {
@@ -1750,6 +2157,7 @@
 
     .brc-total-winners {
         font-size: 12px;
+        padding: 3px 8px;
     }
 
     .brc-break-grid {
@@ -1758,16 +2166,16 @@
     }
 
     .brc-break-item {
-        padding: 5px 3px;
-        gap: 2px;
+        padding: 8px 4px;
+        gap: 4px;
     }
 
     .break-digits {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .break-count {
-        font-size: 11px;
+        font-size: 14px;
     }
 }
 
@@ -1826,34 +2234,40 @@
     }
 
     .brc-winning {
-        gap: 7px;
+        gap: 8px;
+        padding: 10px;
     }
 
     .brc-winning .brc-key {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .brc-digits {
         gap: 4px;
+        grid-template-columns: repeat(6, 1fr);
     }
 
     .digit-box {
-        padding: 7px 2px;
+        padding: 8px 2px;
         font-size: 14px;
-        border-radius: 5px;
+        border-radius: 6px;
+        border-width: 1px;
     }
 
     .brc-btn {
         padding: 11px 18px;
         font-size: 13px;
+        border-radius: 8px;
     }
 
     .brc-breakdown {
-        padding: 9px;
+        padding: 10px;
+        border-radius: 8px;
     }
 
     .brc-breakdown-header {
-        margin-bottom: 7px;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
     }
 
     .brc-breakdown-label {
@@ -1862,6 +2276,7 @@
 
     .brc-total-winners {
         font-size: 11px;
+        padding: 3px 6px;
     }
 
     .brc-break-grid {
@@ -1870,15 +2285,103 @@
     }
 
     .brc-break-item {
-        padding: 4px 2px;
+        padding: 6px 3px;
+        gap: 3px;
     }
 
     .break-digits {
-        font-size: 8px;
+        font-size: 9px;
     }
 
     .break-count {
-        font-size: 10px;
+        font-size: 12px;
     }
+}
+
+/* Casino Card Mobile Layout */
+.casino-card-mobile {
+    background: #131037;
+    border: 1px solid rgba(119, 145, 186, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.casino-card-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.card-title-section {
+    flex: 1;
+    min-width: 0;
+}
+
+.casino-card-name {
+    color: #fff;
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.casino-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.casino-info > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.casino-info strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* Top Casinos Section - Logo Display */
+.section-casinos-list .casino-comparison-table .casino-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-casinos-list .casino-comparison-table .casino-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-casinos-list .casino-comparison-table td {
+    vertical-align: middle;
+}
+
+.section-casinos-list .casino-comparison-table .casino-info img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 

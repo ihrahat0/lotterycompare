@@ -12,7 +12,7 @@ const Affiliate = () => {
   return (
     <>
       <SEO 
-        title="Become an affiliate Exchange - First BTC Lottery " 
+        title="First BTC Lottery " 
         description="Join our affiliate program and earn commissions by promoting Lotterycompare lottery platform."
         keywords="lottery affiliate, affiliate program, earn commissions, referral program"
       />
@@ -25,7 +25,7 @@ const Affiliate = () => {
           <div className="row">
             <div className="col-12">
               <div className="content">
-                <h1 className="title">Affiliate</h1>
+                <h1 className="title">First BTC Lottery</h1>
                 <ul className="breadcrumbs">
                   <li><Link to="/">Home</Link></li>
                   <li><i className="icon-next"></i></li>
@@ -46,7 +46,7 @@ const Affiliate = () => {
               <div className="col-lg-12">
                 <div className="heading-section ">
                   <h2 className="title mb-6 wow fadeInUp">
-                  Become an affiliate Exchange - First BTC Lottery 
+                  First BTC Lottery 
                   </h2>
                   <p className="sub-title wow fadeInUp">
                     Affiliate Program is our special feature for Customers and Partners to earn

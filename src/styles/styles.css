@@ -601,7 +601,12 @@ h2,
 .h2 {
   font-size: 40px;
   line-height: 52.92px;
-  color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  .item-1.wow.fadeInRight.animated.animated.animated img {
+    opacity: 0.1;
+  }
 }
 
 h3,
@@ -12357,7 +12362,7 @@ a.mapboxgl-ctrl-logo {
   }
   
   .bonus-card .casino-logo-small {
-    width: 40px;
+    width: 80px;
     height: 40px;
   }
   
@@ -12457,7 +12462,7 @@ a.mapboxgl-ctrl-logo {
   
   /* Bonus Cards */
   .bonus-card .casino-logo-small {
-    width: 30px;
+    width: 60px;
     height: 30px;
   }
   
@@ -12564,6 +12569,7 @@ a.mapboxgl-ctrl-logo {
   
   .block-result-card .brc-breakdown {
     text-align: center;
+    display: block;
   }
   
   .block-result-card .brc-break-grid {
@@ -13528,7 +13534,7 @@ a.mapboxgl-ctrl-logo {
   }
   
   .section-bonuses .bonus-card .casino-logo-small {
-    width: 50px;
+    width: 100px;
     height: 50px;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -13739,7 +13745,7 @@ a.mapboxgl-ctrl-logo {
   }
   
   .section-bonuses .bonus-card .casino-logo-small {
-    width: 40px;
+    width: 80px;
     height: 40px;
   }
   
