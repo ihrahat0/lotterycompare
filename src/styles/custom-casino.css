@@ -1636,12 +1636,16 @@
 /* Lottery Results Grid Styles */
 .section-lottery-results-grid {
     overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .section-lottery-results-grid .tf-container {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .lottery-results-grid {
@@ -1651,11 +1655,14 @@
     margin-top: 32px;
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 .lottery-result-item {
     display: flex;
     min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Block Result Card Styles */
@@ -1731,30 +1738,42 @@
 .brc-info-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 10px;
+    margin-bottom: 8px;
 }
 
 .brc-info-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(119, 145, 186, 0.08);
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(119, 145, 186, 0.15);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.brc-info-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(92, 39, 254, 0.3);
 }
 
 .brc-info-item:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .brc-key {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 13px;
+    font-weight: 500;
 }
 
 .brc-val {
     color: #fff;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
+    text-align: right;
 }
 
 .brc-winning {
@@ -1835,6 +1854,9 @@
     border-radius: 12px;
     padding: 14px;
     margin-top: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
 }
 
 .brc-breakdown-header {
@@ -1848,7 +1870,7 @@
 
 .brc-breakdown-label {
     color: rgba(255, 255, 255, 0.6);
-    font-size: 12px;
+    font-size: 6px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -1859,27 +1881,35 @@
     font-size: 14px;
     font-weight: 800;
     background: rgba(0, 255, 157, 0.1);
-    padding: 4px 10px;
+    padding: 4px 0px;
     border-radius: 6px;
 }
 
 .brc-break-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 8px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .brc-break-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    padding: 10px 6px;
+    padding: 10px 12px;
+    min-width: 0;
+    width: 100%;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(119, 145, 186, 0.1);
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
+    overflow: visible;
+    box-sizing: border-box;
 }
 
 .brc-break-item:hover {
@@ -1892,6 +1922,7 @@
     font-size: 11px;
     font-weight: 500;
     text-transform: capitalize;
+    white-space: nowrap;
 }
 
 .break-count {
@@ -1902,9 +1933,35 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    white-space: nowrap;
+    overflow: visible;
+    word-break: keep-all;
 }
 
 /* Mobile Responsive Styles */
+/* Desktop/Tablet - Ensure breakdown items fit properly */
+@media (min-width: 769px) {
+    .brc-break-item {
+        padding: 12px 14px;
+        min-width: 0;
+        width: 100%;
+    }
+    
+    .break-count {
+        font-size: 17px;
+        letter-spacing: 0.3px;
+        max-width: 100%;
+    }
+    
+    .break-digits {
+        font-size: 11px;
+    }
+    
+    .brc-break-grid {
+        gap: 10px;
+    }
+}
+
 @media (max-width: 1200px) {
     .lottery-results-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1960,12 +2017,17 @@
     .block-result-card {
         padding: 20px;
         border-radius: 18px;
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        box-sizing: border-box;
     }
 
     .brc-header {
         gap: 12px;
         margin-bottom: 16px;
         padding-bottom: 14px;
+        flex-wrap: wrap;
     }
 
     .brc-icon svg {
@@ -1988,48 +2050,81 @@
 
     .brc-body {
         gap: 14px;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .brc-info-grid {
+        gap: 10px;
+        margin-bottom: 10px;
     }
 
     .brc-info-item {
-        padding: 10px 0;
+        padding: 12px 14px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .brc-key {
-        font-size: 14px;
+        font-size: 13px;
+        font-weight: 500;
+        flex-shrink: 0;
     }
 
     .brc-val {
-        font-size: 16px;
+        font-size: 15px;
+        font-weight: 700;
+        text-align: right;
+        word-break: break-word;
     }
 
     .brc-winning {
         gap: 10px;
+        padding: 12px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .brc-winning .brc-key {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .brc-digits {
         gap: 6px;
+        width: 100%;
     }
 
     .digit-box {
         padding: 10px 4px;
         font-size: 17px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .brc-btn {
         padding: 13px 24px;
         font-size: 15px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .brc-breakdown {
         padding: 12px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: visible;
     }
 
     .brc-breakdown-header {
         margin-bottom: 10px;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
     .brc-breakdown-label {
@@ -2038,15 +2133,22 @@
 
     .brc-total-winners {
         font-size: 13px;
+        padding: 4px 10px;
     }
 
     .brc-break-grid {
         grid-template-columns: repeat(5, 1fr);
         gap: 8px;
+        width: 100%;
     }
 
     .brc-break-item {
-        padding: 6px 4px;
+        padding: 8px 4px;
+        min-height: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .break-digits {
@@ -2054,7 +2156,7 @@
     }
 
     .break-count {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -2072,8 +2174,12 @@
     }
 
     .block-result-card {
-        padding: 18px;
+        padding: 18px 16px;
         border-radius: 16px;
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        box-sizing: border-box;
     }
 
     .brc-header {
@@ -2102,53 +2208,88 @@
 
     .brc-body {
         gap: 12px;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .brc-info-grid {
+        gap: 8px;
+        margin-bottom: 8px;
     }
 
     .brc-info-item {
-        padding: 8px 0;
+        padding: 12px 12px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(119, 145, 186, 0.15);
+        border-radius: 10px;
     }
 
     .brc-key {
-        font-size: 13px;
+        font-size: 12px;
+        font-weight: 500;
+        flex-shrink: 0;
     }
 
     .brc-val {
         font-size: 14px;
+        font-weight: 700;
+        text-align: right;
+        word-break: break-word;
     }
 
     .brc-winning {
         gap: 8px;
         padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .brc-winning .brc-key {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .brc-digits {
         gap: 5px;
+        width: 100%;
     }
 
     .digit-box {
-        padding: 0px 3px;
+        padding: 10px 3px;
         font-size: 16px;
         border-radius: 8px;
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .brc-btn {
         padding: 12px 20px;
         font-size: 14px;
         border-radius: 9px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .brc-breakdown {
-        padding: 12px;
+        padding: 12px 10px;
         border-radius: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: visible;
     }
 
     .brc-breakdown-header {
         margin-bottom: 10px;
         padding-bottom: 8px;
+        flex-wrap: wrap;
+        gap: 6px;
     }
 
     .brc-breakdown-label {
@@ -2161,17 +2302,23 @@
     }
 
     .brc-break-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 6px;
+        width: 100%;
     }
 
     .brc-break-item {
-        padding: 8px 4px;
+        padding: 8px 3px;
         gap: 4px;
+        min-height: 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .break-digits {
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .break-count {
@@ -2190,7 +2337,11 @@
     }
 
     .block-result-card {
-        padding: 16px;
+        padding: 16px 14px;
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        box-sizing: border-box;
     }
 
     .brc-header {
@@ -2219,32 +2370,55 @@
 
     .brc-body {
         gap: 11px;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .brc-info-grid {
+        gap: 8px;
+        margin-bottom: 8px;
     }
 
     .brc-info-item {
-        padding: 7px 0;
+        padding: 10px 10px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(119, 145, 186, 0.15);
+        border-radius: 10px;
     }
 
     .brc-key {
-        font-size: 12px;
+        font-size: 11px;
+        font-weight: 500;
+        flex-shrink: 0;
     }
 
     .brc-val {
         font-size: 13px;
+        font-weight: 700;
+        text-align: right;
     }
 
     .brc-winning {
         gap: 8px;
         padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .brc-winning .brc-key {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .brc-digits {
         gap: 4px;
         grid-template-columns: repeat(6, 1fr);
+        width: 100%;
     }
 
     .digit-box {
@@ -2252,22 +2426,33 @@
         font-size: 14px;
         border-radius: 6px;
         border-width: 1px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .brc-btn {
         padding: 11px 18px;
         font-size: 13px;
         border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .brc-breakdown {
         padding: 10px;
         border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: visible;
     }
 
     .brc-breakdown-header {
         margin-bottom: 8px;
         padding-bottom: 6px;
+        flex-wrap: wrap;
+        gap: 5px;
     }
 
     .brc-breakdown-label {
@@ -2280,17 +2465,23 @@
     }
 
     .brc-break-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 5px;
+        width: 100%;
     }
 
     .brc-break-item {
-        padding: 6px 3px;
+        padding: 6px 2px;
         gap: 3px;
+        min-height: 45px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .break-digits {
-        font-size: 9px;
+        font-size: 8px;
     }
 
     .break-count {

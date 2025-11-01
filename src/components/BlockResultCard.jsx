@@ -60,7 +60,7 @@ const BlockResultCard = ({ blockData }) => {
 
         <div className="brc-breakdown">
           <div className="brc-breakdown-header">
-            <span className="brc-breakdown-label">Winner Breakdown</span>
+            <span className="brc-breakdown-label">Winners</span>
             <span className="brc-total-winners">{blockData.totalWinners} Winners</span>
           </div>
           <div className="brc-break-grid">
