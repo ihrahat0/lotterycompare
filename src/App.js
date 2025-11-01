@@ -43,6 +43,8 @@ const TopCasinos = lazy(() => import('./pages/TopCasinos'));
 const CasinoReview = lazy(() => import('./pages/CasinoReview'));
 const BonusesPage = lazy(() => import('./pages/BonusesPage'));
 const ResponsibleGaming = lazy(() => import('./pages/ResponsibleGaming'));
+const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions'));
+const Disclaimer = lazy(() => import('./pages/Disclaimer'));
 const AdminLogin = lazy(() => import('./admin/AdminLogin'));
 const AdminPanel = lazy(() => import('./admin/AdminPanel'));
 const AdminRoute = lazy(() => import('./admin/AdminRoute'));
@@ -135,6 +137,8 @@ function App() {
               <Route path="/bonuses" element={<BonusesPage />} />
               <Route path="/how-to-work" element={<HowToWork />} />
               <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
+              <Route path="/terms" element={<TermsAndConditions />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
               
               
               {/* Keep existing routes */}

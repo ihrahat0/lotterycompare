@@ -15,23 +15,17 @@ const Footer = () => {
                                     </Link>
                                 </div>
                                 <ul className="menu overflow-x-auto">
-                                    <li><Link to="/">HOME</Link></li>
-                                    <li><Link to="/contest-details">CONTEST</Link></li>
-                                    <li><Link to="/contact">CONTACT</Link></li>
+                                    <li><Link to="/about-us">About Us</Link></li>
+                                    <li><Link to="/faq">FAQ</Link></li>
+                                    <li><Link to="/terms">Terms & Conditions</Link></li>
+                                    <li><Link to="/disclaimer">Disclaimer</Link></li>
+                                    <li><Link to="/affiliate">Affiliate</Link></li>
+                                    <li><Link to="/lottery-results">Lottery Results</Link></li>
+                                    <li><Link to="/blog">Blog</Link></li>
+                                    <li><Link to="/contact">Contact</Link></li>
                                 </ul>
                             </div>
                             <div className="content">
-                                <p className="mb-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis
-                                    placerat nulla. Pellentesque eu urna odio. Nulla vestibulum magna vel tortor cursus,
-                                    a ullamcorper magna efficitur. Vivamus finibus, ipsum et lacinia ornare, neque dui
-                                    interdum nisl, a tempus lorem diam vitae mauris.</p>
-                                <p className="mb-20">Nullam elit enim, faucibus nec tempus id, posuere eu purus. Nulla
-                                    tristique odio ac enim mattis dapibus. Mauris eget dolor id nunc auctor facilisis.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium luctus elit.
-                                    Nullam porttitor lobortis nulla ut semper. Donec ullamcorper, eros non egestas
-                                    iaculis, ex lacus tempus purus, non volutpat est arcu sed massa. Proin viverra
-                                    ligula nulla, sit amet semper est dapibus viverra. Orci varius natoque penatibus et
-                                    magnis dis parturient montes, nascetur ridiculus mus.</p>
                                 <div className="note"><i className="icon-infor"></i>Gambling can be harmful if not controlled.
                                     Please play responsibly.</div>
                             </div>
@@ -39,53 +33,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="footer-main">
-                <div className="tf-container">
-                    <div className="row">
-                        <div className="col-lg-3 col-sm-6">
-                            <div className="widget-footer">
-                                <div className="widget-title">
-                                    Lottery
-                                </div>
-                                <ul>
-                                    <li><Link to="/about-us">About us</Link></li>
-                                    <li><Link to="/blog-list">Latest News</Link></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">Scratch Cards</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 col-sm-6">
-                            <div className="widget-footer">
-                                <div className="widget-title">
-                                    Useful Information
-                                </div>
-                                <ul>
-                                    <li><Link to="/faq">Find a store</Link></li>
-                                    <li><Link to="/faq">FAQ</Link></li>
-                                    <li><a href="#">How to claim your prize</a></li>
-                                    <li><Link to="/faq">Unclaimed prizes</Link></li>
-                                    <li><Link to="/faq">How to play - Games Info</Link></li>
-                                    <li><Link to="/faq">Games End Notices</Link></li>
-                                    <li><Link to="/faq">Syndicates</Link></li>
-                                    <li><Link to="/faq">Supported Browsers</Link></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-3 col-sm-6">
-                            <div className="widget-footer help">
-                                <div className="widget-title">
-                                    How can we help?
-                                </div>
-                                <Link className="tf-btn" to="/contact">Contact us <i className="icon-right"></i></Link>
-                                <p>If you can't find answer to your question, fill your query & submit, or you can
-                                    always contact us. We answer to you shortly</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {/* Simplified footer main removed menus as requested */}
             <div className="footer-bottom">
                 <div className="tf-container">
                     <div className="row">
@@ -116,9 +64,8 @@ const Footer = () => {
                                 </div>
                                 <div className="center">
                                     <ul>
-                                        <li><a href="#">Cookie Policy</a></li>
-                                        <li><a href="#">Data Privacy Statement</a></li>
-                                        <li><a href="#">Terms & Conditions</a></li>
+                                        <li><Link to="/terms">Terms & Conditions</Link></li>
+                                        <li><Link to="/disclaimer">Disclaimer</Link></li>
                                     </ul>
                                 </div>
                                 <div className="right">

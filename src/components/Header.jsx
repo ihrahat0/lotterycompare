@@ -68,9 +68,14 @@ const Header = () => {
                                                     <Link to="/affiliate">Affiliate</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/how-to-work">How To Work</Link>
+                                                    <Link to="/how-to-work">How it works</Link>
                                                 </li>
-                                        
+                                                <li>
+                                                    <Link to="/terms">Terms & Conditions</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/disclaimer">Disclaimer</Link>
+                                                </li>
                                                 <li>
                                                     <Link to="/faq">Faq</Link>
                                                 </li>
@@ -164,9 +169,14 @@ const Header = () => {
                                                 Affiliate
                                             </Link>
                                             <Link to="/how-to-work" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
-                                                How To Work
+                                                How it works
                                             </Link>
-                                      
+                                            <Link to="/terms" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
+                                                Terms & Conditions
+                                            </Link>
+                                            <Link to="/disclaimer" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
+                                                Disclaimer
+                                            </Link>
                                             <Link to="/faq" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
                                                 FAQ
                                             </Link>

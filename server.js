@@ -757,7 +757,7 @@ app.get('/api/pages-list', async (req, res) => {
                 { name: 'about-us', label: 'About Us' },
                 { name: 'contact', label: 'Contact' },
                 { name: 'top-casinos', label: 'Top Casinos' },
-                { name: 'how-to-work', label: 'How to Work' },
+                { name: 'how-to-work', label: 'How it works' },
                 { name: 'responsible-gaming', label: 'Responsible Gaming' },
                 { name: 'bonuses', label: 'Bonuses' },
                 { name: 'faq', label: 'FAQ' }

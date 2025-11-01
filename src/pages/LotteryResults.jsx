@@ -10,7 +10,7 @@ const LotteryResults = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Lottery results data based on completed blocks
+  // FirstBTCLottery Result data based on completed blocks
   const lotteryResults = [
     {
       blockNumber: '920768',
@@ -145,9 +145,9 @@ const LotteryResults = () => {
   return (
     <>
       <SEO 
-        title="Lottery results" 
-        description="Check the latest lottery results and winning numbers. View draw results and prize winners."
-        keywords="lottery results, winning numbers, draw results, lottery winners"
+        title="FirstBTCLottery Result" 
+        description="Check the latest FirstBTCLottery Result and winning numbers. View draw results and prize winners."
+        keywords="FirstBTCLottery Result, winning numbers, draw results, lottery winners"
       />
       
       <div className="page-title">
@@ -158,13 +158,13 @@ const LotteryResults = () => {
           <div className="row">
             <div className="col-12">
               <div className="content">
-                <h1 className="title">Lottery results</h1>
+                <h1 className="title">FirstBTCLottery Result</h1>
                 <ul className="breadcrumbs">
                   <li><Link to="/">Home</Link></li>
                   <li><i className="icon-next"></i></li>
                   <li>Pages</li>
                   <li><i className="icon-next"></i></li>
-                  <li>Lottery results</li>
+                  <li>FirstBTCLottery Result</li>
                 </ul>
               </div>
             </div>
@@ -179,7 +179,7 @@ const LotteryResults = () => {
               <div className="col-lg-12">
                 <div className="heading-section mb-40">
                   <h2 className="title mb-6 wow fadeInUp">
-                    Lottery Results
+                    FirstBTCLottery Result
                   </h2>
                   <p className="sub-title wow fadeInUp fs-14" data-wow-delay="0.1s">
                     Check the latest completed lottery draws and winning numbers

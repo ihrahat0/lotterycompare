@@ -361,9 +361,7 @@ const NewHome = () => {
                                         </div>
                                         <h3>On-Chain, Verifiable Lottery Draws</h3>
                                         <p>
-                                            Every draw is anchored to Bitcoin. We derive the six-character winning code from the
-                                            last 6 characters of the latest block hash. This makes outcomes transparent and
-                                            independently verifiable by anyone.
+                                        A blockchain lottery is fully transparent because every draw result is recorded on the public blockchain. The winning numbers are generated from real blockchain data—in FirstBTC example, they are the last digits of a Bitcoin block hash—so no one can change or manipulate them. This means every player can independently verify the result, ensuring 100% fairness and trust.
                                         </p>
                                         <ul className="on-chain-features">
                                             <li><span>Live block height with countdown to next draw</span></li>
@@ -468,7 +466,7 @@ const NewHome = () => {
                                             <div className="benefit-icon">✓</div>
                                             <div className="benefit-content">
                                                 <h4>Provably Fair Draws</h4>
-                                                <p>Every draw is verified on the blockchain</p>
+                                                <p>A blockchain lottery is fully transparent </p>
                                             </div>
                                         </div>
                                         <div className="benefit-item">
