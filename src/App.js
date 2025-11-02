@@ -51,9 +51,13 @@ const AdminRoute = lazy(() => import('./admin/AdminRoute'));
 
 function App() {
   useEffect(() => {
-    // Load external scripts
-    const scripts = [
-      '/js/jquery.min.js',
+    // Critical scripts - load immediately (jQuery is needed for many plugins)
+    const criticalScripts = [
+      '/js/jquery.min.js'
+    ];
+
+    // Non-critical scripts - defer loading until after initial render
+    const deferredScripts = [
       '/js/bootstrap.min.js',
       '/js/bootstrap-select.min.js',
       '/js/lazysize.min.js',
@@ -68,29 +72,59 @@ function App() {
       '/js/main.js'
     ];
 
-    const loadScript = (src) => {
+    const loadScript = (src, defer = false) => {
       return new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.src = src;
         script.async = false;
+        script.defer = defer;
         script.onload = resolve;
         script.onerror = reject;
         document.body.appendChild(script);
       });
     };
 
-    // Load scripts sequentially
-    const loadAllScripts = async () => {
-      for (const src of scripts) {
+    // Load critical scripts immediately
+    const loadCriticalScripts = async () => {
+      for (const src of criticalScripts) {
         try {
           await loadScript(src);
         } catch (error) {
-          console.error(`Failed to load script: ${src}`, error);
+          console.error(`Failed to load critical script: ${src}`, error);
         }
       }
     };
 
-    loadAllScripts();
+    // Load deferred scripts after page is interactive
+    const loadDeferredScripts = () => {
+      // Use requestIdleCallback for better performance, fallback to setTimeout
+      const loadWhenIdle = (callback) => {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(callback, { timeout: 2000 });
+        } else {
+          setTimeout(callback, 100);
+        }
+      };
+
+      const loadScripts = () => {
+        deferredScripts.forEach(src => {
+          loadScript(src, true).catch(error => {
+            console.error(`Failed to load deferred script: ${src}`, error);
+          });
+        });
+      };
+
+      if (document.readyState === 'complete') {
+        loadWhenIdle(loadScripts);
+      } else {
+        window.addEventListener('load', () => {
+          loadWhenIdle(loadScripts);
+        });
+      }
+    };
+
+    loadCriticalScripts();
+    loadDeferredScripts();
 
     // Add body class
     document.body.classList.add('body', 'counter-scroll');

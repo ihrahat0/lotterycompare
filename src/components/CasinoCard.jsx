@@ -23,7 +23,7 @@ const CasinoCard = ({ casino, showFullDetails = false }) => {
     return (
         <div className="wg-game style-6 wow fadeInUp">
             <div className="wg-game-image">
-                <img src={casino.logo} alt={casino.name} />
+                <img src={casino.logo} alt={casino.name} width="200" height="200" loading="lazy" />
                 {casino.featured && (
                     <span className="badge-featured">⭐ Featured</span>
                 )}

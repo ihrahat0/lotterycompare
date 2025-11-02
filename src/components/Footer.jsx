@@ -11,7 +11,7 @@ const Footer = () => {
                             <div className="footer-menu">
                                 <div className="footer-logo">
                                     <Link to="/">
-                                        <img src={require('../assets/images/logo/logo.png')} alt="Logo" />
+                                        <img src={require('../assets/images/logo/logo.png')} alt="Logo" width="170" height="60" loading="lazy" />
                                     </Link>
                                 </div>
                                 <ul className="menu overflow-x-auto">

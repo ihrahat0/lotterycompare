@@ -121,7 +121,7 @@ const NewHome = () => {
                                         </div>
                                     </div>
                                     <div className="image">
-                                        <img src={require('../assets/images/icon/page-title-home-2-item-1.png')} alt="" />
+                                        <img src={require('../assets/images/icon/page-title-home-2-item-1.png')} alt="" width="180" height="197" loading="eager" />
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@ const NewHome = () => {
                                             <tr key={casino.id} className="wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
                                                 <td>
                                                     <div className="casino-info">
-                                                        <img src={casino.logo_url || casino.logo} alt={casino.name} className="casino-logo" />
+                                                        <img src={casino.logo_url || casino.logo} alt={casino.name} className="casino-logo" width="76" height="76" loading="lazy" />
                                                         <div>
                                                             <strong>{casino.name}</strong>
                                                             {casino.featured && <span className="badge badge-success ml-2">Featured</span>}
@@ -215,7 +215,7 @@ const NewHome = () => {
                             {topCasinos.map((casino, index) => (
                                 <div key={casino.id} className="casino-card-mobile wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
                                     <div className="card-header">
-                                        <img src={casino.logo_url || casino.logo} alt={casino.name} className="casino-card-logo" />
+                                        <img src={casino.logo_url || casino.logo} alt={casino.name} className="casino-card-logo" width="76" height="76" loading="lazy" />
                                         <div className="card-title-section">
                                             <h3 className="casino-card-name">{casino.name}</h3>
                                             {casino.featured && <span className="badge badge-success">Featured</span>}
@@ -442,7 +442,7 @@ const NewHome = () => {
                             <div className="col-lg-6">
                                 <div className="educational-image-wrapper wow fadeInLeft">
                                     <div className="educational-image-card">
-                                        <img src={require('../assets/images/section/our-jackpot-2.png')} alt="Crypto Lottery" />
+                                        <img src={require('../assets/images/section/our-jackpot-2.png')} alt="Crypto Lottery" width="519" height="568" loading="lazy" />
                                         <div className="floating-badge badge-1">
                                             <div className="badge-icon">⛓️</div>
                                             <div className="badge-text">

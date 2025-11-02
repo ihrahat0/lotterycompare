@@ -43,7 +43,7 @@ const Header = () => {
                             <div className="header-inner-wrap">
                                 <div className="header-logo">
                                     <Link to="/">
-                                        <img src={require('../assets/images/logo/logo.png')} alt="Logo" />
+                                        <img src={require('../assets/images/logo/logo.png')} alt="Logo" width="170" height="60" />
                                         
                                     </Link>
                                 </div>
@@ -122,7 +122,7 @@ const Header = () => {
                             <div className="new-mobile-menu-container">
                                 <div className="new-mobile-menu-header">
                                     <Link to="/" onClick={toggleMobileMenu}>
-                                        <img src={require('../assets/images/logo/logo.png')} alt="Logo" />
+                                        <img src={require('../assets/images/logo/logo.png')} alt="Logo" width="170" height="60" />
                                     </Link>
                                     <button 
                                         className="new-mobile-menu-close" 
