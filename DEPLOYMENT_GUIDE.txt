@@ -1,0 +1,361 @@
+================================================================================
+   DEPLOYMENT GUIDE - LotteryCompare Website on Ubuntu VPS
+================================================================================
+
+VPS IP: 184.168.120.220
+Repository: https://github.com/ihrahat0/lotterycompare.git
+
+================================================================================
+STEP 1: DNS CONFIGURATION
+================================================================================
+
+1. Log into your domain registrar's control panel (e.g., GoDaddy, Namecheap, Cloudflare, etc.)
+
+2. Navigate to DNS Management / DNS Records section
+
+3. Add/Update the following DNS records:
+
+   Record Type: A
+   Host/Name: @ (or blank, or yourdomain.com)
+   Value/Points to: 184.168.120.220
+   TTL: 3600 (or Auto)
+
+   Record Type: A
+   Host/Name: www
+   Value/Points to: 184.168.120.220
+   TTL: 3600 (or Auto)
+
+4. Save changes and wait 5-60 minutes for DNS propagation
+
+5. Verify DNS propagation:
+   - Online tool: https://dnschecker.org
+   - Command: dig yourdomain.com +short
+   - Command: ping yourdomain.com
+
+================================================================================
+STEP 2: CONNECT TO YOUR VPS
+================================================================================
+
+ssh root@184.168.120.220
+
+Or if you have a non-root user:
+ssh username@184.168.120.220
+
+================================================================================
+STEP 3: SYSTEM PREPARATION
+================================================================================
+
+# Update system packages
+sudo apt update && sudo apt upgrade -y
+
+# Install certbot for SSL
+sudo apt install certbot python3-certbot-nginx -y
+
+# Create application directory
+sudo mkdir -p /var/www/lotterycompare
+sudo chown -R $USER:$USER /var/www/lotterycompare
+
+================================================================================
+STEP 4: CLONE AND SETUP APPLICATION
+================================================================================
+
+# Navigate to application directory
+cd /var/www/lotterycompare
+
+# Clone your repository
+git clone https://github.com/ihrahat0/lotterycompare.git .
+
+# Install Node.js dependencies
+npm install --production
+
+# Create logs directory for PM2
+mkdir -p logs
+
+# Create .env file (copy from .env.production.example)
+cp .env.production.example .env
+
+# IMPORTANT: Edit .env file with your actual credentials
+nano .env
+
+# Change the JWT_SECRET to a random secure string!
+# You can generate one with: openssl rand -base64 32
+
+# Build the React application
+npm run build
+
+# Verify build directory exists
+ls -la build/
+
+================================================================================
+STEP 5: CONFIGURE NGINX
+================================================================================
+
+# Remove default nginx config
+sudo rm /etc/nginx/sites-enabled/default
+
+# Copy nginx config from your project
+sudo cp nginx.conf /etc/nginx/sites-available/lotterycompare
+
+# IMPORTANT: Edit nginx config to replace 'yourdomain.com' with your actual domain
+sudo nano /etc/nginx/sites-available/lotterycompare
+
+# Replace ALL instances of 'yourdomain.com' with your actual domain name
+# Example: lotterycompare.com
+
+# Enable the site
+sudo ln -s /etc/nginx/sites-available/lotterycompare /etc/nginx/sites-enabled/
+
+# Test nginx configuration
+sudo nginx -t
+
+# If test is successful, restart nginx
+sudo systemctl restart nginx
+
+# Enable nginx to start on boot
+sudo systemctl enable nginx
+
+================================================================================
+STEP 6: SETUP SSL WITH LET'S ENCRYPT (CERTBOT)
+================================================================================
+
+# BEFORE running certbot, make sure:
+# 1. DNS is propagated (check with: dig yourdomain.com)
+# 2. Domain points to your VPS IP
+# 3. Nginx is running (check with: sudo systemctl status nginx)
+
+# For the first time (before certificates exist), temporarily modify nginx config:
+sudo nano /etc/nginx/sites-available/lotterycompare
+
+# Comment out or temporarily remove these SSL-related lines:
+#   ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+#   ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+#   include /etc/letsencrypt/options-ssl-nginx.conf;
+#   ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+# And change the HTTPS server block to listen on port 80 temporarily
+# Change: listen 443 ssl http2;
+# To: listen 80;
+
+# Reload nginx
+sudo nginx -t && sudo systemctl reload nginx
+
+# Obtain SSL certificate (replace yourdomain.com with your actual domain)
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+
+# Follow the prompts:
+# - Enter your email address
+# - Agree to terms of service (Y)
+# - Choose whether to redirect HTTP to HTTPS (recommended: 2)
+
+# Certbot will automatically:
+# - Obtain SSL certificates
+# - Update your nginx configuration
+# - Set up auto-renewal
+
+# After certbot completes, restore the original nginx config:
+sudo cp /var/www/lotterycompare/nginx.conf /etc/nginx/sites-available/lotterycompare
+
+# Edit to use your domain name
+sudo nano /etc/nginx/sites-available/lotterycompare
+
+# Test and reload
+sudo nginx -t && sudo systemctl reload nginx
+
+# Test auto-renewal (dry run)
+sudo certbot renew --dry-run
+
+# Certbot will automatically renew certificates before expiry via systemd timer
+
+================================================================================
+STEP 7: START APPLICATION WITH PM2
+================================================================================
+
+# Navigate to application directory
+cd /var/www/lotterycompare
+
+# Copy PM2 ecosystem config
+cp ecosystem.config.js /var/www/lotterycompare/
+
+# Start the application with PM2
+pm2 start ecosystem.config.js
+
+# Save PM2 process list
+pm2 save
+
+# Setup PM2 to start on system boot
+pm2 startup
+
+# Copy and run the command that PM2 outputs
+# It will look something like:
+# sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u username --hp /home/username
+
+# Check application status
+pm2 status
+
+# View application logs
+pm2 logs lotterycompare
+
+# View real-time logs
+pm2 logs lotterycompare --lines 100
+
+================================================================================
+STEP 8: CONFIGURE FIREWALL (UFW)
+================================================================================
+
+# Enable UFW if not already enabled
+sudo ufw status
+
+# If inactive, configure firewall rules:
+sudo ufw allow ssh
+sudo ufw allow 'Nginx Full'
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+# Enable firewall
+sudo ufw enable
+
+# Check status
+sudo ufw status verbose
+
+================================================================================
+STEP 9: VERIFY DEPLOYMENT
+================================================================================
+
+# Check if nginx is running
+sudo systemctl status nginx
+
+# Check if PM2 app is running
+pm2 status
+
+# Check application logs for errors
+pm2 logs lotterycompare --lines 50
+
+# Test the website
+curl http://localhost:3000/api/health
+curl https://yourdomain.com/api/health
+
+# Open in browser
+https://yourdomain.com
+
+================================================================================
+STEP 10: POST-DEPLOYMENT MAINTENANCE
+================================================================================
+
+# View application logs
+pm2 logs lotterycompare
+
+# Restart application
+pm2 restart lotterycompare
+
+# Stop application
+pm2 stop lotterycompare
+
+# Check nginx logs
+sudo tail -f /var/log/nginx/lotterycompare_access.log
+sudo tail -f /var/log/nginx/lotterycompare_error.log
+
+# Reload nginx after config changes
+sudo nginx -t && sudo systemctl reload nginx
+
+# Update application (when you push new code)
+cd /var/www/lotterycompare
+git pull origin main
+npm install --production
+npm run build
+pm2 restart lotterycompare
+
+# Monitor system resources
+htop
+pm2 monit
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+1. If website shows 502 Bad Gateway:
+   - Check if PM2 app is running: pm2 status
+   - Check app logs: pm2 logs lotterycompare
+   - Restart app: pm2 restart lotterycompare
+
+2. If SSL certificate fails:
+   - Verify DNS is propagated: dig yourdomain.com
+   - Check domain points to correct IP
+   - Check nginx is running: sudo systemctl status nginx
+   - Check firewall allows port 80: sudo ufw status
+
+3. If changes don't appear:
+   - Clear browser cache
+   - Rebuild app: npm run build
+   - Restart PM2: pm2 restart lotterycompare
+   - Check nginx cache
+
+4. If upload fails:
+   - Check uploads directory permissions: ls -la /var/www/lotterycompare/uploads
+   - Create if doesn't exist: mkdir -p /var/www/lotterycompare/uploads
+   - Set permissions: chmod 755 /var/www/lotterycompare/uploads
+
+5. Database connection issues:
+   - Verify Supabase credentials in .env file
+   - Check if VPS can reach Supabase: curl https://ktezajwbhdwswdvlsdqw.supabase.co
+   - Check application logs: pm2 logs lotterycompare
+
+================================================================================
+SECURITY CHECKLIST
+================================================================================
+
+☐ Changed JWT_SECRET in .env file
+☐ Firewall (UFW) enabled and configured
+☐ SSL certificate installed and auto-renewal working
+☐ SSH key-based authentication enabled (disable password auth)
+☐ Root login disabled in SSH
+☐ Regular security updates scheduled
+☐ Backup strategy in place
+☐ Supabase Row Level Security (RLS) policies configured
+☐ Environment variables not exposed in client-side code
+
+================================================================================
+USEFUL COMMANDS REFERENCE
+================================================================================
+
+# PM2 Commands
+pm2 list                    # List all processes
+pm2 restart lotterycompare  # Restart app
+pm2 stop lotterycompare     # Stop app
+pm2 delete lotterycompare   # Remove app from PM2
+pm2 logs lotterycompare     # View logs
+pm2 monit                   # Monitor resources
+
+# Nginx Commands
+sudo systemctl status nginx  # Check nginx status
+sudo systemctl restart nginx # Restart nginx
+sudo systemctl reload nginx  # Reload config
+sudo nginx -t               # Test config
+sudo tail -f /var/log/nginx/lotterycompare_error.log  # View error log
+
+# SSL/Certbot Commands
+sudo certbot certificates    # List certificates
+sudo certbot renew          # Renew certificates
+sudo certbot renew --dry-run # Test renewal
+
+# Git Commands
+git pull origin main        # Pull latest changes
+git status                  # Check status
+git log --oneline -5        # View recent commits
+
+# System Commands
+df -h                       # Check disk space
+free -m                     # Check memory
+htop                        # System monitor
+sudo systemctl restart nginx # Restart nginx
+
+================================================================================
+SUPPORT & DOCUMENTATION
+================================================================================
+
+Nginx Docs: https://nginx.org/en/docs/
+PM2 Docs: https://pm2.keymetrics.io/docs/usage/quick-start/
+Let's Encrypt: https://letsencrypt.org/docs/
+Supabase Docs: https://supabase.com/docs
+
+================================================================================
+

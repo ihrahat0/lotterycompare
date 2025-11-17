@@ -1,0 +1,197 @@
+================================================================================
+   QUICK START DEPLOYMENT GUIDE
+================================================================================
+
+VPS IP: 184.168.120.220
+Domain: Replace 'yourdomain.com' with your actual domain
+
+================================================================================
+STEP 1: DNS SETUP (Do this first, wait 10-60 mins for propagation)
+================================================================================
+
+In your domain registrar's DNS settings, add these A records:
+
+   @ (or root)    →    184.168.120.220
+   www            →    184.168.120.220
+
+Test propagation: https://dnschecker.org
+
+================================================================================
+STEP 2: ON YOUR VPS - RUN THESE COMMANDS
+================================================================================
+
+# Connect to VPS
+ssh root@184.168.120.220
+
+# Install certbot
+sudo apt update && sudo apt install certbot python3-certbot-nginx -y
+
+# Create directory
+sudo mkdir -p /var/www/lotterycompare
+sudo chown -R $USER:$USER /var/www/lotterycompare
+cd /var/www/lotterycompare
+
+# Clone repository
+git clone https://github.com/ihrahat0/lotterycompare.git .
+
+# Install dependencies
+npm install --production
+
+# Create logs directory
+mkdir -p logs
+
+# Create .env file
+nano .env
+
+# Copy this into .env file and save (Ctrl+X, Y, Enter):
+PORT=3000
+NODE_ENV=production
+JWT_SECRET=CHANGE-THIS-TO-RANDOM-STRING
+SUPABASE_URL=https://ktezajwbhdwswdvlsdqw.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0ZXphandiaGR3c3dkdmxzZHF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEzNTEyOTIsImV4cCI6MjA3NjkyNzI5Mn0.EtpbbocyPqaW9URv2nYkk4yKf0EMoiqr7ANELyQL2eY
+SUPABASE_SERVICE_ROLE=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0ZXphandiaGR3c3dkdmxzZHF3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MTM1MTI5MiwiZXhwIjoyMDc2OTI3MjkyfQ.--V5xYnQ6WTi17qrc1XExgZ7C6KnPNw5Js2SUwJi-F0
+
+# Generate a secure JWT_SECRET (copy the output and paste in .env)
+openssl rand -base64 32
+
+# Build the React app
+npm run build
+
+================================================================================
+STEP 3: CONFIGURE NGINX
+================================================================================
+
+# Edit nginx config with your domain
+sudo nano nginx.conf
+
+# Replace ALL 'yourdomain.com' with your actual domain
+# Save and exit (Ctrl+X, Y, Enter)
+
+# Copy config to nginx
+sudo cp nginx.conf /etc/nginx/sites-available/lotterycompare
+
+# Remove default nginx site
+sudo rm -f /etc/nginx/sites-enabled/default
+
+# Enable your site
+sudo ln -s /etc/nginx/sites-available/lotterycompare /etc/nginx/sites-enabled/
+
+# Before SSL setup, temporarily edit the config to remove SSL lines
+sudo nano /etc/nginx/sites-available/lotterycompare
+
+# Comment out these lines (add # at start):
+#   ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+#   ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+#   include /etc/letsencrypt/options-ssl-nginx.conf;
+#   ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+# Also change HTTPS listener to HTTP temporarily
+# Find: listen 443 ssl http2;
+# Change to: listen 80;
+
+# Test nginx config
+sudo nginx -t
+
+# Restart nginx
+sudo systemctl restart nginx
+
+================================================================================
+STEP 4: SETUP SSL WITH CERTBOT
+================================================================================
+
+# Get SSL certificate (replace yourdomain.com)
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+
+# Follow prompts:
+# 1. Enter email
+# 2. Agree to ToS (Y)
+# 3. Redirect HTTP to HTTPS? Choose 2 (Redirect)
+
+# After certbot completes, restore original nginx config
+cd /var/www/lotterycompare
+sudo cp nginx.conf /etc/nginx/sites-available/lotterycompare
+
+# Edit with your domain again
+sudo nano /etc/nginx/sites-available/lotterycompare
+
+# Test and reload
+sudo nginx -t && sudo systemctl reload nginx
+
+================================================================================
+STEP 5: START APPLICATION WITH PM2
+================================================================================
+
+cd /var/www/lotterycompare
+
+# Start app
+pm2 start ecosystem.config.js
+
+# Save PM2 list
+pm2 save
+
+# Setup PM2 startup (run the command it outputs)
+pm2 startup
+
+# Check status
+pm2 status
+
+# View logs
+pm2 logs lotterycompare
+
+================================================================================
+STEP 6: SETUP FIREWALL
+================================================================================
+
+sudo ufw allow ssh
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
+sudo ufw status
+
+================================================================================
+STEP 7: TEST YOUR WEBSITE
+================================================================================
+
+# Test API
+curl https://yourdomain.com/api/health
+
+# Open in browser
+https://yourdomain.com
+
+================================================================================
+COMMON ISSUES
+================================================================================
+
+502 Bad Gateway?
+→ pm2 restart lotterycompare
+
+Website not loading?
+→ Check DNS: dig yourdomain.com
+→ Check nginx: sudo systemctl status nginx
+→ Check PM2: pm2 status
+
+SSL errors?
+→ Verify DNS points to your VPS IP
+→ Check firewall: sudo ufw status
+→ Try: sudo certbot renew --dry-run
+
+================================================================================
+USEFUL COMMANDS
+================================================================================
+
+# View app logs
+pm2 logs lotterycompare
+
+# Restart app
+pm2 restart lotterycompare
+
+# Check nginx logs
+sudo tail -f /var/log/nginx/lotterycompare_error.log
+
+# Update app (when you push new code)
+cd /var/www/lotterycompare
+git pull
+npm run build
+pm2 restart lotterycompare
+
+================================================================================
+

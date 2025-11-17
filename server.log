@@ -1,0 +1,3 @@
+Server is running on port 3000
+Admin Panel API running at http://localhost:3000/api
+Health check: http://localhost:3000/api/health
