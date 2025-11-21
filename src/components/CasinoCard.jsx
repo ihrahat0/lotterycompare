@@ -26,12 +26,14 @@ const LotteryCard = ({ Lottery, showFullDetails = false }) => {
                 <div className="lottery-card-header">
                     <div className="logo-container">
                         <img 
-                            src={Lottery.logo} 
+                            src={Lottery.logo || Lottery.logo_url} 
                             alt={Lottery.name} 
                             loading="lazy"
                             onError={(e) => {
                                 e.target.style.display = 'none';
-                                e.target.parentElement.innerHTML = `<div class="logo-fallback">${Lottery.name.charAt(0)}</div>`;
+                                if (e.target.parentElement) {
+                                    e.target.parentElement.innerHTML = `<div class="logo-fallback">${Lottery.name.charAt(0)}</div>`;
+                                }
                             }}
                         />
                     </div>
@@ -47,7 +49,7 @@ const LotteryCard = ({ Lottery, showFullDetails = false }) => {
                 <div className="lottery-card-body">
                     <div className="bonus-highlight">
                         <div className="bonus-label">Bonus:</div>
-                        <div className="bonus-value">{Lottery.bonus}</div>
+                        <div className="bonus-value">{Lottery.bonus_text || Lottery.bonus || 'Welcome Bonus'}</div>
                     </div>
 
                     <div className="lottery-features">
@@ -76,7 +78,7 @@ const LotteryCard = ({ Lottery, showFullDetails = false }) => {
 
                 <div className="lottery-card-footer">
                     <a 
-                        href={Lottery.affiliateLink} 
+                        href={Lottery.link || Lottery.affiliateLink} 
                         className="play-now-btn"
                         target="_blank"
                         rel="noopener noreferrer nofollow"

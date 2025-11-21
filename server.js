@@ -1136,17 +1136,25 @@ app.get('/api/frontend/contests', async (req, res) => {
     try {
         const queryUrl = `${SUPABASE_URL}/rest/v1/contests?order=created_at.desc&select=*`;
         const response = await fetch(queryUrl, {
-            headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+            headers: { 
+                'apikey': SUPABASE_ANON_KEY, 
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            }
         });
 
         if (response.ok) {
             const data = await response.json();
             return res.json(Array.isArray(data) ? data : []);
+        } else {
+            console.error('Supabase contests query failed:', response.status, response.statusText);
+            const errorText = await response.text();
+            console.error('Error details:', errorText);
+            return res.json([]);
         }
-        res.json([]);
     } catch (err) {
         console.error('Frontend contests error:', err);
-        res.json([]);
+        res.status(500).json({ error: 'Failed to fetch contests', message: err.message });
     }
 });
 

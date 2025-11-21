@@ -37,11 +37,20 @@ const NewHome = () => {
         const fetchData = async () => {
             try {
                 // Fetch updated Lotterys from API
-                const LotterysRes = await fetch('/api/frontend/Lotterys');
+                const LotterysRes = await fetch('/api/frontend/casinos');
                 if (LotterysRes.ok) {
                     const data = await LotterysRes.json();
                     if (data && data.length > 0) {
-                        setLotterys(data);
+                        // Map API data to match component expectations
+                        const mappedData = data.map(casino => ({
+                            ...casino,
+                            logo: casino.logo_url || casino.logo, // Support both field names
+                            bonus: casino.bonus_text || casino.bonus,
+                            highlights: casino.description || casino.highlights || '',
+                            affiliateLink: casino.link || casino.affiliateLink,
+                            rating: casino.rating ? parseFloat(casino.rating) : 4.5
+                        }));
+                        setLotterys(mappedData);
                     }
                 }
                 
@@ -96,8 +105,12 @@ const NewHome = () => {
         return style;
     };
 
-    const featuredLotterys = Lotterys.filter(c => c.featured).slice(0, 3);
+    // Show ALL featured lotteries, not just 3
+    const featuredLotterys = Lotterys.filter(c => c.featured);
     const topLotterys = Lotterys.slice(0, 5);
+    
+    // Use lotteries from admin for bonus section (limit to 6 for display)
+    const bonusLotterys = Lotterys.filter(c => c.bonus_text || c.bonus).slice(0, 6);
 
     return (
         <>
@@ -423,28 +436,63 @@ const NewHome = () => {
                             </div>
                         </div>
                         <div className="row mt-40">
-                            {bonuses.map((bonus, index) => (
-                                <div key={bonus.id} className="col-lg-4 col-md-6">
-                                    <div className="bonus-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
-                                        <div className="bonus-header">
-                                            <img src={bonus.logo} alt={bonus.Lottery} className="Lottery-logo-small" />
-                                            <span className="badge badge-hot">🔥 Hot</span>
-                                        </div>
-                                        <h4>{bonus.Lottery}</h4>
-                                        <div className="bonus-offer">{bonus.offer}</div>
-                                        <div className="bonus-code">
-                                            <span>Code:</span> <strong>{bonus.code}</strong>
-                                        </div>
-                                        <p className="bonus-description">{bonus.description}</p>
-                                        <a href="http://firstbtclottery.com/site/referral?code=v6zIr7Yg" className="tf-btn style-3 w-100">
-                                            Claim Bonus <i className="icon-right"></i>
-                                        </a>
-                                        <div className="bonus-expiry">
-                                            ⏰ Expires: {new Date(bonus.expiry).toLocaleDateString()}
+                            {bonusLotterys.length > 0 ? (
+                                bonusLotterys.map((lottery, index) => (
+                                    <div key={lottery.id || index} className="col-lg-4 col-md-6">
+                                        <div className="bonus-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
+                                            <div className="bonus-header">
+                                                <img 
+                                                    src={lottery.logo || lottery.logo_url} 
+                                                    alt={lottery.name} 
+                                                    className="Lottery-logo-small"
+                                                    onError={(e) => {
+                                                        e.target.style.display = 'none';
+                                                        e.target.parentElement.innerHTML = `<div class="logo-fallback-small">${lottery.name.charAt(0)}</div>`;
+                                                    }}
+                                                />
+                                                {lottery.featured && <span className="badge badge-hot">🔥 Hot</span>}
+                                            </div>
+                                            <h4>{lottery.name}</h4>
+                                            <div className="bonus-offer">{lottery.bonus_text || lottery.bonus || 'Welcome Bonus'}</div>
+                                            {lottery.description && (
+                                                <p className="bonus-description">{lottery.description}</p>
+                                            )}
+                                            <a 
+                                                href={lottery.link || lottery.affiliateLink || '#'} 
+                                                className="tf-btn style-3 w-100"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                Claim Bonus <i className="icon-right"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))
+                            ) : (
+                                // Fallback to hardcoded bonuses if no lotteries from admin
+                                bonuses.map((bonus, index) => (
+                                    <div key={bonus.id} className="col-lg-4 col-md-6">
+                                        <div className="bonus-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
+                                            <div className="bonus-header">
+                                                <img src={bonus.logo} alt={bonus.Lottery} className="Lottery-logo-small" />
+                                                <span className="badge badge-hot">🔥 Hot</span>
+                                            </div>
+                                            <h4>{bonus.Lottery}</h4>
+                                            <div className="bonus-offer">{bonus.offer}</div>
+                                            <div className="bonus-code">
+                                                <span>Code:</span> <strong>{bonus.code}</strong>
+                                            </div>
+                                            <p className="bonus-description">{bonus.description}</p>
+                                            <a href="http://firstbtclottery.com/site/referral?code=v6zIr7Yg" className="tf-btn style-3 w-100">
+                                                Claim Bonus <i className="icon-right"></i>
+                                            </a>
+                                            <div className="bonus-expiry">
+                                                ⏰ Expires: {new Date(bonus.expiry).toLocaleDateString()}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                         <div className="text-center mt-40">
                             <Link to="/bonuses" className="tf-btn">
