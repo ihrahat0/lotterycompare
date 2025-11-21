@@ -132,8 +132,7 @@ const NewHome = () => {
                                 <div className="page-title-home-content">
                                     <div className="content">
                                         <h1 className="title">
-                                        🎁 Top Recommended Crypto Lotteries
-                                        Lotteries & <br />
+                                        🎁 Top Recommended Crypto Lotteries & <br />
                                             <span className="d-block animationtext slide">
                                                 <span className="cd-words-wrapper">
                                                     <span className="item-text is-visible">Crypto Lottery</span>
