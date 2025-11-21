@@ -25,6 +25,14 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
+// Logging middleware for API routes (development only)
+if (isDevelopment) {
+    app.use('/api', (req, res, next) => {
+        console.log(`[API] ${req.method} ${req.path}`);
+        next();
+    });
+}
+
 // Configure multer for file uploads (memory storage works on serverless hosts)
 const upload = multer({
     storage: multer.memoryStorage(),
@@ -1004,6 +1012,7 @@ app.delete('/api/admin/casinos/:id', verifyToken, async (req, res) => {
 // Get all contests
 app.get('/api/admin/contests', verifyToken, async (req, res) => {
     try {
+        console.log('[API] GET /api/admin/contests - Request received');
         const queryUrl = `${SUPABASE_URL}/rest/v1/contests?order=created_at.desc&select=*`;
         const response = await fetch(queryUrl, {
             headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
@@ -1011,12 +1020,14 @@ app.get('/api/admin/contests', verifyToken, async (req, res) => {
 
         if (response.ok) {
             const data = await response.json();
+            console.log('[API] GET /api/admin/contests - Success:', Array.isArray(data) ? data.length : 0, 'contests');
             return res.json(Array.isArray(data) ? data : []);
         }
-        res.json([]);
+        console.error('[API] GET /api/admin/contests - Supabase error:', response.status);
+        res.status(response.status).json({ error: 'Failed to fetch contests' });
     } catch (err) {
-        console.error('Admin contests error:', err);
-        res.json([]);
+        console.error('[API] GET /api/admin/contests - Error:', err.message);
+        res.status(500).json({ error: 'Failed to load contests', message: err.message });
     }
 });
 
@@ -1338,22 +1349,36 @@ if (fs.existsSync(uploadsPath)) {
 
 // ============ PRODUCTION: Serve React Build ============
 if (!isDevelopment) {
-    // Serve static files from build directory
     const buildPath = path.join(__dirname, 'build');
-    app.use(express.static(buildPath));
+    
+    // Serve static files from build directory (skip API routes)
+    app.use((req, res, next) => {
+        // Skip static serving for API routes
+        if (req.path.startsWith('/api')) {
+            return next();
+        }
+        express.static(buildPath)(req, res, next);
+    });
 
-    // Serve static files from public directory
+    // Serve static files from public directory (skip API routes)
     const publicPath = path.join(__dirname, 'public');
     if (fs.existsSync(publicPath)) {
-        app.use(express.static(publicPath));
+        app.use((req, res, next) => {
+            // Skip static serving for API routes
+            if (req.path.startsWith('/api')) {
+                return next();
+            }
+            express.static(publicPath)(req, res, next);
+        });
     }
 
     // ============ CATCH-ALL ROUTE FOR REACT ROUTER ============
+    // IMPORTANT: This must be LAST, after all API routes
     // Serve React app for all non-API routes (client-side routing)
-    app.use((req, res, next) => {
-        // Skip API routes
+    app.get('*', (req, res) => {
+        // Skip API routes - they should have been handled above
         if (req.path.startsWith('/api')) {
-            return next();
+            return res.status(404).json({ error: 'API route not found' });
         }
         
         // Serve React index.html for all other routes

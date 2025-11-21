@@ -47,7 +47,7 @@ const AdminLogin = () => {
     <div className="admin-login-wrapper">
       <div className="admin-login-container">
         <div className="admin-login-box">
-          <h1 className="admin-login-title">Admin Panel</h1>
+          <h1 style={{ color: 'black' }} className="admin-login-title">Admin Panel</h1>
           
           {error && <div className="admin-alert admin-alert-danger">{error}</div>}
           
