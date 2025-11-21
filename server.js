@@ -8,8 +8,7 @@ const bcrypt = require('bcryptjs');
 const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
-const isDevelopment = process.env.NODE_ENV !== 'production';
-const PORT = isDevelopment ? (process.env.PORT || 3001) : (process.env.PORT || 3000);
+const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 // Get Supabase credentials
@@ -24,14 +23,6 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE);
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
-
-// Logging middleware for API routes (development only)
-if (isDevelopment) {
-    app.use('/api', (req, res, next) => {
-        console.log(`[API] ${req.method} ${req.path}`);
-        next();
-    });
-}
 
 // Configure multer for file uploads (memory storage works on serverless hosts)
 const upload = multer({
@@ -1012,7 +1003,6 @@ app.delete('/api/admin/casinos/:id', verifyToken, async (req, res) => {
 // Get all contests
 app.get('/api/admin/contests', verifyToken, async (req, res) => {
     try {
-        console.log('[API] GET /api/admin/contests - Request received');
         const queryUrl = `${SUPABASE_URL}/rest/v1/contests?order=created_at.desc&select=*`;
         const response = await fetch(queryUrl, {
             headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
@@ -1020,14 +1010,12 @@ app.get('/api/admin/contests', verifyToken, async (req, res) => {
 
         if (response.ok) {
             const data = await response.json();
-            console.log('[API] GET /api/admin/contests - Success:', Array.isArray(data) ? data.length : 0, 'contests');
             return res.json(Array.isArray(data) ? data : []);
         }
-        console.error('[API] GET /api/admin/contests - Supabase error:', response.status);
-        res.status(response.status).json({ error: 'Failed to fetch contests' });
+        res.json([]);
     } catch (err) {
-        console.error('[API] GET /api/admin/contests - Error:', err.message);
-        res.status(500).json({ error: 'Failed to load contests', message: err.message });
+        console.error('Admin contests error:', err);
+        res.json([]);
     }
 });
 
@@ -1339,57 +1327,41 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// ============ STATIC FILE SERVING ============
+// ============ STATIC FILE SERVING (PRODUCTION) ============
 
-// Serve uploads directory (always available)
+// Serve static files from build directory
+const buildPath = path.join(__dirname, 'build');
+app.use(express.static(buildPath));
+
+// Serve static files from public directory
+const publicPath = path.join(__dirname, 'public');
+if (fs.existsSync(publicPath)) {
+    app.use(express.static(publicPath));
+}
+
+// Serve uploads directory
 const uploadsPath = path.join(__dirname, 'uploads');
 if (fs.existsSync(uploadsPath)) {
     app.use('/uploads', express.static(uploadsPath));
 }
 
-// ============ PRODUCTION: Serve React Build ============
-if (!isDevelopment) {
-    const buildPath = path.join(__dirname, 'build');
-    
-    // Serve static files from build directory (skip API routes)
-    app.use((req, res, next) => {
-        // Skip static serving for API routes
-        if (req.path.startsWith('/api')) {
-            return next();
-        }
-        express.static(buildPath)(req, res, next);
-    });
+// ============ CATCH-ALL ROUTE FOR REACT ROUTER ============
 
-    // Serve static files from public directory (skip API routes)
-    const publicPath = path.join(__dirname, 'public');
-    if (fs.existsSync(publicPath)) {
-        app.use((req, res, next) => {
-            // Skip static serving for API routes
-            if (req.path.startsWith('/api')) {
-                return next();
-            }
-            express.static(publicPath)(req, res, next);
-        });
+// Serve React app for all non-API routes (client-side routing)
+app.use((req, res, next) => {
+    // Skip API routes
+    if (req.path.startsWith('/api')) {
+        return next();
     }
-
-    // ============ CATCH-ALL ROUTE FOR REACT ROUTER ============
-    // IMPORTANT: This must be LAST, after all API routes
-    // Serve React app for all non-API routes (client-side routing)
-    app.get('*', (req, res) => {
-        // Skip API routes - they should have been handled above
-        if (req.path.startsWith('/api')) {
-            return res.status(404).json({ error: 'API route not found' });
-        }
-        
-        // Serve React index.html for all other routes
-        const indexPath = path.join(buildPath, 'index.html');
-        if (fs.existsSync(indexPath)) {
-            res.sendFile(indexPath);
-        } else {
-            res.status(404).json({ error: 'Application not found. Please run: npm run build' });
-        }
-    });
-}
+    
+    // Serve React index.html for all other routes
+    const indexPath = path.join(buildPath, 'index.html');
+    if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+    } else {
+        res.status(404).json({ error: 'Application not found. Please run: npm run build' });
+    }
+});
 
 // ============ ERROR HANDLER ============
 
@@ -1401,13 +1373,7 @@ app.use((err, req, res, next) => {
 // ============ START SERVER ============
 
 app.listen(PORT, () => {
-    if (isDevelopment) {
-        console.log(`🚀 API Server running on port ${PORT}`);
-        console.log(`📱 React Dev Server should run on port 3000`);
-        console.log(`💡 Run: npm start (for React) or npm run dev (for both)`);
-        console.log(`🔗 API available at http://localhost:${PORT}/api`);
-    } else {
-        console.log(`🚀 Production server running on port ${PORT}`);
-        console.log(`🔗 Admin Panel API: http://localhost:${PORT}/api`);
-    }
+    console.log(`Server is running on port ${PORT}`);
+    console.log(`Admin Panel API running at http://localhost:${PORT}/api`);
+    console.log(`Health check: http://localhost:${PORT}/api/health`);
 });
