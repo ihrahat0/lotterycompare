@@ -1,28 +1,28 @@
-/* ===== MOBILE CASINO CARDS - DARK THEME REDESIGN ===== */
+/* ===== MOBILE Lottery CARDS - DARK THEME REDESIGN ===== */
 
 /* Desktop: Show table, hide cards */
-.casino-table-desktop {
+.Lottery-table-desktop {
   display: block;
 }
 
-.casino-cards-mobile {
+.Lottery-cards-mobile {
   display: none;
 }
 
 /* Mobile: Hide table, show cards */
 @media (max-width: 768px) {
-  .casino-table-desktop {
+  .Lottery-table-desktop {
     display: none;
   }
 
-  .casino-cards-mobile {
+  .Lottery-cards-mobile {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 0;
   }
 
-  .casino-card-mobile {
+  .Lottery-card-mobile {
     background: linear-gradient(145deg, var(--Bg-2) 0%, var(--Bg-10) 100%);
     border: 1px solid var(--Border-1);
     border-radius: 16px;
@@ -33,7 +33,7 @@
     position: relative;
   }
 
-  .casino-card-mobile::before {
+  .Lottery-card-mobile::before {
     content: '';
     position: absolute;
     top: 0;
@@ -45,18 +45,18 @@
     transition: opacity 0.3s ease;
   }
 
-  .casino-card-mobile:hover::before {
+  .Lottery-card-mobile:hover::before {
     opacity: 1;
   }
 
-  .casino-card-mobile:hover {
+  .Lottery-card-mobile:hover {
     box-shadow: 0 12px 48px rgba(254, 140, 69, 0.2), 
                 0 0 0 1px var(--Main-color);
     transform: translateY(-8px);
     border-color: var(--Main-color);
   }
 
-  .casino-card-mobile .card-header {
+  .Lottery-card-mobile .card-header {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -66,7 +66,7 @@
     position: relative;
   }
 
-  .casino-card-mobile .casino-card-logo {
+  .Lottery-card-mobile .Lottery-card-logo {
     width: 60px;
     height: 60px;
     border-radius: 12px;
@@ -77,17 +77,17 @@
     transition: all 0.3s ease;
   }
 
-  .casino-card-mobile:hover .casino-card-logo {
+  .Lottery-card-mobile:hover .Lottery-card-logo {
     border-color: var(--Main-color);
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(254, 140, 69, 0.3);
   }
 
-  .casino-card-mobile .card-title-section {
+  .Lottery-card-mobile .card-title-section {
     flex: 1;
   }
 
-  .casino-card-mobile .casino-card-name {
+  .Lottery-card-mobile .Lottery-card-name {
     font-size: 18px;
     font-weight: 700;
     color: var(--Text);
@@ -96,7 +96,7 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
-  .casino-card-mobile .card-header .badge {
+  .Lottery-card-mobile .card-header .badge {
     display: inline-block;
     padding: 5px 12px;
     border-radius: 6px;
@@ -109,7 +109,7 @@
     box-shadow: 0 2px 8px rgba(254, 140, 69, 0.4);
   }
 
-  .casino-card-mobile .card-body {
+  .Lottery-card-mobile .card-body {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -117,7 +117,7 @@
     background: rgba(0, 0, 0, 0.2);
   }
 
-  .casino-card-mobile .card-item {
+  .Lottery-card-mobile .card-item {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -127,17 +127,17 @@
     transition: all 0.3s ease;
   }
 
-  .casino-card-mobile .card-item:hover {
+  .Lottery-card-mobile .card-item:hover {
     padding-left: 8px;
     border-bottom-color: var(--Main-color);
   }
 
-  .casino-card-mobile .card-item:last-child {
+  .Lottery-card-mobile .card-item:last-child {
     border-bottom: none;
     padding-bottom: 0;
   }
 
-  .casino-card-mobile .card-item .label {
+  .Lottery-card-mobile .card-item .label {
     font-size: 12px;
     font-weight: 700;
     color: var(--Text-6);
@@ -149,13 +149,13 @@
     gap: 6px;
   }
 
-  .casino-card-mobile .card-item .label::before {
+  .Lottery-card-mobile .card-item .label::before {
     content: '▸';
     color: var(--Main-color);
     font-size: 14px;
   }
 
-  .casino-card-mobile .card-item .value {
+  .Lottery-card-mobile .card-item .value {
     font-size: 14px;
     font-weight: 600;
     color: var(--Text);
@@ -164,13 +164,13 @@
     line-height: 1.5;
   }
 
-  .casino-card-mobile .card-item .bonus-text {
+  .Lottery-card-mobile .card-item .bonus-text {
     color: var(--Main-color);
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(254, 140, 69, 0.3);
   }
 
-  .casino-card-mobile .rating-stars {
+  .Lottery-card-mobile .rating-stars {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -178,20 +178,20 @@
     font-size: 16px;
   }
 
-  .casino-card-mobile .rating-number {
+  .Lottery-card-mobile .rating-number {
     font-weight: 700;
     color: var(--Main-color);
     font-size: 18px;
   }
 
-  .casino-card-mobile .card-footer {
+  .Lottery-card-mobile .card-footer {
     padding: 18px 20px 22px;
     display: flex;
     gap: 12px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
   }
 
-  .casino-card-mobile .card-footer a {
+  .Lottery-card-mobile .card-footer a {
     flex: 1;
     padding: 14px 16px;
     text-align: center;
@@ -210,7 +210,7 @@
     overflow: hidden;
   }
 
-  .casino-card-mobile .card-footer a::before {
+  .Lottery-card-mobile .card-footer a::before {
     content: '';
     position: absolute;
     top: 0;
@@ -221,33 +221,33 @@
     transition: left 0.5s ease;
   }
 
-  .casino-card-mobile .card-footer a:hover::before {
+  .Lottery-card-mobile .card-footer a:hover::before {
     left: 100%;
   }
 
-  .casino-card-mobile .card-footer .tf-btn {
+  .Lottery-card-mobile .card-footer .tf-btn {
     background: linear-gradient(135deg, var(--Main-color), var(--Sub-color-3));
     color: white;
     box-shadow: 0 4px 15px rgba(254, 140, 69, 0.4);
   }
 
-  .casino-card-mobile .card-footer .tf-btn:hover {
+  .Lottery-card-mobile .card-footer .tf-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(254, 140, 69, 0.5);
   }
 
-  .casino-card-mobile .card-footer .tf-btn:active {
+  .Lottery-card-mobile .card-footer .tf-btn:active {
     transform: translateY(0);
   }
 
-  .casino-card-mobile .card-footer .tf-btn.style-outline {
+  .Lottery-card-mobile .card-footer .tf-btn.style-outline {
     background: transparent;
     border: 2px solid var(--Main-color);
     color: var(--Main-color);
     box-shadow: 0 4px 15px rgba(254, 140, 69, 0.2);
   }
 
-  .casino-card-mobile .card-footer .tf-btn.style-outline:hover {
+  .Lottery-card-mobile .card-footer .tf-btn.style-outline:hover {
     background: linear-gradient(135deg, var(--Main-color), var(--Sub-color-3));
     color: white;
     border-color: transparent;
@@ -257,52 +257,52 @@
 }
 
 @media (max-width: 600px) {
-  .casino-cards-mobile {
+  .Lottery-cards-mobile {
     gap: 16px;
   }
 
-  .casino-card-mobile {
+  .Lottery-card-mobile {
     border-radius: 14px;
   }
 
-  .casino-card-mobile .card-header {
+  .Lottery-card-mobile .card-header {
     padding: 16px;
     gap: 12px;
   }
 
-  .casino-card-mobile .casino-card-logo {
+  .Lottery-card-mobile .Lottery-card-logo {
     width: 60px;
     height: 60px;
   }
 
-  .casino-card-mobile .casino-card-name {
+  .Lottery-card-mobile .Lottery-card-name {
     font-size: 16px;
   }
 
-  .casino-card-mobile .card-body {
+  .Lottery-card-mobile .card-body {
     padding: 16px;
     gap: 14px;
   }
 
-  .casino-card-mobile .card-item {
+  .Lottery-card-mobile .card-item {
     padding-bottom: 12px;
   }
 
-  .casino-card-mobile .card-item .label {
+  .Lottery-card-mobile .card-item .label {
     font-size: 11px;
     min-width: 75px;
   }
 
-  .casino-card-mobile .card-item .value {
+  .Lottery-card-mobile .card-item .value {
     font-size: 13px;
   }
 
-  .casino-card-mobile .card-footer {
+  .Lottery-card-mobile .card-footer {
     padding: 14px 16px 18px;
     flex-direction: column;
   }
 
-  .casino-card-mobile .card-footer a {
+  .Lottery-card-mobile .card-footer a {
     padding: 12px 14px;
     font-size: 13px;
   }

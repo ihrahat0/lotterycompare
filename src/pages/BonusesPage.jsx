@@ -34,9 +34,9 @@ const BonusesPage = () => {
     return (
         <>
             <SEO 
-                title="Latest Crypto Casino Bonuses & Free Spins 2025" 
-                description="Find the best crypto casino bonuses, welcome packages, and free spins. Exclusive bonus codes for Bitcoin lottery sites and blockchain casinos."
-                keywords="crypto casino bonus, bitcoin casino bonus, free spins, welcome bonus, no deposit bonus"
+                title="Latest Crypto Lottery Bonuses & Free Spins 2025" 
+                description="Find the best crypto Lottery bonuses, welcome packages, and free spins. Exclusive bonus codes for Bitcoin lottery sites and blockchain Lotterys."
+                keywords="crypto Lottery bonus, bitcoin Lottery bonus, free spins, welcome bonus, no deposit bonus"
             />
 
             <div className="page-title">
@@ -47,7 +47,7 @@ const BonusesPage = () => {
                     <div className="row">
                         <div className="col-12">
                             <div className="content">
-                                <h1 className="heading text-center">🎁 Latest Crypto Casino Bonuses</h1>
+                                <h1 className="heading text-center">🎁 Latest Crypto Lottery Bonuses</h1>
                                 <p className="sub-heading text-center">
                                     Exclusive bonus codes and welcome packages — grab them before they expire!
                                 </p>
@@ -94,13 +94,13 @@ const BonusesPage = () => {
                             <div key={bonus.id} className="col-lg-4 col-md-6 mb-40">
                                 <div className="bonus-card-full wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
                                     <div className="bonus-card-header">
-                                        <img src={bonus.logo} alt={bonus.casino} className="casino-logo-medium" />
+                                        <img src={bonus.logo} alt={bonus.Lottery} className="Lottery-logo-medium" />
                                         <div className="badges">
                                             <span className="badge badge-hot">🔥 Hot</span>
                                             <span className="badge badge-exclusive">Exclusive</span>
                                         </div>
                                     </div>
-                                    <h3>{bonus.casino}</h3>
+                                    <h3>{bonus.Lottery}</h3>
                                     <div className="bonus-offer-large">{bonus.offer}</div>
                                     <div className="bonus-type-badge">{bonus.type}</div>
                                     <p className="bonus-description">{bonus.description}</p>

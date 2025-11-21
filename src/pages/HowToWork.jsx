@@ -27,7 +27,7 @@ const HowToWork = () => {
               <div className="content">
                 <h1 className="heading text-center">How Crypto Lotteries Work</h1>
                 <p className="sub-heading text-center">
-                  Everything you need to know about blockchain-based lotteries and casinos
+                  Everything you need to know about blockchain-based lotteries and Lotterys
                 </p>
                 <ul className="breadcrumbs">
                   <li><Link to="/">Home</Link></li>
@@ -49,7 +49,7 @@ const HowToWork = () => {
                 <div className="step-number">1</div>
                 <div className="icon">💰</div>
                 <h4>Play or Deposit</h4>
-                <p>Choose your favorite crypto lottery or casino. Make a deposit using BTC, ETH, USDT, or other supported cryptocurrencies. Most platforms accept deposits as low as 0.001 BTC.</p>
+                <p>Choose your favorite crypto lottery or Lottery. Make a deposit using BTC, ETH, USDT, or other supported cryptocurrencies. Most platforms accept deposits as low as 0.001 BTC.</p>
               </div>
             </div>
             <div className="col-lg-4 col-md-6">
@@ -77,21 +77,21 @@ const HowToWork = () => {
               <div className="col-lg-6">
                 <div className="feature-box">
                   <h4>✓ Provably Fair Technology</h4>
-                  <p>Every game result can be verified on the blockchain. You can check that the casino didn't manipulate the outcome.</p>
+                  <p>Every game result can be verified on the blockchain. You can check that the Lottery didn't manipulate the outcome.</p>
                 </div>
                 <div className="feature-box">
                   <h4>✓ No KYC Required</h4>
-                  <p>Most crypto casinos don't require identity verification. Play anonymously using just your wallet address.</p>
+                  <p>Most Crypto Lottery don't require identity verification. Play anonymously using just your wallet address.</p>
                 </div>
                 <div className="feature-box">
                   <h4>✓ Lower House Edge</h4>
-                  <p>Blockchain casinos often have lower overhead costs, resulting in better odds and higher payouts for players.</p>
+                  <p>Blockchain Lotterys often have lower overhead costs, resulting in better odds and higher payouts for players.</p>
                 </div>
               </div>
               <div className="col-lg-6">
                 <div className="feature-box">
                   <h4>✓ Instant Withdrawals</h4>
-                  <p>Traditional casinos take days to process withdrawals. Crypto casinos send winnings to your wallet instantly.</p>
+                  <p>Traditional Lotterys take days to process withdrawals. Crypto Lottery send winnings to your wallet instantly.</p>
                 </div>
                 <div className="feature-box">
                   <h4>✓ Global Access</h4>
@@ -112,7 +112,7 @@ const HowToWork = () => {
             <div className="steps-list">
               <div className="step-item">
                 <span className="step-num">Step 1</span>
-                <p><strong>Before playing:</strong> The casino generates a server seed (hashed) and shows it to you. They can't change this later.</p>
+                <p><strong>Before playing:</strong> The Lottery generates a server seed (hashed) and shows it to you. They can't change this later.</p>
               </div>
               <div className="step-item">
                 <span className="step-num">Step 2</span>
@@ -120,7 +120,7 @@ const HowToWork = () => {
               </div>
               <div className="step-item">
                 <span className="step-num">Step 3</span>
-                <p><strong>After the game:</strong> The casino reveals the unhashed server seed. You can use a verification tool to check that the result matches.</p>
+                <p><strong>After the game:</strong> The Lottery reveals the unhashed server seed. You can use a verification tool to check that the result matches.</p>
               </div>
               <div className="step-item">
                 <span className="step-num">Step 4</span>
@@ -134,15 +134,15 @@ const HowToWork = () => {
             <h2>Ready to Get Started?</h2>
             <p>Follow these steps to start playing crypto lotteries today:</p>
             <ol className="numbered-list mt-30">
-              <li>Browse our list of <Link to="/top-casinos">top-rated crypto casinos</Link></li>
+              <li>Browse our list of <Link to="/top-Lotterys">top-rated Crypto Lottery</Link></li>
               <li>Choose a platform that suits your needs</li>
               <li>Create a crypto wallet (if you don't have one)</li>
               <li>Buy some cryptocurrency (BTC, ETH, etc.)</li>
-              <li>Deposit to your chosen casino</li>
+              <li>Deposit to your chosen Lottery</li>
               <li>Start playing and win!</li>
             </ol>
             <div className="text-center mt-40">
-              <Link to="/top-casinos" className="tf-btn">
+              <Link to="/top-Lotterys" className="tf-btn">
                 Play Now<i className="icon-right"></i>
               </Link>
               <Link to="/bonuses" className="tf-btn style-outline ml-20">

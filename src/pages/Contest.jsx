@@ -1,23 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { initAllPlugins } from '../utils/initScripts';
 import SEO from '../components/SEO';
 
 const Contest = () => {
+    const [contests, setContests] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         initAllPlugins();
+        fetchContests();
     }, []);
 
-    const contests = [
+    const fetchContests = async () => {
+        try {
+            const response = await fetch('/api/frontend/contests');
+            if (response.ok) {
+                const data = await response.json();
+                setContests(Array.isArray(data) && data.length > 0 ? data : getDefaultContests());
+            } else {
+                setContests(getDefaultContests());
+            }
+        } catch (error) {
+            console.error('Failed to fetch contests:', error);
+            setContests(getDefaultContests());
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const getDefaultContests = () => [
         { 
             img: 'contest-1.png', 
             title: 'First BTC Lottery', 
             no: 'Big Win', 
             remaining: 'Buy Unimited', 
-            prize: '$70,000.000', 
+            prize: '$300,000,000/month', 
             price: 'JOIN', 
             timer: '290603',
-            link: 'https://firstbtclottery.com/site/referral?code=v6zIr7Yg'
+            link: 'https://firstbtclottery.com/site/referral?code=v6zIr7Yg',
+            highlights: ['No KYC', 'Crypto'],
+            description: 'Odds of winning a jackpot: 1 in 16,777,216'
         },
         { 
             img: 'https://watcher.guru/news/wp-content/uploads/2023/09/a2-4.png', 
@@ -27,7 +50,7 @@ const Contest = () => {
             prize: '$50,000.000', 
             price: 'Join', 
             timer: '290603',
-            link: 'https://stake.com/casino/home/?c=AA0NC0iw&clickId=fdc-0a53cb9b-bffc-438e-97c1-335fd7e5dfa4'
+            link: 'https://stake.com/Lottery/home/?c=AA0NC0iw&clickId=fdc-0a53cb9b-bffc-438e-97c1-335fd7e5dfa4'
         },
         { 
             img: 'https://cdn.prod.website-files.com/6659430ddebf16a696c96358/66b566c96d71c360fdc5d7b8_Home%20Opengraph.jpg', 
@@ -50,18 +73,18 @@ const Contest = () => {
             link: 'https://partnerbcgame.com/vace0219c?subid=fdc-b85cb01f-ace6-4d90-80db-dda6ffe8066a'
         },
         { 
-            img: 'https://www.thespike.gg/reviews/images/2025/09/thrill-casino-i-gaming-games-promotion-en-glo.jpg.webp', 
+            img: 'https://www.thespike.gg/reviews/images/2025/09/thrill-Lottery-i-gaming-games-promotion-en-glo.jpg.webp', 
             title: 'Thrill', 
             no: 'Instant Rakeback.', 
             remaining: 'Tiered Rewards Program', 
             prize: '$10,000.000', 
             price: 'Join', 
             timer: '290603',
-            link: 'https://thrillcasino.io/ta1aa7a5a'
+            link: 'https://thrillLottery.io/ta1aa7a5a'
         },
         { 
-            img: 'https://www.ccn.com/wp-content/uploads/2025/07/motherland-casino-review-homepage.webp', 
-            title: 'Motherland Casino', 
+            img: 'https://www.ccn.com/wp-content/uploads/2025/07/motherland-Lottery-review-homepage.webp', 
+            title: 'Motherland Lottery', 
             no: 'Up to $10,000 Bonus Matched', 
             remaining: '*', 
             prize: '$10,000.000', 
@@ -70,6 +93,44 @@ const Contest = () => {
             link: 'https://record.motherlandpartners.com/_3zudlUxeY0vlD9UB4eAeYmNd7ZgqdRLk/1/?payload=fdc-b85cb01f-ace6-4d90-80db-dda6ffe8066a'
         }
     ];
+
+    if (loading) {
+        return (
+            <>
+                <SEO 
+                    title="Lottery Contests" 
+                    description="Browse available lottery contests and games. Choose from various prize pools and ticket prices. Play now and win big!"
+                    keywords="lottery contests, lottery games, bingo, scratch cards, lottery prizes, online contests"
+                />
+                <div className="page-title">
+                    <div className="tf-tsparticles">
+                        <div id="tsparticles1" data-color="#fff" data-line="#fff"></div>
+                    </div>
+                    <div className="tf-container">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="content">
+                                    <h1 className="title">Contest</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="main-content">
+                    <div className="tf-container">
+                        <div className="row">
+                            <div className="col-12">
+                                <div style={{ textAlign: 'center', padding: '60px 0', color: 'rgba(255, 255, 255, 0.7)' }}>
+                                    <div className="blog-loading-spinner"></div>
+                                    <p style={{ marginTop: '20px' }}>Loading contests...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    }
 
 
     return (
@@ -185,6 +246,36 @@ const Contest = () => {
                                         return (
                                             <div key={index} className="wg-game style-5 hover-img wow fadeInUp" data-wow-delay={`${(index % 3) * 0.2}s`}>
                                                 <div className="wg-game-image">
+                                                    {contest.highlights && (
+                                                        <div style={{
+                                                            position: 'absolute',
+                                                            top: '12px',
+                                                            left: '12px',
+                                                            display: 'flex',
+                                                            gap: '8px',
+                                                            zIndex: 10
+                                                        }}>
+                                                            {contest.highlights.map((highlight, idx) => (
+                                                                <span
+                                                                    key={idx}
+                                                                    style={{
+                                                                        background: idx === 0 ? 'linear-gradient(135deg, #667eea, #764ba2)' : 'linear-gradient(135deg, #f093fb, #f5576c)',
+                                                                        color: '#fff',
+                                                                        padding: '6px 14px',
+                                                                        borderRadius: '20px',
+                                                                        fontSize: '11px',
+                                                                        fontWeight: '700',
+                                                                        letterSpacing: '0.5px',
+                                                                        textTransform: 'uppercase',
+                                                                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+                                                                        display: 'inline-block'
+                                                                    }}
+                                                                >
+                                                                    {highlight}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    )}
                                                     <img 
                                                         src={imageSrc} 
                                                         alt={contest.title} 
@@ -213,6 +304,16 @@ const Contest = () => {
                                                                 <p> <span>{contest.remaining}</span> Remaining</p>
                                                             </li>
                                                         </ul>
+                                                    {contest.description && (
+                                                        <p style={{
+                                                            fontSize: '13px',
+                                                            color: 'rgba(255, 255, 255, 0.75)',
+                                                            marginBottom: '12px',
+                                                            fontStyle: 'italic'
+                                                        }}>
+                                                            {contest.description}
+                                                        </p>
+                                                    )}
                                                     <p className="text fs-14 fw-9">Win up to</p>
                                                     <p className="money text-color-clip style-6">{contest.prize}</p>
                                                     <a 

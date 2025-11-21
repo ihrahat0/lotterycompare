@@ -46,12 +46,12 @@ const ResponsibleGaming = () => {
           <div className="disclaimer-box wow fadeInUp mb-80">
             <h2>⚠️ Important Disclaimer</h2>
             <div className="disclaimer-content">
-              <p><strong>LotteryCompare.com is an affiliate comparison website, not a casino operator.</strong></p>
-              <p>We provide information, reviews, and comparisons of crypto lottery and casino platforms. We earn commissions when you sign up through our affiliate links, but this does not influence our honest reviews.</p>
+              <p><strong>LotteryCompare.com is an affiliate comparison website, not a Lottery operator.</strong></p>
+              <p>We provide information, reviews, and comparisons of crypto lottery and Lottery platforms. We earn commissions when you sign up through our affiliate links, but this does not influence our honest reviews.</p>
               <ul>
                 <li>✓ We are NOT a gambling operator</li>
                 <li>✓ We do NOT accept deposits or handle player funds</li>
-                <li>✓ We do NOT operate any lottery draws or casino games</li>
+                <li>✓ We do NOT operate any lottery draws or Lottery games</li>
                 <li>✓ We provide information and referrals only</li>
               </ul>
             </div>
@@ -62,7 +62,7 @@ const ResponsibleGaming = () => {
             <h2>🔞 Age Restriction</h2>
             <div className="age-warning">
               <h3>You must be 19+ to gamble</h3>
-              <p>Gambling is restricted to persons aged 19 years or older (or the legal age in your jurisdiction, whichever is higher). By using this website and clicking through to casino sites, you confirm that:</p>
+              <p>Gambling is restricted to persons aged 19 years or older (or the legal age in your jurisdiction, whichever is higher). By using this website and clicking through to Lottery sites, you confirm that:</p>
               <ul>
                 <li>You are of legal gambling age in your jurisdiction</li>
                 <li>It is legal for you to gamble online in your country/state</li>
@@ -164,7 +164,7 @@ const ResponsibleGaming = () => {
           {/* Self-Exclusion */}
           <div className="content-section wow fadeInUp mb-80">
             <h2>Self-Exclusion Tools</h2>
-            <p>Most casinos we recommend offer self-exclusion tools that allow you to:</p>
+            <p>Most Lotterys we recommend offer self-exclusion tools that allow you to:</p>
             <ul className="check-list mt-30">
               <li>✓ <strong>Cooling-Off Period:</strong> Take a short break (24 hours to 6 weeks)</li>
               <li>✓ <strong>Self-Exclusion:</strong> Ban yourself for 6 months to permanently</li>

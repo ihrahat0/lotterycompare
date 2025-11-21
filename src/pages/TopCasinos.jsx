@@ -1,37 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { initAllPlugins } from '../utils/initScripts';
 import SEO from '../components/SEO';
-import CasinoCard from '../components/CasinoCard';
+import LotteryCard from '../components/CasinoCard';
 import BlockStatus from '../components/BlockStatus';
-import { casinos } from '../data/casinos';
+import { Lotterys } from '../data/casinos';
 
-const TopCasinos = () => {
+const TopLotterys = () => {
     useEffect(() => {
         initAllPlugins();
         window.scrollTo(0, 0);
     }, []);
 
     const [filter, setFilter] = useState('all');
-    const [filteredCasinos, setFilteredCasinos] = useState(casinos);
+    const [filteredLotterys, setFilteredLotterys] = useState(Lotterys);
 
     useEffect(() => {
         if (filter === 'all') {
-            setFilteredCasinos(casinos);
+            setFilteredLotterys(Lotterys);
         } else if (filter === 'featured') {
-            setFilteredCasinos(casinos.filter(c => c.featured));
+            setFilteredLotterys(Lotterys.filter(c => c.featured));
         } else if (filter === 'high-rating') {
-            setFilteredCasinos(casinos.filter(c => c.rating >= 4.7));
+            setFilteredLotterys(Lotterys.filter(c => c.rating >= 4.7));
         } else if (filter === 'instant-payout') {
-            setFilteredCasinos(casinos.filter(c => c.withdrawalSpeed === 'Instant'));
+            setFilteredLotterys(Lotterys.filter(c => c.withdrawalSpeed === 'Instant'));
         }
     }, [filter]);
 
     return (
         <>
             <SEO 
-                title="Best Crypto Casinos and Lotteries of 2025" 
-                description="Compare the top crypto casinos and blockchain lotteries. Find the best Bitcoin lottery sites with instant payouts, provably fair games, and exclusive bonuses."
-                keywords="crypto casino comparison, bitcoin lottery sites, blockchain casino, best crypto lottery, btc casino"
+                title="Best Crypto Lottery and Lotteries of 2025" 
+                description="Compare the top Crypto Lottery and blockchain lotteries. Find the best Bitcoin lottery sites with instant payouts, provably fair games, and exclusive bonuses."
+                keywords="crypto Lottery comparison, bitcoin lottery sites, blockchain Lottery, best crypto lottery, btc Lottery"
             />
 
             {/* Page Title */}
@@ -43,13 +43,13 @@ const TopCasinos = () => {
                     <div className="row">
                         <div className="col-12">
                             <div className="content">
-                                <h1 className="heading text-center">Best Crypto Casinos & Lotteries of 2025</h1>
+                                <h1 className="heading text-center">Best Crypto Lottery & Lotteries of 2025</h1>
                                 <p className="sub-heading text-center">
                                     Compare trusted blockchain lottery platforms — verified for fairness, instant payouts, and transparency
                                 </p>
                                 <ul className="breadcrumbs">
                                     <li><a href="/">Home</a></li>
-                                    <li>Top Casinos</li>
+                                    <li>Top Lotterys</li>
                                 </ul>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ const TopCasinos = () => {
             </div>
 
             {/* Main Content */}
-            <section className="section-casinos-list pt-80 pb-100">
+            <section className="section-Lotterys-list pt-80 pb-100">
                 <div className="tf-container">
                     <div className="row mb-40">
                         <div className="col-12">
@@ -67,13 +67,13 @@ const TopCasinos = () => {
                     </div>
                     
                     {/* Filters */}
-                    <div className="casino-filters wow fadeInUp mb-60">
+                    <div className="Lottery-filters wow fadeInUp mb-60">
                         <div className="filter-buttons">
                             <button 
                                 className={`tf-btn ${filter === 'all' ? 'active' : 'style-outline'}`}
                                 onClick={() => setFilter('all')}
                             >
-                                All Casinos
+                                All Lotterys
                             </button>
                             <button 
                                 className={`tf-btn ${filter === 'featured' ? 'active' : 'style-outline'}`}
@@ -99,11 +99,11 @@ const TopCasinos = () => {
                     {/* Comparison Table */}
                     <div className="comparison-table-full wow fadeInUp mt-40">
                         <div className="table-responsive">
-                            <table className="table casino-comparison-table">
+                            <table className="table Lottery-comparison-table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Casino</th>
+                                        <th>Lottery</th>
                                         <th>Bonus</th>
                                         <th>Min Deposit</th>
                                         <th>Highlights</th>
@@ -113,43 +113,43 @@ const TopCasinos = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {filteredCasinos.map((casino, index) => (
-                                        <tr key={casino.id} className="wow fadeInUp" data-wow-delay={`${index * 0.05}s`}>
+                                    {filteredLotterys.map((Lottery, index) => (
+                                        <tr key={Lottery.id} className="wow fadeInUp" data-wow-delay={`${index * 0.05}s`}>
                                             <td><strong>#{index + 1}</strong></td>
                                             <td>
-                                                <div className="casino-info">
-                                                    <img src={casino.logo} alt={casino.name} className="casino-logo" />
+                                                <div className="Lottery-info">
+                                                    <img src={Lottery.logo} alt={Lottery.name} className="Lottery-logo" />
                                                     <div>
-                                                        <strong>{casino.name}</strong>
+                                                        <strong>{Lottery.name}</strong>
                                                         <div className="badges">
-                                                            {casino.featured && <span className="badge badge-success">Featured</span>}
-                                                            {casino.provablyFair && <span className="badge badge-info">Provably Fair</span>}
+                                                            {Lottery.featured && <span className="badge badge-success">Featured</span>}
+                                                            {Lottery.provablyFair && <span className="badge badge-info">Provably Fair</span>}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><span className="bonus-text">{casino.bonus}</span></td>
-                                            <td>{casino.minDeposit}</td>
-                                            <td>{casino.highlights}</td>
+                                            <td><span className="bonus-text">{Lottery.bonus}</span></td>
+                                            <td>{Lottery.minDeposit}</td>
+                                            <td>{Lottery.highlights}</td>
                                             <td>
                                                 <div className="rating-stars">
-                                                    <span className="rating-number">{casino.rating}</span> ⭐
+                                                    <span className="rating-number">{Lottery.rating}</span> ⭐
                                                 </div>
                                             </td>
                                             <td>
-                                                <span className="badge badge-success">{casino.withdrawalSpeed}</span>
+                                                <span className="badge badge-success">{Lottery.withdrawalSpeed}</span>
                                             </td>
                                             <td>
                                                 <div className="action-buttons">
                                                     <a 
-                                                        href={casino.affiliateLink} 
+                                                        href={Lottery.affiliateLink} 
                                                         className="tf-btn style-3 small mb-2"
                                                         target="_blank"
                                                         rel="noopener noreferrer nofollow"
                                                     >
                                                         Play Now
                                                     </a>
-                                                    <a href={`/casino/${casino.id}`} className="link-review">Review</a>
+                                                    <a href={`/Lottery/${Lottery.id}`} className="link-review">Review</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -159,10 +159,10 @@ const TopCasinos = () => {
                         </div>
                     </div>
 
-                    {/* Casino Cards Grid */}
+                    {/* Lottery Cards Grid */}
                     <div className="grid-column-3 mt-80">
-                        {filteredCasinos.map((casino, index) => (
-                            <CasinoCard key={casino.id} casino={casino} showFullDetails={true} />
+                        {filteredLotterys.map((Lottery, index) => (
+                            <LotteryCard key={Lottery.id} Lottery={Lottery} showFullDetails={true} />
                         ))}
                     </div>
 
@@ -175,21 +175,21 @@ const TopCasinos = () => {
                                     <div className="trust-item">
                                         <div className="icon">✓</div>
                                         <h4>Verified Reviews</h4>
-                                        <p>We personally test every casino and lottery platform before recommending it.</p>
+                                        <p>We personally test every Lottery and lottery platform before recommending it.</p>
                                     </div>
                                 </div>
                                 <div className="col-lg-4">
                                     <div className="trust-item">
                                         <div className="icon">⛓️</div>
                                         <h4>Blockchain Verified</h4>
-                                        <p>All casinos are checked for provably fair technology and blockchain transparency.</p>
+                                        <p>All Lotterys are checked for provably fair technology and blockchain transparency.</p>
                                     </div>
                                 </div>
                                 <div className="col-lg-4">
                                     <div className="trust-item">
                                         <div className="icon">🔒</div>
                                         <h4>Security First</h4>
-                                        <p>We only list licensed casinos with strong security measures and fair terms.</p>
+                                        <p>We only list licensed Lotterys with strong security measures and fair terms.</p>
                                     </div>
                                 </div>
                             </div>
@@ -202,5 +202,5 @@ const TopCasinos = () => {
     );
 };
 
-export default TopCasinos;
+export default TopLotterys;
 

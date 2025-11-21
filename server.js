@@ -8,7 +8,8 @@ const bcrypt = require('bcryptjs');
 const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const PORT = isDevelopment ? (process.env.PORT || 3001) : (process.env.PORT || 3000);
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 // Get Supabase credentials
@@ -770,7 +771,7 @@ app.post('/api/seed-page-elements', verifyToken, async (req, res) => {
             // Home page
             { page_name: 'new-home', element_id: 'hero-h1', element_type: 'h1', original_text: 'LotteryCompare | Find the best Casino', updated_text: 'LotteryCompare | Find the best Casino' },
             { page_name: 'new-home', element_id: 'hero-p', element_type: 'p', original_text: 'Compare trusted crypto lotteries and play provably fair games', updated_text: 'Compare trusted crypto lotteries and play provably fair games' },
-            { page_name: 'new-home', element_id: 'section-h2', element_type: 'h2', original_text: '🎁 Top Recommended Crypto Casinos', updated_text: '🎁 Top Recommended Crypto Casinos' },
+            { page_name: 'new-home', element_id: 'section-h2', element_type: 'h2', original_text: '🎁 Top Recommended Crypto Lottery', updated_text: '🎁 Top Recommended Crypto Lottery' },
             
             // About Us
             { page_name: 'about-us', element_id: 'about-h1', element_type: 'h1', original_text: 'About the Lode lottery', updated_text: 'About the Lode lottery' },
@@ -998,6 +999,158 @@ app.delete('/api/admin/casinos/:id', verifyToken, async (req, res) => {
     }
 });
 
+// ============= Contest Management Routes =============
+
+// Get all contests
+app.get('/api/admin/contests', verifyToken, async (req, res) => {
+    try {
+        const queryUrl = `${SUPABASE_URL}/rest/v1/contests?order=created_at.desc&select=*`;
+        const response = await fetch(queryUrl, {
+            headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            return res.json(Array.isArray(data) ? data : []);
+        }
+        res.json([]);
+    } catch (err) {
+        console.error('Admin contests error:', err);
+        res.json([]);
+    }
+});
+
+// Create new contest
+app.post('/api/admin/contests', verifyToken, async (req, res) => {
+    try {
+        const { img, title, no, remaining, prize, price, timer, link, highlights, description } = req.body;
+
+        if (!title) {
+            return res.status(400).json({ error: 'Contest title is required' });
+        }
+
+        const createUrl = `${SUPABASE_URL}/rest/v1/contests`;
+        const createRes = await fetch(createUrl, {
+            method: 'POST',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=representation'
+            },
+            body: JSON.stringify({
+                img,
+                title,
+                no,
+                remaining,
+                prize,
+                price,
+                timer,
+                link,
+                highlights: highlights || [],
+                description,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+            })
+        });
+
+        if (createRes.ok) {
+            const newContest = await createRes.json();
+            return res.status(201).json(newContest[0]);
+        }
+
+        const errorData = await createRes.json();
+        res.status(500).json({ error: errorData.message || 'Failed to create contest' });
+    } catch (err) {
+        console.error('Create contest error:', err);
+        res.status(500).json({ error: 'Failed to create contest' });
+    }
+});
+
+// Update contest
+app.patch('/api/admin/contests/:id', verifyToken, async (req, res) => {
+    try {
+        const { img, title, no, remaining, prize, price, timer, link, highlights, description } = req.body;
+
+        const updateUrl = `${SUPABASE_URL}/rest/v1/contests?id=eq.${req.params.id}`;
+        const updateRes = await fetch(updateUrl, {
+            method: 'PATCH',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=representation'
+            },
+            body: JSON.stringify({
+                img,
+                title,
+                no,
+                remaining,
+                prize,
+                price,
+                timer,
+                link,
+                highlights: highlights || [],
+                description,
+                updated_at: new Date().toISOString()
+            })
+        });
+
+        if (updateRes.ok) {
+            const updatedContest = await updateRes.json();
+            return res.json(updatedContest[0]);
+        }
+
+        const errorData = await updateRes.json();
+        res.status(500).json({ error: errorData.message || 'Failed to update contest' });
+    } catch (err) {
+        console.error('Update contest error:', err);
+        res.status(500).json({ error: 'Failed to update contest' });
+    }
+});
+
+// Delete contest
+app.delete('/api/admin/contests/:id', verifyToken, async (req, res) => {
+    try {
+        const deleteUrl = `${SUPABASE_URL}/rest/v1/contests?id=eq.${req.params.id}`;
+        const deleteRes = await fetch(deleteUrl, {
+            method: 'DELETE',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            }
+        });
+
+        if (deleteRes.ok) {
+            return res.json({ message: 'Contest deleted' });
+        }
+
+        res.status(500).json({ error: 'Failed to delete contest' });
+    } catch (err) {
+        console.error('Delete contest error:', err);
+        res.status(500).json({ error: 'Failed to delete contest' });
+    }
+});
+
+// Get contests for frontend (public route)
+app.get('/api/frontend/contests', async (req, res) => {
+    try {
+        const queryUrl = `${SUPABASE_URL}/rest/v1/contests?order=created_at.desc&select=*`;
+        const response = await fetch(queryUrl, {
+            headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            return res.json(Array.isArray(data) ? data : []);
+        }
+        res.json([]);
+    } catch (err) {
+        console.error('Frontend contests error:', err);
+        res.json([]);
+    }
+});
+
 // ============ ADMIN BLOG POST MANAGEMENT ROUTES ============
 
 // Get all blog posts for admin
@@ -1175,41 +1328,43 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// ============ STATIC FILE SERVING (PRODUCTION) ============
+// ============ STATIC FILE SERVING ============
 
-// Serve static files from build directory
-const buildPath = path.join(__dirname, 'build');
-app.use(express.static(buildPath));
-
-// Serve static files from public directory
-const publicPath = path.join(__dirname, 'public');
-if (fs.existsSync(publicPath)) {
-    app.use(express.static(publicPath));
-}
-
-// Serve uploads directory
+// Serve uploads directory (always available)
 const uploadsPath = path.join(__dirname, 'uploads');
 if (fs.existsSync(uploadsPath)) {
     app.use('/uploads', express.static(uploadsPath));
 }
 
-// ============ CATCH-ALL ROUTE FOR REACT ROUTER ============
+// ============ PRODUCTION: Serve React Build ============
+if (!isDevelopment) {
+    // Serve static files from build directory
+    const buildPath = path.join(__dirname, 'build');
+    app.use(express.static(buildPath));
 
-// Serve React app for all non-API routes (client-side routing)
-app.use((req, res, next) => {
-    // Skip API routes
-    if (req.path.startsWith('/api')) {
-        return next();
+    // Serve static files from public directory
+    const publicPath = path.join(__dirname, 'public');
+    if (fs.existsSync(publicPath)) {
+        app.use(express.static(publicPath));
     }
-    
-    // Serve React index.html for all other routes
-    const indexPath = path.join(buildPath, 'index.html');
-    if (fs.existsSync(indexPath)) {
-        res.sendFile(indexPath);
-    } else {
-        res.status(404).json({ error: 'Application not found. Please run: npm run build' });
-    }
-});
+
+    // ============ CATCH-ALL ROUTE FOR REACT ROUTER ============
+    // Serve React app for all non-API routes (client-side routing)
+    app.use((req, res, next) => {
+        // Skip API routes
+        if (req.path.startsWith('/api')) {
+            return next();
+        }
+        
+        // Serve React index.html for all other routes
+        const indexPath = path.join(buildPath, 'index.html');
+        if (fs.existsSync(indexPath)) {
+            res.sendFile(indexPath);
+        } else {
+            res.status(404).json({ error: 'Application not found. Please run: npm run build' });
+        }
+    });
+}
 
 // ============ ERROR HANDLER ============
 
@@ -1221,7 +1376,13 @@ app.use((err, req, res, next) => {
 // ============ START SERVER ============
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-    console.log(`Admin Panel API running at http://localhost:${PORT}/api`);
-    console.log(`Health check: http://localhost:${PORT}/api/health`);
+    if (isDevelopment) {
+        console.log(`🚀 API Server running on port ${PORT}`);
+        console.log(`📱 React Dev Server should run on port 3000`);
+        console.log(`💡 Run: npm start (for React) or npm run dev (for both)`);
+        console.log(`🔗 API available at http://localhost:${PORT}/api`);
+    } else {
+        console.log(`🚀 Production server running on port ${PORT}`);
+        console.log(`🔗 Admin Panel API: http://localhost:${PORT}/api`);
+    }
 });

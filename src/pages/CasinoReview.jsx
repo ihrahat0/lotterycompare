@@ -2,19 +2,19 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { initAllPlugins } from '../utils/initScripts';
 import SEO from '../components/SEO';
-import { casinos } from '../data/casinos';
+import { Lotterys } from '../data/casinos';
 
-const CasinoReview = () => {
+const LotteryReview = () => {
     const { id } = useParams();
-    const casino = casinos.find(c => c.id === parseInt(id));
+    const Lottery = Lotterys.find(c => c.id === parseInt(id));
 
     useEffect(() => {
         initAllPlugins();
         window.scrollTo(0, 0);
     }, [id]);
 
-    if (!casino) {
-        return <div>Casino not found</div>;
+    if (!Lottery) {
+        return <div>Lottery not found</div>;
     }
 
     const renderStars = (rating) => {
@@ -24,9 +24,9 @@ const CasinoReview = () => {
     return (
         <>
             <SEO 
-                title={`${casino.name} Review 2025 - Honest Casino Review`} 
-                description={`${casino.name} review: ${casino.bonus}. Read our in-depth review covering games, bonuses, payment methods, and withdrawal speed.`}
-                keywords={`${casino.name} review, ${casino.name} bonus, crypto casino review, bitcoin lottery review`}
+                title={`${Lottery.name} Review 2025 - Honest Lottery Review`} 
+                description={`${Lottery.name} review: ${Lottery.bonus}. Read our in-depth review covering games, bonuses, payment methods, and withdrawal speed.`}
+                keywords={`${Lottery.name} review, ${Lottery.name} bonus, crypto Lottery review, bitcoin lottery review`}
             />
 
             {/* Page Title */}
@@ -38,15 +38,15 @@ const CasinoReview = () => {
                     <div className="row">
                         <div className="col-12">
                             <div className="content">
-                                <div className="casino-review-header">
-                                    <img src={casino.logo} alt={casino.name} className="casino-logo-large" />
+                                <div className="Lottery-review-header">
+                                    <img src={Lottery.logo} alt={Lottery.name} className="Lottery-logo-large" />
                                     <div>
-                                        <h1 className="heading">{casino.name} Review</h1>
+                                        <h1 className="heading">{Lottery.name} Review</h1>
                                         <div className="rating-large">
-                                            {renderStars(casino.rating)} <span>{casino.rating}/5.0</span>
+                                            {renderStars(Lottery.rating)} <span>{Lottery.rating}/5.0</span>
                                         </div>
                                         <a 
-                                            href={casino.affiliateLink} 
+                                            href={Lottery.affiliateLink} 
                                             className="tf-btn mt-20"
                                             target="_blank"
                                             rel="noopener noreferrer nofollow"
@@ -57,8 +57,8 @@ const CasinoReview = () => {
                                 </div>
                                 <ul className="breadcrumbs mt-20">
                                     <li><Link to="/">Home</Link></li>
-                                    <li><Link to="/top-casinos">Top Casinos</Link></li>
-                                    <li>{casino.name}</li>
+                                    <li><Link to="/top-Lotterys">Top Lotterys</Link></li>
+                                    <li>{Lottery.name}</li>
                                 </ul>
                             </div>
                         </div>
@@ -67,7 +67,7 @@ const CasinoReview = () => {
             </div>
 
             {/* Main Review Content */}
-            <section className="casino-review-content pt-80 pb-100">
+            <section className="Lottery-review-content pt-80 pb-100">
                 <div className="tf-container">
                     <div className="row">
                         <div className="col-lg-8">
@@ -79,31 +79,31 @@ const CasinoReview = () => {
                                     <tbody>
                                         <tr>
                                             <td><strong>Founded</strong></td>
-                                            <td>{casino.founded}</td>
+                                            <td>{Lottery.founded}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>License</strong></td>
-                                            <td>{casino.license}</td>
+                                            <td>{Lottery.license}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Currencies</strong></td>
-                                            <td>{casino.currencies.join(', ')}</td>
+                                            <td>{Lottery.currencies.join(', ')}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Min Deposit</strong></td>
-                                            <td>{casino.minDeposit}</td>
+                                            <td>{Lottery.minDeposit}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Bonus</strong></td>
-                                            <td className="bonus-text">{casino.bonus}</td>
+                                            <td className="bonus-text">{Lottery.bonus}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Withdrawal Speed</strong></td>
-                                            <td><span className="badge badge-success">{casino.withdrawalSpeed}</span></td>
+                                            <td><span className="badge badge-success">{Lottery.withdrawalSpeed}</span></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Provably Fair</strong></td>
-                                            <td>{casino.provablyFair ? '✓ Yes' : '✗ No'}</td>
+                                            <td>{Lottery.provablyFair ? '✓ Yes' : '✗ No'}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -113,12 +113,12 @@ const CasinoReview = () => {
                             <div className="review-section wow fadeInUp mb-60">
                                 <h2>Overview</h2>
                                 <p>
-                                    {casino.name} is a {casino.provablyFair ? 'provably fair' : 'trusted'} crypto lottery and casino platform that launched in {casino.founded}. 
-                                    With a {casino.rating}/5.0 rating, it stands out for its {casino.highlights.toLowerCase()}.
+                                    {Lottery.name} is a {Lottery.provablyFair ? 'provably fair' : 'trusted'} crypto lottery and Lottery platform that launched in {Lottery.founded}. 
+                                    With a {Lottery.rating}/5.0 rating, it stands out for its {Lottery.highlights.toLowerCase()}.
                                 </p>
                                 <p>
-                                    The platform offers an attractive welcome bonus of <strong>{casino.bonus}</strong>, making it an excellent choice for new players. 
-                                    With support for multiple cryptocurrencies including {casino.currencies.slice(0, 3).join(', ')}, players have flexibility in their payment options.
+                                    The platform offers an attractive welcome bonus of <strong>{Lottery.bonus}</strong>, making it an excellent choice for new players. 
+                                    With support for multiple cryptocurrencies including {Lottery.currencies.slice(0, 3).join(', ')}, players have flexibility in their payment options.
                                 </p>
                             </div>
 
@@ -126,32 +126,32 @@ const CasinoReview = () => {
                             <div className="review-section wow fadeInUp mb-60">
                                 <h2>Games & Lotteries Offered</h2>
                                 <p>
-                                    {casino.name} offers a diverse selection of gaming options:
+                                    {Lottery.name} offers a diverse selection of gaming options:
                                 </p>
                                 <div className="games-grid">
-                                    {casino.games.map((game, index) => (
+                                    {Lottery.games.map((game, index) => (
                                         <div key={index} className="game-tag">{game}</div>
                                     ))}
                                 </div>
                                 <p className="mt-20">
-                                    Whether you're interested in traditional lottery draws, instant win games, or casino classics, 
-                                    {casino.name} provides a comprehensive gaming experience powered by blockchain technology.
+                                    Whether you're interested in traditional lottery draws, instant win games, or Lottery classics, 
+                                    {Lottery.name} provides a comprehensive gaming experience powered by blockchain technology.
                                 </p>
                             </div>
 
                             {/* Blockchain Fairness */}
-                            {casino.provablyFair && (
+                            {Lottery.provablyFair && (
                                 <div className="review-section wow fadeInUp mb-60">
                                     <h2>Blockchain Fairness / Provably Fair Details</h2>
                                     <p>
-                                        {casino.name} uses provably fair technology, allowing players to verify the fairness of each game round. 
+                                        {Lottery.name} uses provably fair technology, allowing players to verify the fairness of each game round. 
                                         Every lottery draw and game outcome is recorded on the blockchain, ensuring complete transparency.
                                     </p>
                                     <div className="highlight-box">
                                         <h4>✓ How to Verify Fairness:</h4>
                                         <ol>
                                             <li>After each game round, you'll receive a unique hash</li>
-                                            <li>Use the casino's verification tool to check the hash against blockchain records</li>
+                                            <li>Use the Lottery's verification tool to check the hash against blockchain records</li>
                                             <li>Confirm that the outcome was truly random and not manipulated</li>
                                         </ol>
                                     </div>
@@ -162,15 +162,15 @@ const CasinoReview = () => {
                             <div className="review-section wow fadeInUp mb-60">
                                 <h2>Payment Methods</h2>
                                 <p>
-                                    {casino.name} supports the following cryptocurrencies:
+                                    {Lottery.name} supports the following cryptocurrencies:
                                 </p>
                                 <div className="crypto-list">
-                                    {casino.currencies.map((currency, index) => (
+                                    {Lottery.currencies.map((currency, index) => (
                                         <span key={index} className="crypto-badge">{currency}</span>
                                     ))}
                                 </div>
                                 <p className="mt-20">
-                                    The minimum deposit is <strong>{casino.minDeposit}</strong>, making it accessible for players with different budgets.
+                                    The minimum deposit is <strong>{Lottery.minDeposit}</strong>, making it accessible for players with different budgets.
                                 </p>
                             </div>
 
@@ -178,8 +178,8 @@ const CasinoReview = () => {
                             <div className="review-section wow fadeInUp mb-60">
                                 <h2>Withdrawal Speed</h2>
                                 <p>
-                                    One of the standout features of {casino.name} is its <strong>{casino.withdrawalSpeed}</strong> withdrawal processing. 
-                                    {casino.withdrawalSpeed === 'Instant' ? 
+                                    One of the standout features of {Lottery.name} is its <strong>{Lottery.withdrawalSpeed}</strong> withdrawal processing. 
+                                    {Lottery.withdrawalSpeed === 'Instant' ? 
                                         ' Your winnings are sent directly to your crypto wallet as soon as you request a withdrawal.' :
                                         ' Withdrawals are processed quickly, ensuring you can access your winnings without unnecessary delays.'
                                     }
@@ -201,7 +201,7 @@ const CasinoReview = () => {
                             <div className="review-section wow fadeInUp mb-60">
                                 <h2>Security & Licensing</h2>
                                 <p>
-                                    {casino.name} operates under a <strong>{casino.license}</strong> license, ensuring regulatory compliance and player protection. 
+                                    {Lottery.name} operates under a <strong>{Lottery.license}</strong> license, ensuring regulatory compliance and player protection. 
                                     The platform implements industry-standard security measures including:
                                 </p>
                                 <ul>
@@ -217,7 +217,7 @@ const CasinoReview = () => {
                             <div className="review-section wow fadeInUp mb-60">
                                 <h2>Customer Support Experience</h2>
                                 <p>
-                                    {casino.name} offers multiple channels for customer support:
+                                    {Lottery.name} offers multiple channels for customer support:
                                 </p>
                                 <ul>
                                     <li>24/7 Live Chat</li>
@@ -235,40 +235,40 @@ const CasinoReview = () => {
                                 <h2>Final Verdict</h2>
                                 <div className="verdict-box">
                                     <div className="verdict-rating">
-                                        <span className="rating-large">{casino.rating}/5.0</span>
-                                        <span>{renderStars(casino.rating)}</span>
+                                        <span className="rating-large">{Lottery.rating}/5.0</span>
+                                        <span>{renderStars(Lottery.rating)}</span>
                                     </div>
                                     <p>
-                                        For players who want {casino.provablyFair ? 'transparent draws and' : ''} instant payouts, 
-                                        <strong> {casino.name}</strong> is one of the best crypto lotteries to try. 
-                                        With its {casino.highlights.toLowerCase()}, competitive bonus of {casino.bonus}, 
-                                        and {casino.withdrawalSpeed.toLowerCase()} withdrawals, it offers an excellent gambling experience.
+                                        For players who want {Lottery.provablyFair ? 'transparent draws and' : ''} instant payouts, 
+                                        <strong> {Lottery.name}</strong> is one of the best crypto lotteries to try. 
+                                        With its {Lottery.highlights.toLowerCase()}, competitive bonus of {Lottery.bonus}, 
+                                        and {Lottery.withdrawalSpeed.toLowerCase()} withdrawals, it offers an excellent gambling experience.
                                     </p>
                                     <div className="final-scores mt-40">
                                         <div className="score-item">
                                             <span>Games Selection</span>
-                                            <strong>{casino.rating}/5.0</strong>
+                                            <strong>{Lottery.rating}/5.0</strong>
                                         </div>
                                         <div className="score-item">
                                             <span>Bonuses</span>
-                                            <strong>{(casino.rating - 0.1).toFixed(1)}/5.0</strong>
+                                            <strong>{(Lottery.rating - 0.1).toFixed(1)}/5.0</strong>
                                         </div>
                                         <div className="score-item">
                                             <span>Payment Speed</span>
-                                            <strong>{casino.withdrawalSpeed === 'Instant' ? '5.0' : '4.5'}/5.0</strong>
+                                            <strong>{Lottery.withdrawalSpeed === 'Instant' ? '5.0' : '4.5'}/5.0</strong>
                                         </div>
                                         <div className="score-item">
                                             <span>Customer Support</span>
-                                            <strong>{(casino.rating - 0.2).toFixed(1)}/5.0</strong>
+                                            <strong>{(Lottery.rating - 0.2).toFixed(1)}/5.0</strong>
                                         </div>
                                     </div>
                                     <a 
-                                        href={casino.affiliateLink} 
+                                        href={Lottery.affiliateLink} 
                                         className="tf-btn w-100 mt-40"
                                         target="_blank"
                                         rel="noopener noreferrer nofollow"
                                     >
-                                        Play Now at {casino.name} <i className="icon-right"></i>
+                                        Play Now at {Lottery.name} <i className="icon-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -281,13 +281,13 @@ const CasinoReview = () => {
                                 
                                 {/* Quick Action */}
                                 <div className="sidebar-widget wow fadeInRight">
-                                    <div className="widget-casino-cta">
-                                        <img src={casino.logo} alt={casino.name} />
-                                        <h4>{casino.name}</h4>
-                                        <div className="rating">{renderStars(casino.rating)} {casino.rating}</div>
-                                        <div className="bonus-highlight">{casino.bonus}</div>
+                                    <div className="widget-Lottery-cta">
+                                        <img src={Lottery.logo} alt={Lottery.name} />
+                                        <h4>{Lottery.name}</h4>
+                                        <div className="rating">{renderStars(Lottery.rating)} {Lottery.rating}</div>
+                                        <div className="bonus-highlight">{Lottery.bonus}</div>
                                         <a 
-                                            href={casino.affiliateLink} 
+                                            href={Lottery.affiliateLink} 
                                             className="tf-btn w-100 mt-20"
                                             target="_blank"
                                             rel="noopener noreferrer nofollow"
@@ -297,14 +297,14 @@ const CasinoReview = () => {
                                     </div>
                                 </div>
 
-                                {/* Top Casinos This Week */}
+                                {/* Top Lotterys This Week */}
                                 <div className="sidebar-widget wow fadeInRight" data-wow-delay="0.1s">
-                                    <h4>Top Casinos This Week</h4>
-                                    {casinos.filter(c => c.featured).map((c, index) => (
-                                        <div key={c.id} className="mini-casino-card">
+                                    <h4>Top Lotterys This Week</h4>
+                                    {Lotterys.filter(c => c.featured).map((c, index) => (
+                                        <div key={c.id} className="mini-Lottery-card">
                                             <img src={c.logo} alt={c.name} />
                                             <div>
-                                                <Link to={`/casino/${c.id}`}>{c.name}</Link>
+                                                <Link to={`/Lottery/${c.id}`}>{c.name}</Link>
                                                 <div className="rating">{renderStars(c.rating)}</div>
                                             </div>
                                         </div>
@@ -330,5 +330,5 @@ const CasinoReview = () => {
     );
 };
 
-export default CasinoReview;
+export default LotteryReview;
 

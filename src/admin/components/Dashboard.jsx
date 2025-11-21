@@ -48,23 +48,23 @@ const Dashboard = () => {
       <h2 style={{ marginBottom: '30px' }}>Dashboard</h2>
       
       <div className="admin-grid">
-        <div className="admin-stat-card">
+        <div style={{ backgroundColor: 'transparent' }} className="admin-stat-card">
           <div className="admin-stat-label">Total Pages</div>
           <div className="admin-stat-value">{stats.pages}</div>
         </div>
         
-        <div className="admin-stat-card">
+        <div style={{ backgroundColor: 'transparent' }} className="admin-stat-card">
           <div className="admin-stat-label">Content Sections</div>
           <div className="admin-stat-value">{stats.sections}</div>
         </div>
         
-        <div className="admin-stat-card">
+        <div className="admin-sta t-card">
           <div className="admin-stat-label">Media Assets</div>
           <div className="admin-stat-value">{stats.images}</div>
         </div>
       </div>
 
-      <div className="admin-card">
+      <div style={{ backgroundColor: 'transparent' }} className="admin-card">
         <div className="admin-card-title">Quick Guide</div>
         <div className="admin-card-body">
           <ul style={{ lineHeight: '1.8', paddingLeft: '20px' }}>
@@ -75,7 +75,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="admin-card">
+      <div style={{ backgroundColor: 'transparent' }} className="admin-card">
         <div className="admin-card-title">Latest Updates</div>
         <div className="admin-card-body">
           <p>No recent updates yet. Start by managing your content!</p>

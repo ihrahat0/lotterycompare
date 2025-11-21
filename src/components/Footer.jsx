@@ -19,7 +19,7 @@ const Footer = () => {
                                     <li><Link to="/faq">FAQ</Link></li>
                                     <li><Link to="/terms">Terms & Conditions</Link></li>
                                     <li><Link to="/disclaimer">Disclaimer</Link></li>
-                                    <li><Link to="/affiliate">Affiliate</Link></li>
+                                    <li><Link to="/firstbtclottery">FirstBTCLottery</Link></li>
                                     <li><Link to="/lottery-results">Lottery Results</Link></li>
                                     <li><Link to="/blog">Blog</Link></li>
                                     <li><Link to="/contact">Contact</Link></li>

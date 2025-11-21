@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const CasinoManager = () => {
-  const [casinos, setCasinos] = useState([]);
+const LotteryManager = () => {
+  const [Lotterys, setLotterys] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -21,10 +21,10 @@ const CasinoManager = () => {
   const token = localStorage.getItem('adminToken');
 
   useEffect(() => {
-    fetchCasinos();
+    fetchLotterys();
   }, []);
 
-  const fetchCasinos = async () => {
+  const fetchLotterys = async () => {
     try {
       setLoading(true);
       const response = await fetch('/api/admin/casinos', {
@@ -32,10 +32,10 @@ const CasinoManager = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        setCasinos(Array.isArray(data) ? data : []);
+        setLotterys(Array.isArray(data) ? data : []);
       }
     } catch (err) {
-      setError('Failed to load casinos');
+      setError('Failed to load Lotterys');
     } finally {
       setLoading(false);
     }
@@ -56,24 +56,24 @@ const CasinoManager = () => {
     setShowForm(true);
   };
 
-  const handleEditClick = (casino) => {
+  const handleEditClick = (Lottery) => {
     setFormData({
-      name: casino.name,
-      link: casino.link || '',
-      logo_url: casino.logo_url || '',
-      featured: casino.featured,
-      tags: Array.isArray(casino.tags) ? casino.tags.join(', ') : '',
-      description: casino.description || '',
-      rating: casino.rating || '',
-      bonus_text: casino.bonus_text || ''
+      name: Lottery.name,
+      link: Lottery.link || '',
+      logo_url: Lottery.logo_url || '',
+      featured: Lottery.featured,
+      tags: Array.isArray(Lottery.tags) ? Lottery.tags.join(', ') : '',
+      description: Lottery.description || '',
+      rating: Lottery.rating || '',
+      bonus_text: Lottery.bonus_text || ''
     });
-    setEditingId(casino.id);
+    setEditingId(Lottery.id);
     setShowForm(true);
   };
 
   const handleSave = async () => {
     if (!formData.name.trim()) {
-      setError('Casino name is required');
+      setError('Lottery name is required');
       return;
     }
 
@@ -99,12 +99,12 @@ const CasinoManager = () => {
       });
 
       if (response.ok) {
-        setSuccess(editingId ? 'Casino updated!' : 'Casino added!');
+        setSuccess(editingId ? 'Lottery updated!' : 'Lottery added!');
         setTimeout(() => setSuccess(''), 3000);
-        fetchCasinos();
+        fetchLotterys();
         setShowForm(false);
       } else {
-        setError('Failed to save casino');
+        setError('Failed to save Lottery');
       }
     } catch (err) {
       setError('Error: ' + err.message);
@@ -114,7 +114,7 @@ const CasinoManager = () => {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this casino?')) return;
+    if (!window.confirm('Are you sure you want to delete this Lottery?')) return;
 
     try {
       setLoading(true);
@@ -124,11 +124,11 @@ const CasinoManager = () => {
       });
 
       if (response.ok) {
-        setSuccess('Casino deleted!');
+        setSuccess('Lottery deleted!');
         setTimeout(() => setSuccess(''), 3000);
-        fetchCasinos();
+        fetchLotterys();
       } else {
-        setError('Failed to delete casino');
+        setError('Failed to delete Lottery');
       }
     } catch (err) {
       setError('Error: ' + err.message);
@@ -139,7 +139,7 @@ const CasinoManager = () => {
 
   return (
     <div>
-      <h2 style={{ marginBottom: '30px' }}>Casino Manager</h2>
+      <h2 style={{ marginBottom: '30px' }}>Lottery Manager</h2>
 
       {error && <div className="admin-alert admin-alert-danger">{error}</div>}
       {success && <div className="admin-alert admin-alert-success">{success}</div>}
@@ -147,18 +147,18 @@ const CasinoManager = () => {
       {!showForm && (
         <div style={{ marginBottom: '20px' }}>
           <button className="admin-btn admin-btn-success" onClick={handleAddClick} disabled={loading}>
-            + Add New Casino
+            + Add New Lottery
           </button>
         </div>
       )}
 
       {showForm && (
         <div className="admin-card" style={{ marginBottom: '30px' }}>
-          <h3>{editingId ? 'Edit Casino' : 'Add New Casino'}</h3>
+          <h3>{editingId ? 'Edit Lottery' : 'Add New Lottery'}</h3>
           
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
             <div className="admin-form-group">
-              <label>Casino Name *</label>
+              <label>Lottery Name *</label>
               <input
                 type="text"
                 className="admin-form-control"
@@ -232,7 +232,7 @@ const CasinoManager = () => {
                 className="admin-textarea"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Casino description..."
+                placeholder="Lottery description..."
                 style={{ minHeight: '100px' }}
               />
             </div>
@@ -244,14 +244,14 @@ const CasinoManager = () => {
                   checked={formData.featured}
                   onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
                 />
-                Featured Casino
+                Featured Lottery
               </label>
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
             <button className="admin-btn admin-btn-success" onClick={handleSave} disabled={loading}>
-              {loading ? 'Saving...' : 'Save Casino'}
+              {loading ? 'Saving...' : 'Save Lottery'}
             </button>
             <button
               className="admin-btn admin-btn-secondary"
@@ -267,15 +267,15 @@ const CasinoManager = () => {
       {!showForm && (
         <div>
           {loading ? (
-            <div className="admin-loading">Loading casinos...</div>
-          ) : casinos.length === 0 ? (
+            <div className="admin-loading">Loading Lotterys...</div>
+          ) : Lotterys.length === 0 ? (
             <div className="admin-empty-state">
               <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{marginBottom: '15px', color: '#cbd5e1'}}>
                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
               </svg>
-              <div className="admin-empty-state-title">No casinos yet</div>
-              <p>Add your first casino to get started</p>
+              <div className="admin-empty-state-title">No Lotterys yet</div>
+              <p>Add your first Lottery to get started</p>
             </div>
           ) : (
             <table className="admin-table">
@@ -289,36 +289,36 @@ const CasinoManager = () => {
                 </tr>
               </thead>
               <tbody>
-                {casinos.map((casino) => (
-                  <tr key={casino.id}>
+                {Lotterys.map((Lottery) => (
+                  <tr key={Lottery.id}>
                     <td>
-                      {casino.logo_url && (
+                      {Lottery.logo_url && (
                         <img
-                          src={casino.logo_url}
-                          alt={casino.name}
+                          src={Lottery.logo_url}
+                          alt={Lottery.name}
                           style={{ width: '40px', height: '40px', marginRight: '10px' }}
                         />
                       )}
-                      <strong>{casino.name}</strong>
+                      <strong>{Lottery.name}</strong>
                     </td>
                     <td>
-                      {casino.rating ? (
-                        <span>⭐ {casino.rating}</span>
+                      {Lottery.rating ? (
+                        <span>⭐ {Lottery.rating}</span>
                       ) : (
                         <span style={{ color: '#999' }}>-</span>
                       )}
                     </td>
                     <td>
-                      {casino.featured ? (
+                      {Lottery.featured ? (
                         <span style={{ color: '#10b981' }}>✓ Yes</span>
                       ) : (
                         <span style={{ color: '#999' }}>-</span>
                       )}
                     </td>
                     <td>
-                      {Array.isArray(casino.tags) && casino.tags.length > 0 ? (
+                      {Array.isArray(Lottery.tags) && Lottery.tags.length > 0 ? (
                         <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
-                          {casino.tags.slice(0, 2).map((tag, idx) => (
+                          {Lottery.tags.slice(0, 2).map((tag, idx) => (
                             <span
                               key={idx}
                               style={{
@@ -332,9 +332,9 @@ const CasinoManager = () => {
                               {tag}
                             </span>
                           ))}
-                          {casino.tags.length > 2 && (
+                          {Lottery.tags.length > 2 && (
                             <span style={{ fontSize: '12px', color: '#999' }}>
-                              +{casino.tags.length - 2}
+                              +{Lottery.tags.length - 2}
                             </span>
                           )}
                         </div>
@@ -345,14 +345,14 @@ const CasinoManager = () => {
                     <td>
                       <button
                         className="admin-btn admin-btn-secondary"
-                        onClick={() => handleEditClick(casino)}
+                        onClick={() => handleEditClick(Lottery)}
                         style={{ padding: '6px 12px', fontSize: '12px', marginRight: '5px' }}
                       >
                         Edit
                       </button>
                       <button
                         className="admin-btn admin-btn-danger"
-                        onClick={() => handleDelete(casino.id)}
+                        onClick={() => handleDelete(Lottery.id)}
                         style={{ padding: '6px 12px', fontSize: '12px' }}
                       >
                         Delete
@@ -369,4 +369,4 @@ const CasinoManager = () => {
   );
 };
 
-export default CasinoManager;
+export default LotteryManager;

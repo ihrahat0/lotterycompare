@@ -1,0 +1,1 @@
+User buys a lottery that has 6 numbers. And the 6 numbers are got from the bitcoin mining block's hash's last 6 digit that happens every 10 minutes. If the lottery number matches the blocks digit, you get reward of matched numbers according 1,2,3 etc digit matches. The entire 6 digit match gets a jackpot.

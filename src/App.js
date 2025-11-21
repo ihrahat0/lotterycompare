@@ -15,6 +15,7 @@ import './styles/custom-casino.css';
 import './styles/mobile-casino-dark-theme.css';
 import './styles/on-chain-redesign.css';
 import './styles/new-mobile-menu.css';
+import './styles/professional-lottery-card.css';
 import './assets/font/fonts.css';
 import './assets/icon/icomoon/style.css';
 

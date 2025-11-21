@@ -1,5 +1,5 @@
-// Casino/Lottery data for the comparison site
-export const casinos = [
+// Lottery/Lottery data for the comparison site
+export const Lotterys = [
     {
         id: 1,
         name: "FirstBTC Lottery",
@@ -28,7 +28,7 @@ export const casinos = [
         founded: "2017",
         license: "Stake INC",
         currencies: ["BTC", "ETH", "USDT", "BNB", "DOGE"],
-        affiliateLink: "https://stake.com/casino/home/?c=AA0NC0iw&clickId=fdc-b85cb01f-ace6-4d90-80db-dda6ffe8066a",
+        affiliateLink: "https://stake.com/Lottery/home/?c=AA0NC0iw&clickId=fdc-b85cb01f-ace6-4d90-80db-dda6ffe8066a",
         featured: true,
         // provablyFair: true,
         withdrawalSpeed: "< 30 minutes",
@@ -56,7 +56,7 @@ export const casinos = [
 export const bonuses = [
     {
         id: 1,
-        casino: "FirstBTC Lottery",
+        Lottery: "FirstBTC Lottery",
         logo: "https://firstbtclottery.com/frontend/web/themes/bearnew/assets/PouriaSrc/SvgBears/loginMb.svg",
         offer: "100% up to 1 BTC + 50 Free Spins",
         code: "FIRST100",
@@ -66,7 +66,7 @@ export const bonuses = [
     },
     {
         id: 2,
-        casino: "Stake",
+        Lottery: "Stake",
         logo: "https://bittrust.s3.amazonaws.com/1505244536.png",
         offer: "10% Rakeback — Lifetime duration",
         code: "STAKE10",
@@ -76,7 +76,7 @@ export const bonuses = [
     },
     {
         id: 3,
-        casino: "Cloudbet",
+        Lottery: "Cloudbet",
         logo: "https://www.webopedia.com/wp-content/uploads/2025/09/coudbet.webp",
         offer: "50% Welcome Bonus + 75 FS",
         code: "NEWBONUS",

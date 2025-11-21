@@ -4,9 +4,9 @@ import { initAllPlugins } from '../utils/initScripts';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
 import BlockStatus from '../components/BlockStatus';
-import CasinoCard from '../components/CasinoCard';
+import LotteryCard from '../components/CasinoCard';
 import BlockResultCard from '../components/BlockResultCard';
-import { casinos as fallbackCasinos, bonuses, blogPosts as fallbackBlogPosts } from '../data/casinos';
+import { Lotterys as fallbackLotterys, bonuses, blogPosts as fallbackBlogPosts } from '../data/casinos';
 import '../styles/blog.css';
 
 const stripHtml = (text = '') =>
@@ -28,7 +28,7 @@ const formatDate = (date) => {
 };
 
 const NewHome = () => {
-    const [casinos, setCasinos] = useState(fallbackCasinos);
+    const [Lotterys, setLotterys] = useState(fallbackLotterys);
     const [blogPosts, setBlogPosts] = useState(fallbackBlogPosts);
     const [pageElements, setPageElements] = useState({});
     const [loading, setLoading] = useState(true);
@@ -36,12 +36,12 @@ const NewHome = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Fetch updated casinos from API
-                const casinosRes = await fetch('/api/frontend/casinos');
-                if (casinosRes.ok) {
-                    const data = await casinosRes.json();
+                // Fetch updated Lotterys from API
+                const LotterysRes = await fetch('/api/frontend/Lotterys');
+                if (LotterysRes.ok) {
+                    const data = await LotterysRes.json();
                     if (data && data.length > 0) {
-                        setCasinos(data);
+                        setLotterys(data);
                     }
                 }
                 
@@ -96,15 +96,15 @@ const NewHome = () => {
         return style;
     };
 
-    const featuredCasinos = casinos.filter(c => c.featured).slice(0, 3);
-    const topCasinos = casinos.slice(0, 5);
+    const featuredLotterys = Lotterys.filter(c => c.featured).slice(0, 3);
+    const topLotterys = Lotterys.slice(0, 5);
 
     return (
         <>
             <SEO 
-                title="LotteryCompare | Find the Best casino" 
+                title="LotteryCompare | Find the Best Lottery" 
                 description="Compare trusted crypto lotteries and play provably fair games — all verified on the blockchain. Find the best Bitcoin lottery sites with instant payouts."
-                keywords="crypto lottery, bitcoin lottery, blockchain casino, provably fair, crypto gambling, btc lottery"
+                keywords="crypto lottery, bitcoin lottery, blockchain Lottery, provably fair, crypto gambling, btc lottery"
             />
             <StructuredData type="Organization" />
             <StructuredData type="WebSite" />
@@ -119,11 +119,11 @@ const NewHome = () => {
                                 <div className="page-title-home-content">
                                     <div className="content">
                                         <h1 className="title">
-                                        🎁 Top Recommended Crypto Casinos
+                                        🎁 Top Recommended Crypto Lotteries
                                         Lotteries & <br />
                                             <span className="d-block animationtext slide">
                                                 <span className="cd-words-wrapper">
-                                                    <span className="item-text is-visible">Crypto Casinos</span>
+                                                    <span className="item-text is-visible">Crypto Lottery</span>
                                                     <span className="item-text is-hidden">of 2025</span>
                                                     <span className="item-text is-hidden">Provably Fair</span>
                                                 </span>
@@ -134,7 +134,7 @@ const NewHome = () => {
                                             — all verified on the blockchain.
                                         </div>
                                         <div className="button-group" style={{display: 'inline-flex'}}>
-                                            <Link to="https://firstlottery.com/site/referral?code=v6zIr7Yg" className="tf-btn">
+                                            <Link to="https://firstbtclottery.com/site/referral?code=v6zIr7Yg" className="tf-btn">
                                                Play Now <i className="icon-right"></i>
                                             </Link>
                                         </div>
@@ -168,23 +168,23 @@ const NewHome = () => {
                         <div className="row">
                             <div className="col-12">
                                 <div className="heading-section">
-                                    <h2 className="title wow fadeInUp" style={getElementStyle('casino-section-h2')}>
-                                        {getElementText('casino-section-h2', '🎁 Top Recommended Crypto Casinos')}
+                                    <h2 className="title wow fadeInUp" style={getElementStyle('Lottery-section-h2')}>
+                                        {getElementText('Lottery-section-h2', '🎁 Top Recommended Crypto Lottery')}
                                     </h2>
-                                    <p className="wow fadeInUp" data-wow-delay="0.1s" style={getElementStyle('casino-section-p')}>
-                                        {getElementText('casino-section-p', 'Compare the best blockchain lotteries and crypto casinos — verified for fairness and instant payouts !')}
+                                    <p className="wow fadeInUp" data-wow-delay="0.1s" style={getElementStyle('Lottery-section-p')}>
+                                        {getElementText('Lottery-section-p', 'Compare the best blockchain lotteries and Crypto Lottery — verified for fairness and instant payouts !')}
                                     </p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Comparison Table - Desktop */}
-                        <div className="comparison-table wow fadeInUp mt-40 casino-table-desktop">
+                        <div className="comparison-table wow fadeInUp mt-40 Lottery-table-desktop">
                             <div className="table-responsive">
-                                <table className="table casino-comparison-table">
+                                <table className="table Lottery-comparison-table">
                                     <thead>
                                         <tr>
-                                            <th>Casino</th>
+                                            <th>Lottery</th>
                                             <th>Bonus</th>
                                             <th>Highlights</th>
                                             <th>Rating</th>
@@ -192,35 +192,35 @@ const NewHome = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {topCasinos.map((casino, index) => (
-                                            <tr key={casino.id} className="wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
+                                        {topLotterys.map((Lottery, index) => (
+                                            <tr key={Lottery.id} className="wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
                                                 <td>
-                                                    <div className="casino-info">
-                                                        <img src={casino.logo_url || casino.logo} alt={casino.name} className="casino-logo" width="76" height="76" loading="lazy" />
+                                                    <div className="Lottery-info">
+                                                        <img src={Lottery.logo_url || Lottery.logo} alt={Lottery.name} className="Lottery-logo" width="76" height="76" loading="lazy" />
                                                         <div>
-                                                            <strong>{casino.name}</strong>
-                                                            {casino.featured && <span className="badge badge-success ml-2">Featured</span>}
-                                                            {casino.provablyFair && <span className="badge badge-info ml-2">Provably Fair</span>}
+                                                            <strong>{Lottery.name}</strong>
+                                                            {Lottery.featured && <span className="badge badge-success ml-2">Featured</span>}
+                                                            {Lottery.provablyFair && <span className="badge badge-info ml-2">Provably Fair</span>}
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td><span className="bonus-text">{casino.bonus_text || casino.bonus || 'N/A'}</span></td>
-                                                <td>{casino.description || casino.highlights || 'Professional Casino'}</td>
+                                                <td><span className="bonus-text">{Lottery.bonus_text || Lottery.bonus || 'N/A'}</span></td>
+                                                <td>{Lottery.description || Lottery.highlights || 'Professional Lottery'}</td>
                                                 <td>
                                                     <div className="rating-stars">
-                                                        <span className="rating-number">{casino.rating || 4.5}</span> ⭐
+                                                        <span className="rating-number">{Lottery.rating || 4.5}</span> ⭐
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <a 
-                                                        href={casino.link || casino.affiliateLink || '#'} 
+                                                        href={Lottery.link || Lottery.affiliateLink || '#'} 
                                                         className="tf-btn style-3 small"
                                                         target="_blank"
                                                         rel="noopener noreferrer nofollow"
                                                     >
                                                         Play Now
                                                     </a>
-                                                    <Link to={`/casino/${casino.id}`} className="link-review">Review</Link>
+                                                    <Link to={`/Lottery/${Lottery.id}`} className="link-review">Review</Link>
                                                 </td>
                                             </tr>
                                         ))}
@@ -229,47 +229,47 @@ const NewHome = () => {
                             </div>
                         </div>
 
-                        {/* Casino Cards - Mobile */}
-                        <div className="casino-cards-mobile mt-40">
-                            {topCasinos.map((casino, index) => (
-                                <div key={casino.id} className="casino-card-mobile wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
+                        {/* Lottery Cards - Mobile */}
+                        <div className="Lottery-cards-mobile mt-40">
+                            {topLotterys.map((Lottery, index) => (
+                                <div key={Lottery.id} className="Lottery-card-mobile wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
                                     <div className="card-header">
-                                        <img src={casino.logo_url || casino.logo} alt={casino.name} className="casino-card-logo" width="76" height="76" loading="lazy" />
+                                        <img src={Lottery.logo_url || Lottery.logo} alt={Lottery.name} className="Lottery-card-logo" width="76" height="76" loading="lazy" />
                                         <div className="card-title-section">
-                                            <h3 className="casino-card-name">{casino.name}</h3>
-                                            {casino.featured && <span className="badge badge-success">Featured</span>}
+                                            <h3 className="Lottery-card-name">{Lottery.name}</h3>
+                                            {Lottery.featured && <span className="badge badge-success">Featured</span>}
                                         </div>
                                     </div>
 
                                     <div className="card-body">
                                         <div className="card-item">
                                             <span className="label">Bonus</span>
-                                            <span className="value bonus-text">{casino.bonus_text || casino.bonus || 'N/A'}</span>
+                                            <span className="value bonus-text">{Lottery.bonus_text || Lottery.bonus || 'N/A'}</span>
                                         </div>
 
                                         <div className="card-item">
                                             <span className="label">Highlights</span>
-                                            <span className="value">{casino.description || casino.highlights || 'Professional Casino'}</span>
+                                            <span className="value">{Lottery.description || Lottery.highlights || 'Professional Lottery'}</span>
                                         </div>
 
                                         <div className="card-item">
                                             <span className="label">Rating</span>
                                             <span className="value rating-stars">
-                                                <span className="rating-number">{casino.rating || 4.5}</span> ⭐
+                                                <span className="rating-number">{Lottery.rating || 4.5}</span> ⭐
                                             </span>
                                         </div>
                                     </div>
 
                                     <div className="card-footer">
                                         <a 
-                                            href={casino.link || casino.affiliateLink || '#'} 
+                                            href={Lottery.link || Lottery.affiliateLink || '#'} 
                                             className="tf-btn style-3"
                                             target="_blank"
                                             rel="noopener noreferrer nofollow"
                                         >
                                             Play Now
                                         </a>
-                                        <Link to={`/casino/${casino.id}`} className="tf-btn style-outline">
+                                        <Link to={`/Lottery/${Lottery.id}`} className="tf-btn style-outline">
                                             Review
                                         </Link>
                                     </div>
@@ -278,8 +278,8 @@ const NewHome = () => {
                         </div>
 
                         <div className="text-center mt-40">
-                            <Link to="/top-casinos" className="tf-btn">
-                                View All Casinos <i className="icon-right"></i>
+                            <Link to="/top-Lotterys" className="tf-btn">
+                                View All Lotterys <i className="icon-right"></i>
                             </Link>
                         </div>
                     </div>
@@ -304,7 +304,7 @@ const NewHome = () => {
                                     <div className="step-number">1</div>
                                     <div className="icon">💰</div>
                                     <h4>Play or Deposit</h4>
-                                    <p>Choose your favorite crypto lottery or casino. Make a deposit using BTC, ETH, or other supported cryptocurrencies.</p>
+                                    <p>Choose your favorite crypto lottery or Lottery. Make a deposit using BTC, ETH, or other supported cryptocurrencies.</p>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6">
@@ -333,7 +333,7 @@ const NewHome = () => {
                         <div className="row">
                             <div className="col-12">
                                 <div className="heading-section">
-                                    <h2 className="title wow fadeInUp">Featured Casino Reviews</h2>
+                                    <h2 className="title wow fadeInUp">Featured Lottery Reviews</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
                                         In-depth reviews of the top crypto lottery platforms
                                     </p>
@@ -341,8 +341,8 @@ const NewHome = () => {
                             </div>
                         </div>
                         <div className="grid-column-3 mt-40">
-                            {featuredCasinos.map((casino, index) => (
-                                <CasinoCard key={casino.id} casino={casino} />
+                            {featuredLotterys.map((Lottery, index) => (
+                                <LotteryCard key={Lottery.id} Lottery={Lottery} />
                             ))}
                         </div>
                     </div>
@@ -356,7 +356,7 @@ const NewHome = () => {
                                 <div className="heading-section">
                                     <h2 className="title wow fadeInUp">🎁 Latest Bonuses & Free Spins</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
-                                        Grab these exclusive crypto casino bonuses before they expire. Our site also tracks live crypto lottery results derived from the latest <strong>Bitcoin block number</strong>.
+                                        Grab these exclusive crypto Lottery bonuses before they expire. Our site also tracks live crypto lottery results derived from the latest <strong>Bitcoin block number</strong>.
                                     </p>
                                 </div>
                             </div>
@@ -427,10 +427,10 @@ const NewHome = () => {
                                 <div key={bonus.id} className="col-lg-4 col-md-6">
                                     <div className="bonus-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
                                         <div className="bonus-header">
-                                            <img src={bonus.logo} alt={bonus.casino} className="casino-logo-small" />
+                                            <img src={bonus.logo} alt={bonus.Lottery} className="Lottery-logo-small" />
                                             <span className="badge badge-hot">🔥 Hot</span>
                                         </div>
-                                        <h4>{bonus.casino}</h4>
+                                        <h4>{bonus.Lottery}</h4>
                                         <div className="bonus-offer">{bonus.offer}</div>
                                         <div className="bonus-code">
                                             <span>Code:</span> <strong>{bonus.code}</strong>
@@ -617,9 +617,9 @@ const NewHome = () => {
                                 
                                 <div className="newsletter-header">
                                     <div className="newsletter-icon">🎁</div>
-                                    <h2 className="newsletter-title">Get Weekly Crypto Casino Bonuses</h2>
+                                    <h2 className="newsletter-title">Get Weekly Crypto Lottery Bonuses</h2>
                                     <p className="newsletter-subtitle">
-                                        Join 10,000+ players receiving exclusive deals, new casino launches, and winning strategies
+                                        Join 10,000+ players receiving exclusive deals, new Lottery launches, and winning strategies
                                     </p>
                                 </div>
                                 

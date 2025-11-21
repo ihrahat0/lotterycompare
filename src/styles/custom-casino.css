@@ -16,8 +16,8 @@
     color: #fff;
 }
 
-/* Casino Comparison Table */
-.casino-comparison-table {
+/* Lottery Comparison Table */
+.Lottery-comparison-table {
     width: 100%;
     background: #0a0a2a;
     border-radius: 12px;
@@ -25,34 +25,34 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 /* Force dark cells (override bootstrap .table defaults) */
-.casino-comparison-table > :not(caption) > * > * {
+.Lottery-comparison-table > :not(caption) > * > * {
     background-color: transparent !important;
     border-color: rgba(119, 145, 186, 0.15) !important;
     color: #fff !important;
 }
-.casino-comparison-table tbody tr > * { background-color: #0a0a2a !important; }
-.casino-comparison-table tbody tr:nth-child(even) > * { background-color: #0f0c30 !important; }
-.casino-comparison-table thead th { border-color: rgba(255, 255, 255, 0.15) !important; }
+.Lottery-comparison-table tbody tr > * { background-color: #0a0a2a !important; }
+.Lottery-comparison-table tbody tr:nth-child(even) > * { background-color: #0f0c30 !important; }
+.Lottery-comparison-table thead th { border-color: rgba(255, 255, 255, 0.15) !important; }
 
-.casino-comparison-table thead {
+.Lottery-comparison-table thead {
     background: transparent;
     color: #fff;
 }
 
-.casino-comparison-table th {
+.Lottery-comparison-table th {
     padding: 20px;
     font-weight: 600;
     text-align: left;
 }
 
-.casino-comparison-table td {
+.Lottery-comparison-table td {
     padding: 20px;
     border-bottom: 1px solid rgba(119, 145, 186, 0.1);
     vertical-align: middle;
     color: #fff;
 }
 
-.casino-comparison-table tr:hover {
+.Lottery-comparison-table tr:hover {
     background: #0f0c30;
 }
 
@@ -130,45 +130,45 @@
 .mb-60 { margin-bottom: 60px; }
 .mb-80 { margin-bottom: 80px; }
 
-.casino-info {
+.Lottery-info {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.casino-info h4 {
+.Lottery-info h4 {
     color: #fff;
     margin: 0;
 }
 
-.casino-info p {
+.Lottery-info p {
     color: rgba(255, 255, 255, 0.6);
     margin: 5px 0 0 0;
     font-size: 0.9em;
 }
 
-.casino-logo {
+.Lottery-logo {
     width: 60px;
     height: 60px;
     object-fit: contain;
     border-radius: 8px;
 }
 
-.casino-logo-small {
+.Lottery-logo-small {
     width: 40px;
     height: 40px;
     object-fit: contain;
     border-radius: 6px;
 }
 
-.casino-logo-medium {
+.Lottery-logo-medium {
     width: 80px;
     height: 80px;
     object-fit: contain;
     border-radius: 10px;
 }
 
-.casino-logo-large {
+.Lottery-logo-large {
     width: 120px;
     height: 120px;
     object-fit: contain;
@@ -429,7 +429,7 @@
 }
 
 /* Filters */
-.casino-filters, .bonus-filters {
+.Lottery-filters, .bonus-filters {
     background: #131037;
     padding: 30px;
     border-radius: 12px;
@@ -437,11 +437,11 @@
     border: 1px solid rgba(119, 145, 186, 0.1);
 }
 
-.casino-filters h3, .bonus-filters h3 {
+.Lottery-filters h3, .bonus-filters h3 {
     color: #fff;
 }
 
-.casino-filters label, .bonus-filters label {
+.Lottery-filters label, .bonus-filters label {
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -917,22 +917,22 @@
     color: #fff;
 }
 
-.widget-casino-cta {
+.widget-Lottery-cta {
     text-align: center;
 }
 
-.widget-casino-cta img {
+.widget-Lottery-cta img {
     width: 100px;
     height: 100px;
     object-fit: contain;
     margin-bottom: 20px;
 }
 
-.widget-casino-cta p {
+.widget-Lottery-cta p {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.mini-casino-card {
+.mini-Lottery-card {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -940,17 +940,17 @@
     border-bottom: 1px solid rgba(119, 145, 186, 0.1);
 }
 
-.mini-casino-card:last-child {
+.mini-Lottery-card:last-child {
     border-bottom: none;
 }
 
-.mini-casino-card img {
+.mini-Lottery-card img {
     width: 50px;
     height: 50px;
     object-fit: contain;
 }
 
-.mini-casino-card span {
+.mini-Lottery-card span {
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -1269,14 +1269,14 @@
     position: relative;
 }
 
-.section-bonuses .bonus-card .casino-logo-small,
-.section-bonuses .bonus-card-full .casino-logo-medium {
+.section-bonuses .bonus-card .Lottery-logo-small,
+.section-bonuses .bonus-card-full .Lottery-logo-medium {
     height: auto !important;
     object-fit: contain !important;
 }
 
 @media (max-width: 768px) {
-    .casino-comparison-table {
+    .Lottery-comparison-table {
         font-size: 0.85em;
     }
     
@@ -1300,7 +1300,7 @@
         grid-template-columns: 1fr;
     }
     
-    /* Featured Casino Reviews - Tablet Optimization */
+    /* Featured Lottery Reviews - Tablet Optimization */
     .section-featured-reviews .wg-game .wg-game-image img {
         max-width: 100px !important;
         width: 100px !important;
@@ -1315,7 +1315,7 @@
     }
     
     /* Bonus Section - Tablet Optimization */
-    .section-bonuses .bonus-card .casino-logo-small {
+    .section-bonuses .bonus-card .Lottery-logo-small {
         width: 95px !important;
         height: auto !important;
         max-width: 95px !important;
@@ -1328,7 +1328,7 @@
         padding: 20px 15px;
     }
     
-    .section-bonuses .bonus-card-full .bonus-card-header .casino-logo-medium {
+    .section-bonuses .bonus-card-full .bonus-card-header .Lottery-logo-medium {
         width: 105px !important;
         height: auto !important;
         max-width: 105px !important;
@@ -1343,29 +1343,29 @@
 }
 
 @media (max-width: 576px) {
-    .casino-comparison-table {
+    .Lottery-comparison-table {
         font-size: 0.75em;
     }
     
-    .casino-comparison-table th,
-    .casino-comparison-table td {
+    .Lottery-comparison-table th,
+    .Lottery-comparison-table td {
         padding: 10px 8px;
     }
     
-    .casino-info {
+    .Lottery-info {
         display: flex;
         align-items: center;
         gap: 8px;
     }
     
-    .casino-logo {
+    .Lottery-logo {
         max-width: 40px !important;
         width: 40px;
         height: 40px;
     }
     
-    /* Top Casinos Mobile - Ensure Logos Visible */
-    .section-casinos-list .casino-comparison-table .casino-logo {
+    /* Top Lotterys Mobile - Ensure Logos Visible */
+    .section-Lotterys-list .Lottery-comparison-table .Lottery-logo {
         width: 50px !important;
         height: 50px !important;
         display: block !important;
@@ -1373,13 +1373,13 @@
         opacity: 1 !important;
     }
     
-    .section-casinos-list .casino-comparison-table .casino-info {
+    .section-Lotterys-list .Lottery-comparison-table .Lottery-info {
         display: flex !important;
         align-items: center;
         gap: 10px;
     }
     
-    .section-casinos-list .casino-comparison-table .casino-info img {
+    .section-Lotterys-list .Lottery-comparison-table .Lottery-info img {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -1416,13 +1416,13 @@
         gap: 12px;
     }
     
-    .casino-logo-small {
+    .Lottery-logo-small {
         width: 50px !important;
         height: 50px !important;
         max-width: 50px;
     }
     
-    .casino-logo-medium {
+    .Lottery-logo-medium {
         width: 70px !important;
         height: 70px !important;
         max-width: 70px;
@@ -1444,7 +1444,7 @@
         font-size: 0.9em;
     }
     
-    /* Featured Casino Reviews - Mobile Logo Optimization */
+    /* Featured Lottery Reviews - Mobile Logo Optimization */
     .section-featured-reviews .wg-game .wg-game-image {
         display: flex;
         justify-content: center;
@@ -1499,7 +1499,7 @@
         min-height: 140px;
     }
     
-    .section-bonuses .bonus-card .casino-logo-small {
+    .section-bonuses .bonus-card .Lottery-logo-small {
         width: 90px !important;
         height: auto !important;
         max-width: 90px !important;
@@ -1520,7 +1520,7 @@
     }
     
     /* Bonus Card Full - Mobile Logo Optimization */
-    .section-bonuses .bonus-card-full .bonus-card-header .casino-logo-medium {
+    .section-bonuses .bonus-card-full .bonus-card-header .Lottery-logo-medium {
         width: 100px !important;
         height: auto !important;
         max-width: 100px !important;
@@ -1557,22 +1557,22 @@
 }
 
 @media (max-width: 360px) {
-    .casino-logo {
+    .Lottery-logo {
         width: 35px;
         height: 35px;
     }
     
-    .casino-logo-small {
+    .Lottery-logo-small {
         width: 45px !important;
         height: 45px !important;
     }
     
-    .casino-logo-medium {
+    .Lottery-logo-medium {
         width: 60px !important;
         height: 60px !important;
     }
     
-    .casino-logo-large {
+    .Lottery-logo-large {
         width: 90px !important;
         height: 90px !important;
     }
@@ -1589,7 +1589,7 @@
         font-size: 0.95em;
     }
     
-    /* Featured Casino Reviews - Extra Small Mobile */
+    /* Featured Lottery Reviews - Extra Small Mobile */
     .section-featured-reviews .wg-game .wg-game-image {
         padding: 12px 8px;
         min-height: 110px;
@@ -1610,7 +1610,7 @@
         gap: 10px;
     }
     
-    .section-bonuses .bonus-card .casino-logo-small {
+    .section-bonuses .bonus-card .Lottery-logo-small {
         width: 75px !important;
         height: auto !important;
         max-width: 75px !important;
@@ -1618,7 +1618,7 @@
         padding: 4px;
     }
     
-    .section-bonuses .bonus-card-full .bonus-card-header .casino-logo-medium {
+    .section-bonuses .bonus-card-full .bonus-card-header .Lottery-logo-medium {
         width: 85px !important;
         height: auto !important;
         max-width: 85px !important;
@@ -2489,8 +2489,8 @@
     }
 }
 
-/* Casino Card Mobile Layout */
-.casino-card-mobile {
+/* Lottery Card Mobile Layout */
+.Lottery-card-mobile {
     background: #131037;
     border: 1px solid rgba(119, 145, 186, 0.1);
     border-radius: 12px;
@@ -2505,7 +2505,7 @@
     margin-bottom: 12px;
 }
 
-.casino-card-logo {
+.Lottery-card-logo {
     width: 50px;
     height: 50px;
     object-fit: contain;
@@ -2517,26 +2517,26 @@
     min-width: 0;
 }
 
-.casino-card-name {
+.Lottery-card-name {
     color: #fff;
     margin: 0;
     font-size: 1.1em;
     font-weight: 700;
 }
 
-.casino-info {
+.Lottery-info {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.casino-info > div {
+.Lottery-info > div {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.casino-info strong {
+.Lottery-info strong {
     color: #fff;
     font-weight: 700;
 }
@@ -2547,14 +2547,14 @@
     flex-wrap: wrap;
 }
 
-/* Top Casinos Section - Logo Display */
-.section-casinos-list .casino-comparison-table .casino-info {
+/* Top Lotterys Section - Logo Display */
+.section-Lotterys-list .Lottery-comparison-table .Lottery-info {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.section-casinos-list .casino-comparison-table .casino-logo {
+.section-Lotterys-list .Lottery-comparison-table .Lottery-logo {
     width: 60px;
     height: 60px;
     object-fit: contain;
@@ -2566,11 +2566,11 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.section-casinos-list .casino-comparison-table td {
+.section-Lotterys-list .Lottery-comparison-table td {
     vertical-align: middle;
 }
 
-.section-casinos-list .casino-comparison-table .casino-info img {
+.section-Lotterys-list .Lottery-comparison-table .Lottery-info img {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
