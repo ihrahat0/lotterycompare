@@ -172,10 +172,9 @@ const AboutUs = () => {
                                                 <img src={require('../assets/images/item/play-biggest-2.png')} alt="" />
                                             </div>
                                             <div className="text-details">
-                                                <h4 className="mb-16 fw-9"><a href="#">Courier service</a></h4>
+                                                <h4 className="mb-16 fw-9"><a href="#">Crypto Lotteries</a></h4>
                                                 <p className="text fs-14 type-secondary">
-                                                    We launched our <span>purchasing services</span> in 2002 and have led the online lotto industry ever since.
-                                                    Our <span>lottery courier service</span> buys, scans, and uploads official tickets into your account before the draw.
+                                                    We have introduced the modern lottery in crypto world, where results are not determined by people, but blockchain. A trusted and verifiable source accessible to everyone.
                                                 </p>
                                             </div>
                                         </li>

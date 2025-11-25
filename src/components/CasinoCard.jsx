@@ -25,7 +25,7 @@ const LotteryCard = ({ Lottery, showFullDetails = false }) => {
             <div className="lottery-card-inner">
                 <div className="lottery-card-header">
                     <div className="logo-container">
-                        <img 
+                        <img style={{paddingRight: '0px'}} 
                             src={Lottery.logo || Lottery.logo_url} 
                             alt={Lottery.name} 
                             loading="lazy"

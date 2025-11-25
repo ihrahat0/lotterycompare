@@ -62,7 +62,18 @@ export const bonuses = [
         code: "FIRST100",
         expiry: "2025-12-31",
         type: "Deposit Bonus",
-        description: "New players only. Min deposit 0.001 BTC. Wagering 35x."
+        description: "New players only. Min deposit 0.001 BTC. Wagering 35x.",
+        additionalBonuses: [
+            {
+                title: "Free Ticket",
+                code: "Luckypanda7",
+                description: "Get a free ticket with code: Luckypanda7"
+            },
+            {
+                title: "LuckyHour",
+                description: "Jackpot multiplies at 7pm Pacific Standard Time"
+            }
+        ]
     },
     {
         id: 2,

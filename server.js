@@ -770,7 +770,7 @@ app.post('/api/seed-page-elements', verifyToken, async (req, res) => {
             // Home page
             { page_name: 'new-home', element_id: 'hero-h1', element_type: 'h1', original_text: 'LotteryCompare | Find the best Casino', updated_text: 'LotteryCompare | Find the best Casino' },
             { page_name: 'new-home', element_id: 'hero-p', element_type: 'p', original_text: 'Compare trusted crypto lotteries and play provably fair games', updated_text: 'Compare trusted crypto lotteries and play provably fair games' },
-            { page_name: 'new-home', element_id: 'section-h2', element_type: 'h2', original_text: '🎁 Top Recommended Crypto Lottery', updated_text: '🎁 Top Recommended Crypto Lottery' },
+            { page_name: 'new-home', element_id: 'section-h2', element_type: 'h2', original_text: '🎁 Top Recommended Lotteries of 2025 ', updated_text: '🎁 Top Recommended Lotteries of 2025 ' },
             
             // About Us
             { page_name: 'about-us', element_id: 'about-h1', element_type: 'h1', original_text: 'About the Lode lottery', updated_text: 'About the Lode lottery' },

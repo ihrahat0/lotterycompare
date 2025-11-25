@@ -253,16 +253,21 @@
 /* Bonus Cards */
 .bonus-card, .bonus-card-full {
     background: #131037;
-    border-radius: 16px;
-    padding: 30px;
+    border-radius: 20px;
+    padding: 32px 28px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(119, 145, 186, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 30px;
 }
 
 .bonus-card:hover, .bonus-card-full:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(92, 39, 254, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(92, 39, 254, 0.35);
+    border-color: rgba(92, 39, 254, 0.3);
 }
 
 .bonus-card h3, .bonus-card-full h3,
@@ -344,6 +349,214 @@
     margin-top: 15px;
     color: #dc2626;
     font-weight: 600;
+}
+
+/* Additional Bonuses Styling */
+.additional-bonuses {
+    margin: 20px 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(119, 145, 186, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.additional-bonus-item {
+    background: rgba(13, 11, 42, 0.6);
+    border: 1px solid rgba(119, 145, 186, 0.15);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.additional-bonus-item:hover {
+    background: rgba(13, 11, 42, 0.8);
+    border-color: rgba(92, 39, 254, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(92, 39, 254, 0.2);
+}
+
+.additional-bonus-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.bonus-icon {
+    font-size: 18px;
+    display: inline-block;
+}
+
+.additional-bonus-code {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(92, 39, 254, 0.1);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 10px 0;
+    border: 1px solid rgba(92, 39, 254, 0.2);
+}
+
+.additional-bonus-code .code-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.additional-bonus-code .code-value {
+    font-size: 14px;
+    color: #ffcb52;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    flex: 1;
+}
+
+.copy-btn-small {
+    background: linear-gradient(90.36deg, #5c27fe 0.96%, #c165dd 99.05%);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-btn-small:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.additional-bonus-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 8px 0 0 0;
+}
+
+/* Improved Bonus Card Spacing */
+.bonus-card, .bonus-card-full {
+    background: #131037;
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(119, 145, 186, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.bonus-card:hover, .bonus-card-full:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(92, 39, 254, 0.35);
+    border-color: rgba(92, 39, 254, 0.3);
+}
+
+.bonus-card-header, .bonus-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(119, 145, 186, 0.1);
+}
+
+.bonus-card h3, .bonus-card-full h3,
+.bonus-card h4, .bonus-card-full h4 {
+    color: #fff;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.bonus-offer {
+    font-size: 1.15em;
+    background: linear-gradient(180deg, #ffcb52 0%, #ff7b02 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    margin: 18px 0;
+    line-height: 1.4;
+}
+
+.bonus-offer-large {
+    font-size: 1.4em;
+    background: linear-gradient(180deg, #ffcb52 0%, #ff7b02 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    margin: 22px 0;
+    line-height: 1.4;
+}
+
+.bonus-code {
+    background: rgba(13, 11, 42, 0.8);
+    padding: 16px 18px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 18px 0;
+    border: 1px solid rgba(119, 145, 186, 0.2);
+    color: #fff;
+}
+
+.bonus-code-box {
+    margin: 24px 0;
+}
+
+.bonus-code-box label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.code-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(13, 11, 42, 0.8);
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid rgba(119, 145, 186, 0.2);
+    color: #fff;
+    gap: 12px;
+}
+
+.code-display strong {
+    font-size: 15px;
+    color: #ffcb52;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    flex: 1;
+    text-align: left;
+}
+
+.bonus-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 16px 0;
+}
+
+.bonus-card .tf-btn, .bonus-card-full .tf-btn {
+    margin-top: auto;
+    padding: 14px 24px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.bonus-card .tf-btn:hover, .bonus-card-full .tf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(92, 39, 254, 0.4);
 }
 
 /* Block Result Screenshot Card */
@@ -1340,6 +1553,28 @@
         min-height: 170px;
         padding: 25px 20px;
     }
+    
+    /* Additional Bonuses - Tablet */
+    .additional-bonuses {
+        margin: 18px 0;
+        gap: 14px;
+    }
+    
+    .additional-bonus-item {
+        padding: 14px;
+    }
+    
+    .additional-bonus-title {
+        font-size: 14px;
+    }
+    
+    .additional-bonus-code {
+        padding: 9px 12px;
+    }
+    
+    .additional-bonus-desc {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1383,6 +1618,48 @@
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+    }
+    
+    /* Additional Bonuses - Mobile */
+    .additional-bonuses {
+        margin: 16px 0;
+        gap: 12px;
+    }
+    
+    .additional-bonus-item {
+        padding: 12px;
+    }
+    
+    .additional-bonus-title {
+        font-size: 13px;
+        gap: 8px;
+    }
+    
+    .bonus-icon {
+        font-size: 16px;
+    }
+    
+    .additional-bonus-code {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+    
+    .additional-bonus-code .code-label {
+        font-size: 11px;
+    }
+    
+    .additional-bonus-code .code-value {
+        font-size: 12px;
+    }
+    
+    .copy-btn-small {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+    
+    .additional-bonus-desc {
+        font-size: 11px;
+        line-height: 1.5;
     }
     
     .action-buttons {

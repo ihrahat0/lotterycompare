@@ -113,6 +113,37 @@ const BonusesPage = () => {
                                             </button>
                                         </div>
                                     </div>
+                                    
+                                    {/* Additional Bonuses for FBL */}
+                                    {bonus.additionalBonuses && bonus.additionalBonuses.length > 0 && (
+                                        <div className="additional-bonuses">
+                                            {bonus.additionalBonuses.map((addBonus, idx) => (
+                                                <div key={idx} className="additional-bonus-item">
+                                                    <div className="additional-bonus-title">
+                                                        <span className="bonus-icon">🎁</span>
+                                                        <strong>{addBonus.title}</strong>
+                                                    </div>
+                                                    {addBonus.code && (
+                                                        <div className="additional-bonus-code">
+                                                            <span className="code-label">Code:</span>
+                                                            <span className="code-value">{addBonus.code}</span>
+                                                            <button 
+                                                                className="copy-btn-small" 
+                                                                onClick={() => navigator.clipboard.writeText(addBonus.code)}
+                                                                title="Copy code"
+                                                            >
+                                                                📋
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                    {addBonus.description && (
+                                                        <p className="additional-bonus-desc">{addBonus.description}</p>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                    
                                     <a href="http://firstbtclottery.com/site/referral?code=v6zIr7Yg" className="tf-btn style-3 w-100 mt-20">
                                         Claim Bonus <i className="icon-right"></i>
                                     </a>

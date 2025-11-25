@@ -42,30 +42,54 @@ const HowToWork = () => {
       <section className="section-how-it-works pt-80 pb-100">
         <div className="tf-container">
           
-          {/* 3 Steps */}
+          {/* 6 Steps */}
           <div className="row mb-80">
             <div className="col-lg-4 col-md-6">
               <div className="how-it-works-card wow fadeInUp">
                 <div className="step-number">1</div>
-                <div className="icon">💰</div>
-                <h4>Play or Deposit</h4>
-                <p>Choose your favorite crypto lottery or Lottery. Make a deposit using BTC, ETH, USDT, or other supported cryptocurrencies. Most platforms accept deposits as low as 0.001 BTC.</p>
+                <div className="icon">📝</div>
+                <h4>Signup for free</h4>
+                <p>Create your account in minutes. No credit card required, just an email address to get started.</p>
               </div>
             </div>
             <div className="col-lg-4 col-md-6">
               <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.1s">
                 <div className="step-number">2</div>
-                <div className="icon">⛓️</div>
-                <h4>Blockchain Draw (Provably Fair)</h4>
-                <p>All draws are verified on the blockchain using smart contracts. The results are generated using cryptographic algorithms that can be independently verified — ensuring 100% fairness.</p>
+                <div className="icon">🎲</div>
+                <h4>Choose a lottery to play</h4>
+                <p>Browse our selection of crypto lotteries and pick the one that suits you best.</p>
               </div>
             </div>
             <div className="col-lg-4 col-md-6">
               <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.2s">
                 <div className="step-number">3</div>
-                <div className="icon">⚡</div>
-                <h4>Instant Payout</h4>
-                <p>When you win, your funds are sent directly to your crypto wallet instantly. No waiting periods, no verification delays — just instant access to your winnings.</p>
+                <div className="icon">💰</div>
+                <h4>Deposit $5 in crypto to buy ticket</h4>
+                <p>Make a minimum deposit of $5 using your preferred cryptocurrency to purchase lottery tickets.</p>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6">
+              <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.3s">
+                <div className="step-number">4</div>
+                <div className="icon">🎫</div>
+                <h4>Buy Lottery Ticket</h4>
+                <p>Purchase your lottery ticket and enter the draw. Your ticket is securely recorded on the blockchain.</p>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6">
+              <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.4s">
+                <div className="step-number">5</div>
+                <div className="icon">🔍</div>
+                <h4>Check Results for Winning</h4>
+                <p>After the draw, check the results to see if you've won. All results are verifiable on the blockchain.</p>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6">
+              <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.5s">
+                <div className="step-number">6</div>
+                <div className="icon">💸</div>
+                <h4>Receive your winnings to your wallet</h4>
+                <p>If you win, your winnings are automatically sent to your crypto wallet. No delays, no fees.</p>
               </div>
             </div>
           </div>
@@ -132,14 +156,14 @@ const HowToWork = () => {
           {/* Getting Started */}
           <div className="content-section wow fadeInUp">
             <h2>Ready to Get Started?</h2>
-            <p>Follow these steps to start playing crypto lotteries today:</p>
+            <p>Follow these simple steps to start playing crypto lotteries today:</p>
             <ol className="numbered-list mt-30">
-              <li>Browse our list of <Link to="/top-Lotterys">top-rated Crypto Lottery</Link></li>
-              <li>Choose a platform that suits your needs</li>
-              <li>Create a crypto wallet (if you don't have one)</li>
-              <li>Buy some cryptocurrency (BTC, ETH, etc.)</li>
-              <li>Deposit to your chosen Lottery</li>
-              <li>Start playing and win!</li>
+              <li>Signup for free</li>
+              <li>Choose a lottery to play</li>
+              <li>Deposit $5 in crypto to buy ticket</li>
+              <li>Buy Lottery Ticket</li>
+              <li>Check Results for Winning</li>
+              <li>Receive your winnings to your wallet</li>
             </ol>
             <div className="text-center mt-40">
               <Link to="/top-Lotterys" className="tf-btn">

@@ -104,7 +104,7 @@ const TopLotterys = () => {
                                     <tr>
                                         <th>#</th>
                                         <th>Lottery</th>
-                                        <th>Bonus</th>
+                                        <th>Odds of Winning</th>
                                         <th>Min Deposit</th>
                                         <th>Highlights</th>
                                         <th>Rating</th>

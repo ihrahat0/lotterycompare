@@ -132,12 +132,11 @@ const NewHome = () => {
                                 <div className="page-title-home-content">
                                     <div className="content">
                                         <h1 className="title">
-                                        🎁 Top Recommended Crypto Lotteries & <br />
+                                        🎁 Top Recommended Lotteries of 2025 <br />
                                             <span className="d-block animationtext slide">
                                                 <span className="cd-words-wrapper">
                                                     <span className="item-text is-visible">Crypto Lottery</span>
                                                     <span className="item-text is-hidden">of 2025</span>
-                                                    <span className="item-text is-hidden">Provably Fair</span>
                                                 </span>
                                             </span>
                                         </h1>
@@ -181,10 +180,10 @@ const NewHome = () => {
                             <div className="col-12">
                                 <div className="heading-section">
                                     <h2 className="title wow fadeInUp" style={getElementStyle('Lottery-section-h2')}>
-                                        {getElementText('Lottery-section-h2', '🎁 Top Recommended Crypto Lottery')}
+                                        {getElementText('Lottery-section-h2', '🎁 Top Recommended Lotteries of 2025 🎉')}
                                     </h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s" style={getElementStyle('Lottery-section-p')}>
-                                        {getElementText('Lottery-section-p', 'Compare the best blockchain lotteries and Crypto Lottery — verified for fairness and instant payouts !')}
+                                        {getElementText('Lottery-section-p', 'Compare the top global lotteries , verified for payouts and signups. ')}
                                     </p>
                                 </div>
                             </div>
@@ -197,7 +196,7 @@ const NewHome = () => {
                                     <thead>
                                         <tr>
                                             <th>Lottery</th>
-                                            <th>Bonus</th>
+                                            <th>Odds of Winning</th>
                                             <th>Highlights</th>
                                             <th>Rating</th>
                                             <th>Action</th>
@@ -366,9 +365,9 @@ const NewHome = () => {
                         <div className="row">
                             <div className="col-12">
                                 <div className="heading-section">
-                                    <h2 className="title wow fadeInUp">🎁 Latest Bonuses & Free Spins</h2>
+                                    <h2 className="title wow fadeInUp">🎁 Latest Bonuses and Prizes</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
-                                        Grab these exclusive crypto Lottery bonuses before they expire. Our site also tracks live crypto lottery results derived from the latest <strong>Bitcoin block number</strong>.
+                                    Grab these exclusive Lottery bonuses before they expire.
                                     </p>
                                 </div>
                             </div>
@@ -482,6 +481,37 @@ const NewHome = () => {
                                                 <span>Code:</span> <strong>{bonus.code}</strong>
                                             </div>
                                             <p className="bonus-description">{bonus.description}</p>
+                                            
+                                            {/* Additional Bonuses for FBL */}
+                                            {bonus.additionalBonuses && bonus.additionalBonuses.length > 0 && (
+                                                <div className="additional-bonuses">
+                                                    {bonus.additionalBonuses.map((addBonus, idx) => (
+                                                        <div key={idx} className="additional-bonus-item">
+                                                            <div className="additional-bonus-title">
+                                                                <span className="bonus-icon">🎁</span>
+                                                                <strong>{addBonus.title}</strong>
+                                                            </div>
+                                                            {addBonus.code && (
+                                                                <div className="additional-bonus-code">
+                                                                    <span className="code-label">Code:</span>
+                                                                    <span className="code-value">{addBonus.code}</span>
+                                                                    <button 
+                                                                        className="copy-btn-small" 
+                                                                        onClick={() => navigator.clipboard.writeText(addBonus.code)}
+                                                                        title="Copy code"
+                                                                    >
+                                                                        📋
+                                                                    </button>
+                                                                </div>
+                                                            )}
+                                                            {addBonus.description && (
+                                                                <p className="additional-bonus-desc">{addBonus.description}</p>
+                                                            )}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                            
                                             <a href="http://firstbtclottery.com/site/referral?code=v6zIr7Yg" className="tf-btn style-3 w-100">
                                                 Claim Bonus <i className="icon-right"></i>
                                             </a>
