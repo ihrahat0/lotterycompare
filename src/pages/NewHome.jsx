@@ -302,9 +302,9 @@ const NewHome = () => {
                         <div className="row">
                             <div className="col-12">
                                 <div className="heading-section text-center">
-                                    <h2 className="title wow fadeInUp">How Crypto lottery’s work?</h2>
+                                    <h2 className="title wow fadeInUp">How Crypto lotteries work?</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
-                                        Get started with crypto lotteries in 3 simple steps
+                                    Revolutionizing the traditional lotteries
                                     </p>
                                 </div>
                             </div>
@@ -322,8 +322,8 @@ const NewHome = () => {
                                 <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.1s">
                                     <div className="step-number">2</div>
                                     <div className="icon">⛓️</div>
-                                    <h4>Blockchain Draw (Provably Fair)</h4>
-                                    <p>All draws are verified on the blockchain. You can check the fairness of every single draw using smart contracts.</p>
+                                    <h4>Blockchain Draw</h4>
+                                    <p>All draws are verified and winning numbers are drawn from blockchain. You can check the fairness of every single draw on Blockchain Explorer.</p>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6">
