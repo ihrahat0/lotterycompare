@@ -168,22 +168,7 @@ const Contest = () => {
                     <div className="tf-container">
                         <div className="row">
                             <div className="col-12">
-                                <div className="wrap-category">
-                                    <div className="swiper-container" data-swiper={JSON.stringify({
-                                        spaceBetween: 30,
-                                        slidesPerView: 1,
-                                        observer: true,
-                                        observeParents: true,
-                                        breakpoints: {
-                                            0: { slidesPerView: 2.3 },
-                                            550: { slidesPerView: 3.3 },
-                                            767: { slidesPerView: 4.3 },
-                                            991: { slidesPerView: 6 }
-                                        }
-                                    })}>
-
-                                    </div>
-                                </div>
+                                {/* Removed empty swiper container - not needed for this page */}
 
                                 {/* Sort and filter */}
                                 <div className="tf-wrap-sort">

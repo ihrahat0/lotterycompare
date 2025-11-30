@@ -54,6 +54,20 @@ export const initSwiper = () => {
         const swiperContainers = document.querySelectorAll('[data-swiper]');
         swiperContainers.forEach(container => {
             try {
+                // Check if container is a valid Node and has content
+                if (!container || !container.parentNode) {
+                    return;
+                }
+                
+                // Check if container has swiper-wrapper or slides (for proper Swiper structure)
+                const hasWrapper = container.querySelector('.swiper-wrapper') !== null;
+                const hasSlides = container.querySelector('.swiper-slide') !== null;
+                
+                // If it's an empty container without proper structure, skip it
+                if (!hasWrapper && !hasSlides && container.children.length === 0) {
+                    return;
+                }
+                
                 const config = JSON.parse(container.getAttribute('data-swiper'));
                 new window.Swiper(container, config);
             } catch (error) {
