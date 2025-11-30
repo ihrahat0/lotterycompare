@@ -78,7 +78,7 @@ const AboutUs = () => {
                                         { img: 'how-it-work-1.png', title: 'Sign-up for a free account', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit nulla sit' },
                                         { img: 'how-it-work-2.png', title: 'Choose a lottery to play', text: 'Choose a lottery to play, pick your numbers, and order your tickets.' },
                                         { img: 'how-it-work-3.png', title: 'Buy official tickets', text: 'Our representatives will purchase official tickets on your behalf.' },
-                                        { img: 'how-it-work-4.png', title: 'Lottery courier service', text: 'Our lottery courier service lets you view your scanned tickets online.' },
+                                        { img: 'how-it-work-4.png', title: 'Crypto Lotteries', text: 'We have introduced the modern lottery in crypto world, where results are not determined by people, but blockchain. A trusted and verifiable source accessible to everyone.' },
                                         { img: 'how-it-work-5.png', title: 'Receive our notifications', text: 'We will notify you by email or SMS when you win.' },
                                         { img: 'how-it-work-6.png', title: 'Receive the winner\'s reward', text: 'Receive your full winnings, paid out 100% commission-free.' }
                                     ].map((item, index) => (

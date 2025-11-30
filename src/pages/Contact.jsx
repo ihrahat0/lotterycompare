@@ -94,7 +94,11 @@ const Contact = () => {
                                         </div>
                                         <div className="content">
                                             <div className="title"><a href="#">Location</a></div>
-                                            <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
+                                            <p className="address">
+                                                Street: 55 Cunnery Rd<br />
+                                                City: MANCHESTER<br />
+                                                Zip Code/Postal code: M2 1EU
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

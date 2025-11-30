@@ -54,6 +54,85 @@ const Affiliate = () => {
                   </p>
                 </div>
               </div>
+              
+              {/* Prize Structure Table */}
+              <div className="col-lg-12 mt-60 mb-60">
+                <div className="prize-structure-section wow fadeInUp">
+                  <div className="prize-structure-header">
+                    <h3 className="prize-structure-title">💰 Prize Structure</h3>
+                    <div className="jackpot-highlight">
+                      <div className="jackpot-icon">🎰</div>
+                      <div className="jackpot-info">
+                        <div className="jackpot-label">Jackpot</div>
+                        <div className="jackpot-amount">$80,000</div>
+                        <div className="jackpot-frequency">Every 10 Minutes</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="prize-table-wrapper">
+                    <table className="prize-structure-table">
+                      <thead>
+                        <tr>
+                          <th className="prize-match-col">Match</th>
+                          <th className="prize-amount-col">Prize</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="prize-row prize-row-6">
+                          <td className="prize-match">
+                            <div className="match-badge match-6">6 Digit Match</div>
+                          </td>
+                          <td className="prize-amount">
+                            <span className="prize-value prize-mega">$50,000+</span>
+                          </td>
+                        </tr>
+                        <tr className="prize-row prize-row-5">
+                          <td className="prize-match">
+                            <div className="match-badge match-5">5 Digit Match</div>
+                          </td>
+                          <td className="prize-amount">
+                            <span className="prize-value prize-large">$20,000</span>
+                          </td>
+                        </tr>
+                        <tr className="prize-row prize-row-4">
+                          <td className="prize-match">
+                            <div className="match-badge match-4">4 Digit Match</div>
+                          </td>
+                          <td className="prize-amount">
+                            <span className="prize-value prize-medium">$3,000</span>
+                          </td>
+                        </tr>
+                        <tr className="prize-row prize-row-3">
+                          <td className="prize-match">
+                            <div className="match-badge match-3">3 Digit Match</div>
+                          </td>
+                          <td className="prize-amount">
+                            <span className="prize-value prize-small">$300</span>
+                          </td>
+                        </tr>
+                        <tr className="prize-row prize-row-2">
+                          <td className="prize-match">
+                            <div className="match-badge match-2">2 Digit Match</div>
+                          </td>
+                          <td className="prize-amount">
+                            <span className="prize-value prize-free">Free Ticket</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  
+                  <div className="draw-info-banner">
+                    <div className="draw-info-icon">⏰</div>
+                    <div className="draw-info-content">
+                      <div className="draw-info-title">Draws Every 10 Minutes</div>
+                      <div className="draw-info-subtitle">New chances to win every 10 minutes based on Bitcoin block hashes</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
               <div className="col-lg-12">
                 <div className="grid-column-3">
                   <div className="getstart-item style-2 color-4  wow fadeInUp hover-item">
