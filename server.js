@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config(); // Load environment variables
 const cors = require('cors');
 const path = require('path');
 const multer = require('multer');
@@ -6,10 +7,15 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { createClient } = require('@supabase/supabase-js');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+const EMAIL_USER = process.env.EMAIL_USER;
+// Support both standard EMAIL_PASS and USER's preferred APP_PASSWORD
+const EMAIL_PASS = process.env.EMAIL_PASS || process.env.APP_PASSWORD;
+const EMAIL_READY = Boolean(EMAIL_USER && EMAIL_PASS);
 
 // Get Supabase credentials
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://ktezajwbhdwswdvlsdqw.supabase.co';
@@ -18,6 +24,60 @@ const SUPABASE_SERVICE_ROLE = process.env.SUPABASE_SERVICE_ROLE || 'eyJhbGciOiJI
 
 // Initialize Supabase client
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE);
+
+// Email transporter (Gmail App Password)
+let transporter = null;
+if (EMAIL_READY) {
+    transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: EMAIL_USER,
+            pass: EMAIL_PASS
+        }
+    });
+
+    // Verify transporter on startup so it's ready
+    transporter.verify((err) => {
+        if (err) {
+            console.error('Email transporter error:', err);
+        } else {
+            console.log('Email transporter ready');
+        }
+    });
+} else {
+    console.error('Email transporter not configured: set EMAIL_USER and EMAIL_PASS (Gmail app password).');
+}
+
+// Simple in-memory OTP store (email -> { otp, expiresAt })
+const otpStore = new Map();
+
+const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
+
+const sendOtpEmail = async (to, otp) => {
+    if (!EMAIL_READY || !transporter) {
+        throw new Error('Email not configured on server');
+    }
+    const mailOptions = {
+        from: `"LotteryCompare Admin" <${EMAIL_USER}>`,
+        to,
+        subject: 'Your Admin Password Reset OTP',
+        html: `
+            <div style="font-family: Arial, sans-serif; max-width: 520px; margin: 0 auto; background: #0f1024; color: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #22244a;">
+                <div style="padding: 20px 24px; background: linear-gradient(135deg, #667eea, #764ba2);">
+                    <h2 style="margin: 0; color: #fff;">Admin Password Reset</h2>
+                    <p style="margin: 6px 0 0; color: rgba(255,255,255,0.9);">Use the OTP below to reset your password.</p>
+                </div>
+                <div style="padding: 24px;">
+                    <p style="margin: 0 0 12px; color: rgba(255,255,255,0.8);">Enter this OTP in the admin panel within the next 10 minutes:</p>
+                    <div style="font-size: 32px; font-weight: 800; letter-spacing: 6px; text-align: center; padding: 16px; background: rgba(102,126,234,0.1); border: 1px solid rgba(102,126,234,0.3); border-radius: 12px; color: #fff;">${otp}</div>
+                    <p style="margin: 16px 0 0; font-size: 12px; color: rgba(255,255,255,0.6);">If you did not request this, please ignore this email.</p>
+                </div>
+            </div>
+        `
+    };
+
+    await transporter.sendMail(mailOptions);
+};
 
 // Middleware
 app.use(cors());
@@ -171,6 +231,136 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
+// Forgot password - send OTP to admin email
+app.post('/api/auth/forgot-password', async (req, res) => {
+    try {
+        const { email, role } = req.body;
+
+        if (!email) {
+            return res.status(400).json({ error: 'Email is required' });
+        }
+
+        // Only allow admin role for this route
+        if (role && role !== 'admin') {
+            return res.status(400).json({ error: 'Invalid role' });
+        }
+
+        if (!EMAIL_READY || !transporter) {
+            return res.status(500).json({ error: 'Email not configured on server. Set EMAIL_USER and EMAIL_PASS.' });
+        }
+
+        // Check user exists
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/admin_users?email=eq.${encodeURIComponent(email)}&select=*`, {
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            return res.status(400).json({ error: 'Unable to process request' });
+        }
+
+        const data = await response.json();
+        if (!Array.isArray(data) || data.length === 0) {
+            return res.status(404).json({ error: 'Admin user not found' });
+        }
+
+        const user = data[0];
+        if (user.role !== 'admin') {
+            return res.status(403).json({ error: 'Unauthorized: Only admins can reset passwords' });
+        }
+
+        const otp = generateOTP();
+        const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes
+        otpStore.set(email, { otp, expiresAt });
+
+        await sendOtpEmail(email, otp);
+
+        res.json({ message: 'OTP sent to admin email' });
+    } catch (err) {
+        console.error('Forgot password error:', err);
+        res.status(500).json({ error: 'Failed to send OTP' });
+    }
+});
+
+// Reset password with OTP
+app.post('/api/auth/reset-password', async (req, res) => {
+    try {
+        const { email, otp, newPassword, role } = req.body;
+
+        if (!email || !otp || !newPassword) {
+            return res.status(400).json({ error: 'Email, OTP, and new password are required' });
+        }
+
+        if (role && role !== 'admin') {
+            return res.status(400).json({ error: 'Invalid role' });
+        }
+
+        const record = otpStore.get(email);
+        if (!record) {
+            return res.status(400).json({ error: 'OTP not found. Please request a new one.' });
+        }
+
+        if (Date.now() > record.expiresAt) {
+            otpStore.delete(email);
+            return res.status(400).json({ error: 'OTP expired. Please request a new one.' });
+        }
+
+        if (record.otp !== otp) {
+            return res.status(400).json({ error: 'Invalid OTP' });
+        }
+
+        if (newPassword.length < 8) {
+            return res.status(400).json({ error: 'Password must be at least 8 characters' });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update password in Supabase
+        const updateUrl = `${SUPABASE_URL}/rest/v1/admin_users?email=eq.${encodeURIComponent(email)}`;
+
+        // Double check user role before updating
+        const checkUserRes = await fetch(`${SUPABASE_URL}/rest/v1/admin_users?email=eq.${encodeURIComponent(email)}&select=role`, {
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            }
+        });
+
+        if (checkUserRes.ok) {
+            const userData = await checkUserRes.json();
+            if (userData.length > 0 && userData[0].role !== 'admin') {
+                return res.status(403).json({ error: 'Unauthorized operation' });
+            }
+        }
+
+        const updateRes = await fetch(updateUrl, {
+            method: 'PATCH',
+            headers: {
+                'apikey': SUPABASE_SERVICE_ROLE,
+                'Authorization': `Bearer ${SUPABASE_SERVICE_ROLE}`,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=representation'
+            },
+            body: JSON.stringify({ password: hashedPassword })
+        });
+
+        if (!updateRes.ok) {
+            const text = await updateRes.text();
+            console.error('Password reset update failed:', text);
+            return res.status(500).json({ error: 'Failed to update password' });
+        }
+
+        otpStore.delete(email);
+        res.json({ message: 'Password updated successfully' });
+    } catch (err) {
+        console.error('Reset password error:', err);
+        res.status(500).json({ error: 'Failed to reset password' });
+    }
+});
+
 // Verify token
 app.get('/api/auth/verify', verifyToken, async (req, res) => {
     try {
@@ -215,7 +405,7 @@ app.get('/api/content/pages', async (req, res) => {
         const response = await fetch(queryUrl, {
             headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
         });
-        
+
         if (response.ok) {
             const data = await response.json();
             return res.json(Array.isArray(data) ? data : []);
@@ -233,7 +423,7 @@ app.get('/api/content/pages/:pageSlug', async (req, res) => {
         const response = await fetch(queryUrl, {
             headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
         });
-        
+
         if (response.ok) {
             const data = await response.json();
             if (Array.isArray(data) && data.length > 0) {
@@ -264,8 +454,8 @@ app.post('/api/content/pages', verifyToken, async (req, res) => {
             const updateUrl = `${SUPABASE_URL}/rest/v1/page_content?id=eq.${pageId}`;
             const updateRes = await fetch(updateUrl, {
                 method: 'PATCH',
-                headers: { 
-                    'apikey': SUPABASE_ANON_KEY, 
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
                     'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
                     'Content-Type': 'application/json',
                     'Prefer': 'return=representation'
@@ -291,8 +481,8 @@ app.post('/api/content/pages', verifyToken, async (req, res) => {
             const createUrl = `${SUPABASE_URL}/rest/v1/page_content`;
             const createRes = await fetch(createUrl, {
                 method: 'POST',
-                headers: { 
-                    'apikey': SUPABASE_ANON_KEY, 
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
                     'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
                     'Content-Type': 'application/json',
                     'Prefer': 'return=representation'
@@ -329,7 +519,7 @@ app.get('/api/content/sections', async (req, res) => {
         const response = await fetch(queryUrl, {
             headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
         });
-        
+
         if (response.ok) {
             const data = await response.json();
             return res.json(Array.isArray(data) ? data : []);
@@ -358,8 +548,8 @@ app.post('/api/content/sections', verifyToken, async (req, res) => {
             const updateUrl = `${SUPABASE_URL}/rest/v1/content_sections?id=eq.${sectionId}`;
             const updateRes = await fetch(updateUrl, {
                 method: 'PATCH',
-                headers: { 
-                    'apikey': SUPABASE_ANON_KEY, 
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
                     'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
                     'Content-Type': 'application/json',
                     'Prefer': 'return=representation'
@@ -382,8 +572,8 @@ app.post('/api/content/sections', verifyToken, async (req, res) => {
             const createUrl = `${SUPABASE_URL}/rest/v1/content_sections`;
             const createRes = await fetch(createUrl, {
                 method: 'POST',
-                headers: { 
-                    'apikey': SUPABASE_ANON_KEY, 
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
                     'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
                     'Content-Type': 'application/json',
                     'Prefer': 'return=representation'
@@ -416,22 +606,22 @@ app.post('/api/content/sections', verifyToken, async (req, res) => {
 const handleMulterError = (err, req, res, next) => {
     if (err instanceof multer.MulterError) {
         if (err.code === 'LIMIT_FILE_SIZE') {
-            return res.status(400).json({ 
-                error: 'File too large. Maximum size is 50MB.' 
+            return res.status(400).json({
+                error: 'File too large. Maximum size is 50MB.'
             });
         }
         if (err.code === 'LIMIT_UNEXPECTED_FILE') {
-            return res.status(400).json({ 
-                error: 'Unexpected file field' 
+            return res.status(400).json({
+                error: 'Unexpected file field'
             });
         }
-        return res.status(400).json({ 
-            error: `Upload error: ${err.message}` 
+        return res.status(400).json({
+            error: `Upload error: ${err.message}`
         });
     }
     if (err) {
-        return res.status(400).json({ 
-            error: err.message || 'File upload error' 
+        return res.status(400).json({
+            error: err.message || 'File upload error'
         });
     }
     next();
@@ -440,14 +630,14 @@ const handleMulterError = (err, req, res, next) => {
 // Upload image
 app.post('/api/images/upload', verifyToken, upload.single('image'), handleMulterError, async (req, res) => {
     let filePath = null;
-    
+
     try {
         if (!req.file) {
             return res.status(400).json({ error: 'No file uploaded' });
         }
 
         const { imageName, imageKey, category, altText } = req.body;
-        
+
         // Validate and sanitize imageKey
         if (!imageKey || imageKey.trim() === '') {
             return res.status(400).json({ error: 'Image key is required' });
@@ -492,8 +682,8 @@ app.post('/api/images/upload', verifyToken, upload.single('image'), handleMulter
 
         if (storageError) {
             console.error('Storage upload error:', storageError);
-            return res.status(500).json({ 
-                error: `Storage upload failed: ${storageError.message}`, 
+            return res.status(500).json({
+                error: `Storage upload failed: ${storageError.message}`,
                 details: process.env.NODE_ENV === 'development' ? storageError : undefined
             });
         }
@@ -530,7 +720,7 @@ app.post('/api/images/upload', verifyToken, upload.single('image'), handleMulter
         if (!insertRes.ok) {
             const errorText = await insertRes.text();
             console.error('Database insert error:', errorText);
-            
+
             // Try to delete from storage if database insert failed
             if (filePath) {
                 try {
@@ -539,8 +729,8 @@ app.post('/api/images/upload', verifyToken, upload.single('image'), handleMulter
                     console.error('Error removing file from storage after DB failure:', deleteError);
                 }
             }
-            
-            return res.status(500).json({ 
+
+            return res.status(500).json({
                 error: 'Failed to save image metadata',
                 details: process.env.NODE_ENV === 'development' ? errorText : undefined
             });
@@ -565,8 +755,8 @@ app.post('/api/images/upload', verifyToken, upload.single('image'), handleMulter
             name: err.name,
             code: err.code
         });
-        
-        res.status(500).json({ 
+
+        res.status(500).json({
             error: err.message || 'Internal server error during image upload',
             details: process.env.NODE_ENV === 'development' ? err.stack : undefined
         });
@@ -639,8 +829,8 @@ app.delete('/api/images/:imageId', verifyToken, async (req, res) => {
         const deleteUrl = `${SUPABASE_URL}/rest/v1/site_images?id=eq.${req.params.imageId}`;
         const deleteRes = await fetch(deleteUrl, {
             method: 'DELETE',
-            headers: { 
-                'apikey': SUPABASE_ANON_KEY, 
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
                 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
             }
         });
@@ -662,7 +852,7 @@ app.delete('/api/images/:imageId', verifyToken, async (req, res) => {
 app.get('/api/page-elements/:pageName', async (req, res) => {
     try {
         const { pageName } = req.params;
-        
+
         // Get stored elements from database
         const queryUrl = `${SUPABASE_URL}/rest/v1/page_elements?page_name=eq.${pageName}&select=*`;
         const response = await fetch(queryUrl, {
@@ -771,7 +961,7 @@ app.post('/api/seed-page-elements', verifyToken, async (req, res) => {
             { page_name: 'new-home', element_id: 'hero-h1', element_type: 'h1', original_text: 'LotteryCompare | Find the best Casino', updated_text: 'LotteryCompare | Find the best Casino' },
             { page_name: 'new-home', element_id: 'hero-p', element_type: 'p', original_text: 'Compare trusted crypto lotteries and play provably fair games', updated_text: 'Compare trusted crypto lotteries and play provably fair games' },
             { page_name: 'new-home', element_id: 'section-h2', element_type: 'h2', original_text: '🎁 Top Recommended Lotteries of 2025 ', updated_text: '🎁 Top Recommended Lotteries of 2025 ' },
-            
+
             // About Us
             { page_name: 'about-us', element_id: 'about-h1', element_type: 'h1', original_text: 'About the Lode lottery', updated_text: 'About the Lode lottery' },
             { page_name: 'about-us', element_id: 'about-p', element_type: 'p', original_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', updated_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
@@ -783,7 +973,7 @@ app.post('/api/seed-page-elements', verifyToken, async (req, res) => {
             const checkRes = await fetch(checkUrl, {
                 headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
             });
-            
+
             const existing = await checkRes.json();
             if (!Array.isArray(existing) || existing.length === 0) {
                 // Create new element
@@ -836,7 +1026,7 @@ app.get('/api/pages-list', async (req, res) => {
 app.get('/api/frontend/page-elements/:pageName', async (req, res) => {
     try {
         const { pageName } = req.params;
-        
+
         const queryUrl = `${SUPABASE_URL}/rest/v1/page_elements?page_name=eq.${pageName}&select=*`;
         const response = await fetch(queryUrl, {
             headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
@@ -1136,8 +1326,8 @@ app.get('/api/frontend/contests', async (req, res) => {
     try {
         const queryUrl = `${SUPABASE_URL}/rest/v1/contests?order=created_at.desc&select=*`;
         const response = await fetch(queryUrl, {
-            headers: { 
-                'apikey': SUPABASE_ANON_KEY, 
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
                 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
                 'Content-Type': 'application/json'
             }
@@ -1361,7 +1551,7 @@ app.use((req, res, next) => {
     if (req.path.startsWith('/api')) {
         return next();
     }
-    
+
     // Serve React index.html for all other routes
     const indexPath = path.join(buildPath, 'index.html');
     if (fs.existsSync(indexPath)) {
