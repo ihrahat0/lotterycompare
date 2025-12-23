@@ -95,61 +95,58 @@ const HowToWork = () => {
             ))}
           </div>
 
-          {/* What Makes It Different */}
-          <div className="content-section wow fadeInUp mb-80">
-            <h2>What Makes Crypto Lotteries Different?</h2>
-            <div className="row mt-40">
-              <div className="col-lg-6">
-                <div className="feature-box">
-                  <h4>✓ Provably Fair Technology</h4>
-                  <p>Every game result can be verified on the blockchain. You can check that the Lottery didn't manipulate the outcome.</p>
-                </div>
-                <div className="feature-box">
-                  <h4>✓ No KYC Required</h4>
-                  <p>Most Crypto Lottery don't require identity verification. Play anonymously using just your wallet address.</p>
-                </div>
-                <div className="feature-box">
-                  <h4>✓ Lower House Edge</h4>
-                  <p>Blockchain Lotterys often have lower overhead costs, resulting in better odds and higher payouts for players.</p>
-                </div>
-              </div>
-              <div className="col-lg-6">
-                <div className="feature-box">
-                  <h4>✓ Instant Withdrawals</h4>
-                  <p>Traditional Lotterys take days to process withdrawals. Crypto Lottery send winnings to your wallet instantly.</p>
-                </div>
-                <div className="feature-box">
-                  <h4>✓ Global Access</h4>
-                  <p>Play from anywhere in the world. No geographic restrictions or banking limitations.</p>
-                </div>
-                <div className="feature-box">
-                  <h4>✓ Transparent Odds</h4>
-                  <p>All game odds and RTP (Return to Player) rates are publicly verifiable on the blockchain.</p>
-                </div>
-              </div>
+          {/* Crypto vs Traditional Comparison Redesign */}
+          <div className="comparison-section-premium mb-80 wow fadeInUp">
+            <div className="comparison-header">
+              <h2>Crypto vs Traditional <span className="highlight-text">Lotteries</span></h2>
+              <p>A comparison between centralized systems and Web3</p>
             </div>
-          </div>
 
-          {/* How to Verify Provably Fair */}
-          <div className="content-section wow fadeInUp mb-80 bg-section p-60">
-            <h2>How to Verify Provably Fair Games</h2>
-            <p className="mb-40">Here's how you can verify that a game was truly fair:</p>
-            <div className="steps-list">
-              <div className="step-item">
-                <span className="step-num">Step 1</span>
-                <p><strong>Before playing:</strong> The Lottery generates a server seed (hashed) and shows it to you. They can't change this later.</p>
+            <div className="comparison-wrapper">
+              {/* Traditional Lotteries Card */}
+              <div className="comparison-card type-traditional">
+                <div className="card-header">
+                  <div className="card-icon">💩</div>
+                  <h3>Traditional Lotteries</h3>
+                </div>
+                <div className="card-body">
+                  <p>
+                    Traditional lotteries are operated by <span className="accent-text">centralized organizations</span> that
+                    control the draw process and winning number generation. While they often offer very <span className="accent-text">large jackpots</span>,
+                    players must rely on <span className="accent-text">trust</span>, as results are <span className="accent-text">not publicly verifiable</span> in
+                    real time and are subject to geographic and regulatory restrictions.
+                  </p>
+                  <ul className="benefit-list">
+                    <li className="benefit-item"><span className="dot"></span> Centralized systems</li>
+                    <li className="benefit-item"><span className="dot"></span> Weekly draws</li>
+                    <li className="benefit-item"><span className="dot"></span> Trust-based outcomes</li>
+                    <li className="benefit-item"><span className="dot"></span> Large jackpots</li>
+                    <li className="benefit-item"><span className="dot"></span> KYC required</li>
+                  </ul>
+                </div>
               </div>
-              <div className="step-item">
-                <span className="step-num">Step 2</span>
-                <p><strong>You play:</strong> You provide a client seed (or the system generates one). This combines with the server seed to determine the outcome.</p>
-              </div>
-              <div className="step-item">
-                <span className="step-num">Step 3</span>
-                <p><strong>After the game:</strong> The Lottery reveals the unhashed server seed. You can use a verification tool to check that the result matches.</p>
-              </div>
-              <div className="step-item">
-                <span className="step-num">Step 4</span>
-                <p><strong>Verify on blockchain:</strong> Check the transaction on the blockchain explorer to confirm everything is recorded publicly.</p>
+
+              {/* Crypto Lotteries Card */}
+              <div className="comparison-card type-crypto">
+                <div className="card-header">
+                  <div className="card-icon">🔗</div>
+                  <h3>Crypto Lotteries</h3>
+                </div>
+                <div className="card-body">
+                  <p>
+                    Crypto lotteries emerged to solve the <span className="accent-text">transparency problem</span> in
+                    winning number generation. Winning numbers are derived from <span className="accent-text">public blockchain data</span>,
+                    allowing anyone to <span className="accent-text">verify results independently</span> without
+                    relying on an operator or centralized authority.
+                  </p>
+                  <ul className="benefit-list">
+                    <li className="benefit-item"><span className="dot"></span> Decentralized systems</li>
+                    <li className="benefit-item"><span className="dot"></span> Hourly jackpots</li>
+                    <li className="benefit-item"><span className="dot"></span> Publicly verifiable results</li>
+                    <li className="benefit-item"><span className="dot"></span> Smaller jackpots</li>
+                    <li className="benefit-item"><span className="dot"></span> <strong>No KYC required</strong></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
