@@ -52,7 +52,7 @@ const Affiliate = () => {
                     Experience the revolutionary Bitcoin-based lottery where winning numbers are determined
                     <br /> by Bitcoin mining block hashes every 10 minutes. Match digits and win big!
                   </p>
-                  <div className="text-center mt-30 wow fadeInUp" data-wow-delay="0.2s">
+                  <div style={{ display: "inline-grid", marginTop: "10px" }} className="text-center mt-30 wow fadeInUp" data-wow-delay="0.2s">
                     <a href="https://firstbtclottery.com/site/referral?code=v6zIr7Yg" target="_blank" rel="noopener noreferrer" className="tf-btn">
                       Play Now <i className="icon-right"></i>
                     </a>

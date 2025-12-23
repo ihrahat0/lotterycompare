@@ -44,7 +44,7 @@ const Header = () => {
                                 <div className="header-logo">
                                     <Link to="/">
                                         <img src={require('../assets/images/logo/logo.png')} alt="Logo" width="170" height="60" />
-                                        
+
                                     </Link>
                                 </div>
                                 <nav className="main-menu">
@@ -52,9 +52,7 @@ const Header = () => {
                                         <li className="current-menu-item">
                                             <Link to="/">HOME</Link>
                                         </li>
-                                        <li>
-                                            <a href="/contest">CONTEST</a>
-                                        </li>
+
                                         <li className="has-child">
                                             <a href="javascript:void(0)">PAGE</a>
                                             <ul className="sub-menu">
@@ -79,7 +77,7 @@ const Header = () => {
                                                 <li>
                                                     <Link to="/faq">Faq</Link>
                                                 </li>
-                                                
+
                                             </ul>
                                         </li>
                                         <li>
@@ -94,8 +92,8 @@ const Header = () => {
                                     <div className="btn-buy-tickets">
                                         <a className="tf-btn" href="http://firstbtclottery.com/site/referral?code=v6zIr7Yg"><i className="icon-tickets"></i>Play Now</a>
                                     </div>
-                                    <button 
-                                        className="new-mobile-menu-button" 
+                                    <button
+                                        className="new-mobile-menu-button"
                                         onClick={toggleMobileMenu}
                                         aria-label="Toggle Menu"
                                     >
@@ -124,8 +122,8 @@ const Header = () => {
                                     <Link to="/" onClick={toggleMobileMenu}>
                                         <img src={require('../assets/images/logo/logo.png')} alt="Logo" width="170" height="60" />
                                     </Link>
-                                    <button 
-                                        className="new-mobile-menu-close" 
+                                    <button
+                                        className="new-mobile-menu-close"
                                         onClick={toggleMobileMenu}
                                         aria-label="Close Menu"
                                     >
@@ -143,15 +141,10 @@ const Header = () => {
                                         <span className="menu-arrow">›</span>
                                     </Link>
 
-                                    <Link to="/contest" className="new-mobile-menu-item" onClick={toggleMobileMenu}>
-                                        <span className="menu-icon">🎯</span>
-                                        <span className="menu-text">CONTEST</span>
-                                        <span className="menu-arrow">›</span>
-                                    </Link>
 
                                     <div className="new-mobile-menu-item-with-submenu">
-                                        <button 
-                                            className="new-mobile-menu-item" 
+                                        <button
+                                            className="new-mobile-menu-item"
                                             onClick={togglePageSubmenu}
                                         >
                                             <span className="menu-icon">📄</span>
@@ -180,7 +173,7 @@ const Header = () => {
                                             <Link to="/faq" className="new-mobile-submenu-item" onClick={toggleMobileMenu}>
                                                 FAQ
                                             </Link>
-                                         
+
                                         </div>
                                     </div>
 

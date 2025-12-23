@@ -178,118 +178,151 @@ const NewHome = () => {
                         <div className="row">
                             <div className="col-12">
                                 <div className="heading-section">
-                                    <h2 className="title wow fadeInUp" style={getElementStyle('Lottery-section-h2')}>
-                                        {getElementText('Lottery-section-h2', '🎁 Top Recommended Lotteries of 2025 🎉')}
+                                    <h2 className="title wow fadeInUp">
+                                        🎯 Lottery Comparison: Traditional vs First BTC Lottery
                                     </h2>
-                                    <p className="wow fadeInUp" data-wow-delay="0.1s" style={getElementStyle('Lottery-section-p')}>
-                                        {getElementText('Lottery-section-p', 'Compare the top global lotteries , verified for payouts and signups. ')}
+                                    <p className="wow fadeInUp" data-wow-delay="0.1s">
+                                        See why verified on-chain lottery is the future of gaming
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Comparison Table - Desktop */}
-                        <div id="comparison-table" className="comparison-table wow fadeInUp mt-40 Lottery-table-desktop">
-                            <div className="table-responsive">
-                                <table className="table Lottery-comparison-table">
+                        {/* Detailed Comparison Table */}
+                        <div id="comparison-table" className="detailed-comparison-section wow fadeInUp mt-40">
+                            <div className="table-scroll-container">
+                                <table className="detailed-compare-table">
                                     <thead>
                                         <tr>
-                                            <th>Lottery</th>
-                                            <th>Odds of Winning</th>
-                                            <th>Highlights</th>
-                                            <th>Rating</th>
-                                            <th>Action</th>
+                                            <th>Feature</th>
+                                            <th>First BTC Lottery</th>
+                                            <th>UK National Lottery</th>
+                                            <th>EuroMillions</th>
+                                            <th>Powerball (US)</th>
+                                            <th>Mega Millions (US)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {topLotterys.map((Lottery, index) => (
-                                            <tr key={Lottery.id} className="wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
-                                                <td>
-                                                    <div className="Lottery-info">
-                                                        <img src={Lottery.logo_url || Lottery.logo} alt={Lottery.name} className="Lottery-logo" width="76" height="76" loading="lazy" />
-                                                        <div>
-                                                            <strong>{Lottery.name}</strong>
-                                                            {Lottery.featured && <span className="badge badge-success ml-2">Featured</span>}
-                                                            {Lottery.provablyFair && <span className="badge badge-info ml-2">Provably Fair</span>}
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td><span className="bonus-text">{Lottery.bonus_text || Lottery.bonus || 'N/A'}</span></td>
-                                                <td>{Lottery.description || Lottery.highlights || 'Professional Lottery'}</td>
-                                                <td>
-                                                    <div className="rating-stars">
-                                                        <span className="rating-number">{Lottery.rating || 4.5}</span> ⭐
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a
-                                                        href={Lottery.link || Lottery.affiliateLink || '#'}
-                                                        className="tf-btn style-3 small"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer nofollow"
-                                                    >
-                                                        Play Now
-                                                    </a>
-                                                    <Link to={`/Lottery/${Lottery.id}`} className="link-review">Review</Link>
-                                                </td>
-                                            </tr>
-                                        ))}
+                                        <tr>
+                                            <th>Draw Frequency</th>
+                                            <td>⏱️ Every <strong>10 minutes</strong></td>
+                                            <td>2× per week</td>
+                                            <td>2× per week</td>
+                                            <td>3× per week</td>
+                                            <td>2× per week</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Winning Number Source</th>
+                                            <td>🔗 <strong>Bitcoin blockchain</strong><br />(next block hash)</td>
+                                            <td>Internal RNG</td>
+                                            <td>Internal RNG</td>
+                                            <td>Internal RNG</td>
+                                            <td>Internal RNG</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Transparency</th>
+                                            <td>✅ <strong>Fully verifiable on blockchain</strong></td>
+                                            <td>❌ Not publicly verifiable</td>
+                                            <td>❌ Not verifiable</td>
+                                            <td>❌ Not verifiable</td>
+                                            <td>❌ Not verifiable</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Trust Model</th>
+                                            <td>🟢 <strong>Trustless</strong> (math & blockchain)</td>
+                                            <td>Central authority</td>
+                                            <td>Central authority</td>
+                                            <td>Central authority</td>
+                                            <td>Central authority</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Verification</th>
+                                            <td>Anyone can verify on Blockchain.com</td>
+                                            <td>Operator-controlled</td>
+                                            <td>Operator-controlled</td>
+                                            <td>Operator-controlled</td>
+                                            <td>Operator-controlled</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Ticket Price</th>
+                                            <td>💵 <strong>$5 per ticket</strong></td>
+                                            <td>£2–£2.50</td>
+                                            <td>€2.50</td>
+                                            <td>$2–$3</td>
+                                            <td>$2–$3</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Minimum Win</th>
+                                            <td>🎉 <strong>Any number matched wins</strong></td>
+                                            <td>Must match fixed tiers</td>
+                                            <td>Must match fixed tiers</td>
+                                            <td>Must match fixed tiers</td>
+                                            <td>Must match fixed tiers</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Payout Speed</th>
+                                            <td>⚡ <strong>Instant to crypto wallet</strong></td>
+                                            <td>Days / weeks</td>
+                                            <td>Days / weeks</td>
+                                            <td>Days / weeks</td>
+                                            <td>Days / weeks</td>
+                                        </tr>
+                                        <tr>
+                                            <th>KYC Requirement</th>
+                                            <td>🚫 <strong>No KYC</strong></td>
+                                            <td>✅ Required</td>
+                                            <td>✅ Required</td>
+                                            <td>✅ Required</td>
+                                            <td>✅ Required</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Geographic Limits</th>
+                                            <td>🌍 <strong>Worldwide</strong></td>
+                                            <td>UK only</td>
+                                            <td>EU only</td>
+                                            <td>US only</td>
+                                            <td>US only</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Age Restriction</th>
+                                            <td>19+</td>
+                                            <td>18+</td>
+                                            <td>18+</td>
+                                            <td>18+</td>
+                                            <td>18+</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Jackpot Size</th>
+                                            <td>Dynamic, frequent jackpots</td>
+                                            <td>Very large, rare</td>
+                                            <td>Very large, rare</td>
+                                            <td>Extremely large, rare</td>
+                                            <td>Extremely large, rare</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fairness Perception</th>
+                                            <td>⭐⭐⭐⭐⭐</td>
+                                            <td>⭐⭐</td>
+                                            <td>⭐⭐</td>
+                                            <td>⭐⭐</td>
+                                            <td>⭐⭐</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Modern UX / Web3</th>
+                                            <td>🚀 <strong>Built for Web3</strong></td>
+                                            <td>❌ Traditional</td>
+                                            <td>❌ Traditional</td>
+                                            <td>❌ Traditional</td>
+                                            <td>❌ Traditional</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
-                        {/* Lottery Cards - Mobile */}
-                        <div className="Lottery-cards-mobile mt-40">
-                            {topLotterys.map((Lottery, index) => (
-                                <div key={Lottery.id} className="Lottery-card-mobile wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
-                                    <div className="card-header">
-                                        <img src={Lottery.logo_url || Lottery.logo} alt={Lottery.name} className="Lottery-card-logo" width="76" height="76" loading="lazy" />
-                                        <div className="card-title-section">
-                                            <h3 className="Lottery-card-name">{Lottery.name}</h3>
-                                            {Lottery.featured && <span className="badge badge-success">Featured</span>}
-                                        </div>
-                                    </div>
-
-                                    <div className="card-body">
-                                        <div className="card-item">
-                                            <span className="label">Bonus</span>
-                                            <span className="value bonus-text">{Lottery.bonus_text || Lottery.bonus || 'N/A'}</span>
-                                        </div>
-
-                                        <div className="card-item">
-                                            <span className="label">Highlights</span>
-                                            <span className="value">{Lottery.description || Lottery.highlights || 'Professional Lottery'}</span>
-                                        </div>
-
-                                        <div className="card-item">
-                                            <span className="label">Rating</span>
-                                            <span className="value rating-stars">
-                                                <span className="rating-number">{Lottery.rating || 4.5}</span> ⭐
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="card-footer">
-                                        <a
-                                            href={Lottery.link || Lottery.affiliateLink || '#'}
-                                            className="tf-btn style-3"
-                                            target="_blank"
-                                            rel="noopener noreferrer nofollow"
-                                        >
-                                            Play Now
-                                        </a>
-                                        <Link to={`/Lottery/${Lottery.id}`} className="tf-btn style-outline">
-                                            Review
-                                        </Link>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
                         <div className="text-center mt-40">
-                            <Link to="/top-Lotterys" className="tf-btn">
-                                View All Lotterys <i className="icon-right"></i>
+                            <Link to="https://firstbtclottery.com/site/referral?code=v6zIr7Yg" className="tf-btn">
+                                Play First BTC Lottery <i className="icon-right"></i>
                             </Link>
                         </div>
                     </div>

@@ -30,65 +30,65 @@ const Contest = () => {
     };
 
     const getDefaultContests = () => [
-        { 
-            img: 'contest-1.png', 
-            title: 'First BTC Lottery', 
-            no: 'Big Win', 
-            remaining: 'Buy Unimited', 
-            prize: '$300,000,000/month', 
-            price: 'JOIN', 
+        {
+            img: 'contest-1.png',
+            title: 'First BTC Lottery',
+            no: 'Big Win',
+            remaining: 'Buy Unimited',
+            prize: '$300,000,000/month',
+            price: 'JOIN',
             timer: '290603',
             link: 'https://firstbtclottery.com/site/referral?code=v6zIr7Yg',
             highlights: ['No KYC', 'Crypto'],
             description: 'Odds of winning a jackpot: 1 in 16,777,216'
         },
-        { 
-            img: 'https://watcher.guru/news/wp-content/uploads/2023/09/a2-4.png', 
-            title: 'Stake', 
-            no: '10% Rakeback — Lifetime duration', 
-            remaining: '--', 
-            prize: '$50,000.000', 
-            price: 'Join', 
+        {
+            img: 'https://watcher.guru/news/wp-content/uploads/2023/09/a2-4.png',
+            title: 'Stake',
+            no: '10% Rakeback — Lifetime duration',
+            remaining: '--',
+            prize: '$50,000.000',
+            price: 'Join',
             timer: '290603',
             link: 'https://stake.com/Lottery/home/?c=AA0NC0iw&clickId=fdc-0a53cb9b-bffc-438e-97c1-335fd7e5dfa4'
         },
-        { 
-            img: 'https://cdn.prod.website-files.com/6659430ddebf16a696c96358/66b566c96d71c360fdc5d7b8_Home%20Opengraph.jpg', 
-            title: 'CloudBet', 
-            no: 'Up to 30% Rakeback - All Cash, No Rollover', 
-            remaining: 'Get up to 2500 USDT + 200 FS', 
-            prize: '$2500.000', 
-            price: 'Join', 
+        {
+            img: 'https://cdn.prod.website-files.com/6659430ddebf16a696c96358/66b566c96d71c360fdc5d7b8_Home%20Opengraph.jpg',
+            title: 'CloudBet',
+            no: 'Up to 30% Rakeback - All Cash, No Rollover',
+            remaining: 'Get up to 2500 USDT + 200 FS',
+            prize: '$2500.000',
+            price: 'Join',
             timer: '290603',
             link: 'https://www.cloudbet.com/en/landing/cryptomaniaks/?af_token=97ab6f554e12167d3dd796c1487c78b4'
         },
-        { 
-            img: 'https://chainwire.org/wp-content/uploads/2025/05/181954_17470999743XF4Qp2OEG.jpeg', 
-            title: 'BC.GAME', 
-            no: 'Welcome Bonus Up to $20,000', 
-            remaining: '9320', 
-            prize: '$20,000.000', 
-            price: 'Join', 
+        {
+            img: 'https://chainwire.org/wp-content/uploads/2025/05/181954_17470999743XF4Qp2OEG.jpeg',
+            title: 'BC.GAME',
+            no: 'Welcome Bonus Up to $20,000',
+            remaining: '9320',
+            prize: '$20,000.000',
+            price: 'Join',
             timer: '290603',
             link: 'https://partnerbcgame.com/vace0219c?subid=fdc-b85cb01f-ace6-4d90-80db-dda6ffe8066a'
         },
-        { 
-            img: 'https://www.thespike.gg/reviews/images/2025/09/thrill-Lottery-i-gaming-games-promotion-en-glo.jpg.webp', 
-            title: 'Thrill', 
-            no: 'Instant Rakeback.', 
-            remaining: 'Tiered Rewards Program', 
-            prize: '$10,000.000', 
-            price: 'Join', 
+        {
+            img: 'https://www.thespike.gg/reviews/images/2025/09/thrill-Lottery-i-gaming-games-promotion-en-glo.jpg.webp',
+            title: 'Thrill',
+            no: 'Instant Rakeback.',
+            remaining: 'Tiered Rewards Program',
+            prize: '$10,000.000',
+            price: 'Join',
             timer: '290603',
             link: 'https://thrillLottery.io/ta1aa7a5a'
         },
-        { 
-            img: 'https://www.ccn.com/wp-content/uploads/2025/07/motherland-Lottery-review-homepage.webp', 
-            title: 'Motherland Lottery', 
-            no: 'Up to $10,000 Bonus Matched', 
-            remaining: '*', 
-            prize: '$10,000.000', 
-            price: 'Join', 
+        {
+            img: 'https://www.ccn.com/wp-content/uploads/2025/07/motherland-Lottery-review-homepage.webp',
+            title: 'Motherland Lottery',
+            no: 'Up to $10,000 Bonus Matched',
+            remaining: '*',
+            prize: '$10,000.000',
+            price: 'Join',
             timer: '290603',
             link: 'https://record.motherlandpartners.com/_3zudlUxeY0vlD9UB4eAeYmNd7ZgqdRLk/1/?payload=fdc-b85cb01f-ace6-4d90-80db-dda6ffe8066a'
         }
@@ -97,8 +97,8 @@ const Contest = () => {
     if (loading) {
         return (
             <>
-                <SEO 
-                    title="Lottery Contests" 
+                <SEO
+                    title="Lottery Contests"
                     description="Browse available lottery contests and games. Choose from various prize pools and ticket prices. Play now and win big!"
                     keywords="lottery contests, lottery games, bingo, scratch cards, lottery prizes, online contests"
                 />
@@ -109,9 +109,7 @@ const Contest = () => {
                     <div className="tf-container">
                         <div className="row">
                             <div className="col-12">
-                                <div className="content">
-                                    <h1 className="title">Contest</h1>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -135,8 +133,8 @@ const Contest = () => {
 
     return (
         <>
-            <SEO 
-                title="Lottery Contests" 
+            <SEO
+                title="Lottery Contests"
                 description="Browse available lottery contests and games. Choose from various prize pools and ticket prices. Play now and win big!"
                 keywords="lottery contests, lottery games, bingo, scratch cards, lottery prizes, online contests"
             />
@@ -149,11 +147,10 @@ const Contest = () => {
                     <div className="row">
                         <div className="col-12">
                             <div className="content">
-                                <h1 className="title">Contest</h1>
                                 <ul className="breadcrumbs">
                                     <li><Link to="/">Home</Link></li>
                                     <li><i className="icon-next"></i></li>
-                                    <li>Contest</li>
+
                                 </ul>
                             </div>
                         </div>
@@ -224,10 +221,10 @@ const Contest = () => {
                                     {contests.map((contest, index) => {
                                         // Check if image is a URL or local file
                                         const isExternalUrl = contest.img.startsWith('http://') || contest.img.startsWith('https://');
-                                        const imageSrc = isExternalUrl 
-                                            ? contest.img 
+                                        const imageSrc = isExternalUrl
+                                            ? contest.img
                                             : require(`../assets/images/${contest.img.includes('contest') ? 'component' : 'section'}/${contest.img}`);
-                                        
+
                                         return (
                                             <div key={index} className="wg-game style-5 hover-img wow fadeInUp" data-wow-delay={`${(index % 3) * 0.2}s`}>
                                                 <div className="wg-game-image">
@@ -261,10 +258,10 @@ const Contest = () => {
                                                             ))}
                                                         </div>
                                                     )}
-                                                    <img 
-                                                        src={imageSrc} 
-                                                        alt={contest.title} 
-                                                        className="lazyload" 
+                                                    <img
+                                                        src={imageSrc}
+                                                        alt={contest.title}
+                                                        className="lazyload"
                                                         style={{
                                                             width: '100%',
                                                             height: '220px',
@@ -289,26 +286,26 @@ const Contest = () => {
                                                                 <p> <span>{contest.remaining}</span> Remaining</p>
                                                             </li>
                                                         </ul>
-                                                    {contest.description && (
-                                                        <p style={{
-                                                            fontSize: '13px',
-                                                            color: 'rgba(255, 255, 255, 0.75)',
-                                                            marginBottom: '12px',
-                                                            fontStyle: 'italic'
-                                                        }}>
-                                                            {contest.description}
-                                                        </p>
-                                                    )}
-                                                    <p className="text fs-14 fw-9">Win up to</p>
-                                                    <p className="money text-color-clip style-6">{contest.prize}</p>
-                                                    <a 
-                                                        href={contest.link} 
-                                                        className="tf-btn"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        {contest.price} Now <i className="icon-right"></i>
-                                                    </a>
+                                                        {contest.description && (
+                                                            <p style={{
+                                                                fontSize: '13px',
+                                                                color: 'rgba(255, 255, 255, 0.75)',
+                                                                marginBottom: '12px',
+                                                                fontStyle: 'italic'
+                                                            }}>
+                                                                {contest.description}
+                                                            </p>
+                                                        )}
+                                                        <p className="text fs-14 fw-9">Win up to</p>
+                                                        <p className="money text-color-clip style-6">{contest.prize}</p>
+                                                        <a
+                                                            href={contest.link}
+                                                            className="tf-btn"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            {contest.price} Now <i className="icon-right"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -317,7 +314,7 @@ const Contest = () => {
                                 </div>
 
                                 {/* Pagination */}
-                               
+
                             </div>
                         </div>
                     </div>

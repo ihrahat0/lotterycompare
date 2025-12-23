@@ -146,7 +146,7 @@ const LotteryResults = () => {
     <>
       <SEO
         title="FirstBTCLottery Result"
-        description="Check the latest FirstBTCLottery Result and winning numbers. View draw results and prize winners."
+        description="View some of First BTC Lottery Results, for more updated ones, check their site as there is a winner every 10 minutes."
         keywords="FirstBTCLottery Result, winning numbers, draw results, lottery winners"
       />
 

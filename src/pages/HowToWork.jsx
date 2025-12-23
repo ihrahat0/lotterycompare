@@ -42,56 +42,57 @@ const HowToWork = () => {
       <section className="section-how-it-works pt-80 pb-100">
         <div className="tf-container">
 
-          {/* 6 Steps */}
+          {/* 6 Steps - Redesigned */}
           <div className="row mb-80">
-            <div className="col-lg-4 col-md-6">
-              <div className="how-it-works-card wow fadeInUp">
-                <div className="step-number">1</div>
-                <div className="icon">📝</div>
-                <h4>Signup for free</h4>
-                <p>Create your account in minutes. No credit card required, just an email address to get started.</p>
+            {[
+              {
+                num: '01',
+                icon: '📝',
+                title: 'Signup for free',
+                text: 'Create your account in minutes. No credit card required, just an email address to get started.'
+              },
+              {
+                num: '02',
+                icon: '🎲',
+                title: 'Choose a lottery',
+                text: 'Browse our selection of crypto lotteries and pick the one that suits you best.'
+              },
+              {
+                num: '03',
+                icon: '💰',
+                title: 'Deposit crypto',
+                text: 'Make a minimum deposit of $5 using your preferred cryptocurrency to purchase lottery tickets.'
+              },
+              {
+                num: '04',
+                icon: '🎫',
+                title: 'Buy Ticket',
+                text: 'Purchase your lottery ticket and enter the draw. Your ticket is securely recorded on the blockchain.'
+              },
+              {
+                num: '05',
+                icon: '🔍',
+                title: 'Check Results',
+                text: "After the draw, check the results to see if you've won. All results are verifiable on the blockchain."
+              },
+              {
+                num: '06',
+                icon: '💸',
+                title: 'Instant Payout',
+                text: 'If you win, your winnings are automatically sent to your crypto wallet. No delays, no fees.'
+              }
+            ].map((step, index) => (
+              <div key={index} className="col-lg-4 col-md-6 mb-30">
+                <div className="modern-step-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
+                  <div className="step-number-bg">{step.num}</div>
+                  <div className="icon-wrapper">
+                    <span className="icon">{step.icon}</span>
+                  </div>
+                  <h4>{step.title}</h4>
+                  <p>{step.text}</p>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.1s">
-                <div className="step-number">2</div>
-                <div className="icon">🎲</div>
-                <h4>Choose a lottery to play</h4>
-                <p>Browse our selection of crypto lotteries and pick the one that suits you best.</p>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.2s">
-                <div className="step-number">3</div>
-                <div className="icon">💰</div>
-                <h4>Deposit $5 in crypto to buy ticket</h4>
-                <p>Make a minimum deposit of $5 using your preferred cryptocurrency to purchase lottery tickets.</p>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.3s">
-                <div className="step-number">4</div>
-                <div className="icon">🎫</div>
-                <h4>Buy Lottery Ticket</h4>
-                <p>Purchase your lottery ticket and enter the draw. Your ticket is securely recorded on the blockchain.</p>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.4s">
-                <div className="step-number">5</div>
-                <div className="icon">🔍</div>
-                <h4>Check Results for Winning</h4>
-                <p>After the draw, check the results to see if you've won. All results are verifiable on the blockchain.</p>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.5s">
-                <div className="step-number">6</div>
-                <div className="icon">💸</div>
-                <h4>Receive your winnings to your wallet</h4>
-                <p>If you win, your winnings are automatically sent to your crypto wallet. No delays, no fees.</p>
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* What Makes It Different */}
@@ -153,25 +154,48 @@ const HowToWork = () => {
             </div>
           </div>
 
-          {/* Getting Started */}
-          <div className="content-section wow fadeInUp">
-            <h2>Ready to Get Started?</h2>
-            <p>Follow these simple steps to start playing crypto lotteries today:</p>
-            <ol className="numbered-list mt-30">
-              <li>Signup for free</li>
-              <li>Choose a lottery to play</li>
-              <li>Deposit $5 in crypto to buy ticket</li>
-              <li>Buy Lottery Ticket</li>
-              <li>Check Results for Winning</li>
-              <li>Receive your winnings to your wallet</li>
-            </ol>
-            <div className="text-center mt-40">
-              <a href="https://firstbtclottery.com/site/referral?code=v6zIr7Yg" target="_blank" rel="noopener noreferrer" className="tf-btn">
-                Play Now<i className="icon-right"></i>
-              </a>
-              <Link to="/bonuses" className="tf-btn style-outline ml-20">
-                View Bonuses
-              </Link>
+          {/* Premium Getting Started Section */}
+          <div className="getting-started-premium wow fadeInUp">
+            <div className="floating-decor decor-1">🪙</div>
+            <div className="floating-decor decor-2">✨</div>
+            <div className="floating-decor decor-3">🎟️</div>
+
+            <div className="cta-content-wrapper">
+              <span className="cta-tagline">Ready to win?</span>
+              <h2 className="cta-main-title">
+                Your Journey to <span className="gradient-span">Big Jackpots</span> Starts Here
+              </h2>
+              <p className="sub-description color-secondary">
+                Follow these simple steps and join thousands of winners in the most transparent crypto lottery system.
+              </p>
+
+              <div className="premium-steps-list">
+                {[
+                  { id: '1', title: 'Sign Up', desc: 'Quick registration with email' },
+                  { id: '2', title: 'Pick Lottery', desc: 'Choose your favorite game' },
+                  { id: '3', title: 'Deposit', desc: 'Min $5 in your preferred crypto' },
+                  { id: '4', title: 'Get Ticket', desc: 'Securely recorded on blockchain' },
+                  { id: '5', title: 'Check Results', desc: 'Verifiable 24/7 draws' },
+                  { id: '6', title: 'Win Payout', desc: 'Instant transfer to your wallet' }
+                ].map((step) => (
+                  <div key={step.id} className="premium-step-item">
+                    <div className="step-circle">{step.id}</div>
+                    <div className="step-details">
+                      <h5>{step.title}</h5>
+                      <p>{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="cta-actions">
+                <a href="https://firstbtclottery.com/site/referral?code=v6zIr7Yg" target="_blank" rel="noopener noreferrer" className="cta-primary-btn">
+                  Play Now <i className="icon-right ml-10"></i>
+                </a>
+                <Link to="/bonuses" className="cta-secondary-btn">
+                  View Bonuses
+                </Link>
+              </div>
             </div>
           </div>
 

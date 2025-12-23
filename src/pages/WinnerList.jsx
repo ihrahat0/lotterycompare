@@ -20,12 +20,12 @@ const WinnerList = () => {
 
   return (
     <>
-      <SEO 
-        title="Winner List" 
-        description="Check the latest lottery winners and winning numbers. View contest results and prize winners."
+      <SEO
+        title="Winner List"
+        description="View some of First BTC Lottery Results, for more updated ones, check their site as there is a winner every 10 minutes."
         keywords="lottery winners, winning numbers, prize winners, lottery results"
       />
-      
+
       <div className="page-title">
         <div className="tf-tsparticles">
           <div id="tsparticles1" data-color="#fff" data-line="#fff"></div>
@@ -129,7 +129,7 @@ const WinnerList = () => {
                             </div>
                             <div>{winner.time}</div>
                             <div className="img">
-                              <img src={require(`../assets/images/item/item-table-${(index % 8) + 1}.png`)} alt=""/>
+                              <img src={require(`../assets/images/item/item-table-${(index % 8) + 1}.png`)} alt="" />
                             </div>
                           </div>
                         ))}
@@ -148,17 +148,17 @@ const WinnerList = () => {
               <section className="section-dowload-app ">
                 <div className="wrapper">
                   <div className="content">
-                    <div className="title wow fadeInUp">Play the lottery anytime, <br/> anywhere, even on the go</div>
-                    </div>
-            
+                    <div className="title wow fadeInUp">Play the lottery anytime, <br /> anywhere, even on the go</div>
+                  </div>
+
                   <div className="item-1 wow fadeInRight" data-wow-delay="0.3s" data-wow-duration="4s">
-                    <img src={require('../assets/images/item/footer-banner.png')} alt=""/>
+                    <img src={require('../assets/images/item/footer-banner.png')} alt="" />
                   </div>
                   <div className="item coin-1 wow fadeInDown" data-wow-delay="0.5s" data-wow-duration="3s">
-                    <img src={require('../assets/images/item/coin-1.png')} alt=""/>
+                    <img src={require('../assets/images/item/coin-1.png')} alt="" />
                   </div>
                   <div className="item coin-2 wow fadeInLeft" data-wow-delay="1s" data-wow-duration="3s">
-                    <img src={require('../assets/images/item/coin-2.png')} alt=""/>
+                    <img src={require('../assets/images/item/coin-2.png')} alt="" />
                   </div>
                 </div>
               </section>
