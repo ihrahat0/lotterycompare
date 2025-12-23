@@ -30,8 +30,6 @@ const Home = lazy(() => import('./pages/Home'));
 const NewHome = lazy(() => import('./pages/NewHome'));
 const Contact = lazy(() => import('./pages/Contact'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
-const Contest = lazy(() => import('./pages/Contest'));
-const ContestDetails = lazy(() => import('./pages/ContestDetails'));
 const LotteryResults = lazy(() => import('./pages/LotteryResults'));
 const Affiliate = lazy(() => import('./pages/Affiliate'));
 const HowToWork = lazy(() => import('./pages/HowToWork'));
@@ -143,17 +141,17 @@ function App() {
           <Preloader />
           {!window.location.pathname.startsWith('/admin') && !window.location.pathname.startsWith('/secretdoor') && <Header />}
           <Suspense fallback={
-            <div style={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
-              alignItems: 'center', 
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
               minHeight: '100vh',
               background: 'linear-gradient(180deg, #0a0118 0%, #1a0f2e 100%)'
             }}>
-              <div style={{ 
-                width: '50px', 
-                height: '50px', 
-                border: '3px solid rgba(255,107,53,0.3)', 
+              <div style={{
+                width: '50px',
+                height: '50px',
+                border: '3px solid rgba(255,107,53,0.3)',
                 borderTop: '3px solid #FF6B35',
                 borderRadius: '50%',
                 animation: 'spin 1s linear infinite'
@@ -164,7 +162,7 @@ function App() {
               {/* Admin Routes (hidden) */}
               <Route path="/secretdoor/login" element={<AdminLogin />} />
               <Route path="/secretdoor/*" element={<AdminRoute><AdminPanel /></AdminRoute>} />
-              
+
               {/* New Crypto Lottery Comparison Site Routes */}
               <Route path="/" element={<NewHome />} />
               <Route path="/top-casinos" element={<TopCasinos />} />
@@ -174,13 +172,11 @@ function App() {
               <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
               <Route path="/terms" element={<TermsAndConditions />} />
               <Route path="/disclaimer" element={<Disclaimer />} />
-              
-              
+
+
               {/* Keep existing routes */}
               <Route path="/contact" element={<Contact />} />
               <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/contest" element={<Contest />} />
-              <Route path="/contest-details" element={<ContestDetails />} />
               <Route path="/lottery-results" element={<LotteryResults />} />
               <Route path="/firstbtclottery" element={<Affiliate />} />
               <Route path="/affiliate" element={<Affiliate />} />
@@ -189,7 +185,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogDetail />} />
-              
+
               {/* Old home for reference */}
               <Route path="/old-home" element={<Home />} />
             </Routes>

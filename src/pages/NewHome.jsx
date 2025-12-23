@@ -10,21 +10,21 @@ import { Lotterys as fallbackLotterys, bonuses, blogPosts as fallbackBlogPosts }
 import '../styles/blog.css';
 
 const stripHtml = (text = '') =>
-  text.replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, '')
-    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+    text.replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, '')
+        .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
 
 const formatDate = (date) => {
-  if (!date) return '';
-  const parsed = new Date(date);
-  if (Number.isNaN(parsed.getTime())) return '';
-  return parsed.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  });
+    if (!date) return '';
+    const parsed = new Date(date);
+    if (Number.isNaN(parsed.getTime())) return '';
+    return parsed.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+    });
 };
 
 const NewHome = () => {
@@ -53,7 +53,7 @@ const NewHome = () => {
                         setLotterys(mappedData);
                     }
                 }
-                
+
                 // Fetch real blog posts from API
                 const blogRes = await fetch('/api/frontend/blog-posts');
                 if (blogRes.ok) {
@@ -63,7 +63,7 @@ const NewHome = () => {
                         setBlogPosts(blogData.slice(0, 3));
                     }
                 }
-                
+
                 // Fetch page elements for this page
                 const elementsRes = await fetch('/api/frontend/page-elements/new-home');
                 if (elementsRes.ok) {
@@ -108,22 +108,22 @@ const NewHome = () => {
     // Show ALL featured lotteries, not just 3
     const featuredLotterys = Lotterys.filter(c => c.featured);
     const topLotterys = Lotterys.slice(0, 5);
-    
+
     // Use lotteries from admin for bonus section (limit to 6 for display)
     const bonusLotterys = Lotterys.filter(c => c.bonus_text || c.bonus).slice(0, 6);
 
     return (
         <>
-            <SEO 
-                title="LotteryCompare | Find the Best Lottery" 
+            <SEO
+                title="LotteryCompare | Find the Best Lottery"
                 description="Compare trusted crypto lotteries and play provably fair games — all verified on the blockchain. Find the best Bitcoin lottery sites with instant payouts."
                 keywords="crypto lottery, bitcoin lottery, blockchain Lottery, provably fair, crypto gambling, btc lottery"
             />
             <StructuredData type="Organization" />
             <StructuredData type="WebSite" />
-            
+
             <div className="main-content">
-                
+
                 {/* Hero Section */}
                 <div className="tf-section">
                     <div className="page-title-home style-2">
@@ -132,22 +132,21 @@ const NewHome = () => {
                                 <div className="page-title-home-content">
                                     <div className="content">
                                         <h1 className="title">
-                                        🎁 Top Recommended Lotteries of 2025 <br />
+                                            🎁 Top Recommended Lotteries of 2025 <br />
                                             <span className="d-block animationtext slide">
                                                 <span className="cd-words-wrapper">
-                                                    <span className="item-text is-visible">Crypto Lottery</span>
+                                                    <span className="item-text is-visible">GUESS NUMBERS, WIN JACKPOT</span>
                                                     <span className="item-text is-hidden">of 2025</span>
                                                 </span>
                                             </span>
                                         </h1>
                                         <div className="text">
-                                            Compare trusted crypto lotteries and play provably fair games<br />
-                                            — all verified on the blockchain.
+                                            Compare trusted and proven global lotteries
                                         </div>
-                                        <div className="button-group" style={{display: 'inline-flex'}}>
-                                            <Link to="https://firstbtclottery.com/site/referral?code=v6zIr7Yg" className="tf-btn">
-                                               Play Now <i className="icon-right"></i>
-                                            </Link>
+                                        <div className="button-group" style={{ display: 'inline-flex' }}>
+                                            <a href="#comparison-table" className="tf-btn">
+                                                Compare <i className="icon-right"></i>
+                                            </a>
                                         </div>
                                     </div>
                                     <div className="image">
@@ -190,7 +189,7 @@ const NewHome = () => {
                         </div>
 
                         {/* Comparison Table - Desktop */}
-                        <div className="comparison-table wow fadeInUp mt-40 Lottery-table-desktop">
+                        <div id="comparison-table" className="comparison-table wow fadeInUp mt-40 Lottery-table-desktop">
                             <div className="table-responsive">
                                 <table className="table Lottery-comparison-table">
                                     <thead>
@@ -223,8 +222,8 @@ const NewHome = () => {
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a 
-                                                        href={Lottery.link || Lottery.affiliateLink || '#'} 
+                                                    <a
+                                                        href={Lottery.link || Lottery.affiliateLink || '#'}
                                                         className="tf-btn style-3 small"
                                                         target="_blank"
                                                         rel="noopener noreferrer nofollow"
@@ -272,8 +271,8 @@ const NewHome = () => {
                                     </div>
 
                                     <div className="card-footer">
-                                        <a 
-                                            href={Lottery.link || Lottery.affiliateLink || '#'} 
+                                        <a
+                                            href={Lottery.link || Lottery.affiliateLink || '#'}
                                             className="tf-btn style-3"
                                             target="_blank"
                                             rel="noopener noreferrer nofollow"
@@ -304,7 +303,7 @@ const NewHome = () => {
                                 <div className="heading-section text-center">
                                     <h2 className="title wow fadeInUp">How Crypto lotteries work?</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
-                                    Revolutionizing the traditional lotteries
+                                        Revolutionizing the traditional lotteries
                                     </p>
                                 </div>
                             </div>
@@ -338,40 +337,145 @@ const NewHome = () => {
                     </div>
                 </section>
 
-                {/* Featured Reviews */}
-                <section className="section-featured-reviews pt-100">
+                {/* VS Lottery Comparison Section */}
+                <section className="section-vs-comparison pt-100">
                     <div className="tf-container">
                         <div className="row">
                             <div className="col-12">
                                 <div className="heading-section">
                                     <h2 className="title wow fadeInUp">Featured Lottery Reviews</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
-                                        In-depth reviews of the top crypto lottery platforms
+                                        Compare the world's biggest lotteries head-to-head
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div className="grid-column-3 mt-40">
-                            {featuredLotterys.map((Lottery, index) => (
-                                <LotteryCard key={Lottery.id} Lottery={Lottery} />
-                            ))}
+                        <div className="vs-comparison-grid mt-40">
+                            {/* UK National Lottery */}
+                            <div className="vs-lottery-card wow fadeInUp">
+                                <div className="vs-lottery-header">
+                                    <span className="lottery-flag">🇬🇧</span>
+                                    <h4 className="lottery-name">UK National Lottery (Lotto)</h4>
+                                </div>
+                                <div className="vs-lottery-body">
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Rating</span>
+                                        <span className="stat-value">⭐⭐⭐⭐☆ (4.2 / 5)</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Jackpot Odds</span>
+                                        <span className="stat-value">1 in 45,000,000</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Typical Jackpot</span>
+                                        <span className="stat-value jackpot">£2M - £15M</span>
+                                    </div>
+                                    <p className="lottery-description">Government-run UK lottery with twice-weekly draws, centralized number generation, and large rollovers. Proceeds support public projects and charities.</p>
+                                </div>
+                            </div>
+
+                            {/* EuroMillions */}
+                            <div className="vs-lottery-card wow fadeInUp" data-wow-delay="0.1s">
+                                <div className="vs-lottery-header">
+                                    <span className="lottery-flag">🇪🇺</span>
+                                    <h4 className="lottery-name">EuroMillions</h4>
+                                </div>
+                                <div className="vs-lottery-body">
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Rating</span>
+                                        <span className="stat-value">⭐⭐⭐⭐☆ (4.1 / 5)</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Jackpot Odds</span>
+                                        <span className="stat-value">1 in 139,000,000</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Typical Jackpot</span>
+                                        <span className="stat-value jackpot">€17M - €240M</span>
+                                    </div>
+                                    <p className="lottery-description">Pan-European lottery offering massive rollover jackpots, twice-weekly draws, and centralized systems operated by national lottery organizations.</p>
+                                </div>
+                            </div>
+
+                            {/* Powerball */}
+                            <div className="vs-lottery-card wow fadeInUp" data-wow-delay="0.2s">
+                                <div className="vs-lottery-header">
+                                    <span className="lottery-flag">🇺🇸</span>
+                                    <h4 className="lottery-name">Powerball</h4>
+                                </div>
+                                <div className="vs-lottery-body">
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Rating</span>
+                                        <span className="stat-value">⭐⭐⭐⭐☆ (4.0 / 5)</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Jackpot Odds</span>
+                                        <span className="stat-value">1 in 292,000,000</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Typical Jackpot</span>
+                                        <span className="stat-value jackpot">$20M - $1B+</span>
+                                    </div>
+                                    <p className="lottery-description">Iconic US lottery famous for record-breaking jackpots, frequent rollovers, three weekly draws, and extremely low odds of winning the top prize.</p>
+                                </div>
+                            </div>
+
+                            {/* Mega Millions */}
+                            <div className="vs-lottery-card wow fadeInUp" data-wow-delay="0.3s">
+                                <div className="vs-lottery-header">
+                                    <span className="lottery-flag">🇺🇸</span>
+                                    <h4 className="lottery-name">Mega Millions</h4>
+                                </div>
+                                <div className="vs-lottery-body">
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Rating</span>
+                                        <span className="stat-value">⭐⭐⭐⭐☆ (3.9 / 5)</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Jackpot Odds</span>
+                                        <span className="stat-value">1 in 302,000,000</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Typical Jackpot</span>
+                                        <span className="stat-value jackpot">$20M - $1B+</span>
+                                    </div>
+                                    <p className="lottery-description">Major US lottery known for enormous jackpots, twice-weekly draws, centralized number selection, and some of the longest odds in global lottery games.</p>
+                                </div>
+                            </div>
+
+                            {/* First BTC Lottery - Featured */}
+                            <div className="vs-lottery-card vs-featured wow fadeInUp" data-wow-delay="0.4s">
+                                <div className="vs-lottery-header">
+                                    <span className="lottery-flag">🟣</span>
+                                    <h4 className="lottery-name">First BTC Lottery</h4>
+                                    <span className="featured-badge">⭐ Top Pick</span>
+                                </div>
+                                <div className="vs-lottery-body">
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Rating</span>
+                                        <span className="stat-value">⭐⭐⭐⭐⭐ (4.8 / 5)</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Jackpot Odds</span>
+                                        <span className="stat-value highlight">1 in 16,000,000</span>
+                                    </div>
+                                    <div className="lottery-stat">
+                                        <span className="stat-label">Typical Jackpot</span>
+                                        <span className="stat-value jackpot">~$80,000 (even 2 digits win!)</span>
+                                    </div>
+                                    <p className="lottery-description">Blockchain-based lottery with frequent draws, transparent number generation from public Bitcoin data, and instant crypto payouts without traditional lottery restrictions.</p>
+                                </div>
+                                <div className="vs-lottery-footer">
+                                    <a href="https://firstbtclottery.com/site/referral?code=v6zIr7Yg" target="_blank" rel="noopener noreferrer" className="tf-btn play-now-btn">Play Now <i className="icon-right"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Crypto Bonus Highlights */}
-                <section className="section-bonuses pt-100 pb-80">
+                {/* On-Chain Verification Section */}
+                <section className="section-on-chain pt-100 pb-80">
                     <div className="tf-container">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="heading-section">
-                                    <h2 className="title wow fadeInUp">🎁 Latest Bonuses and Prizes</h2>
-                                    <p className="wow fadeInUp" data-wow-delay="0.1s">
-                                    Grab these exclusive Lottery bonuses before they expire.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                         {/* Block Result Screenshot + Copy - REDESIGNED */}
                         <div className="on-chain-section">
                             <div className="on-chain-content-wrapper">
@@ -402,7 +506,7 @@ const NewHome = () => {
                                         </div>
                                         <h3>On-Chain, Verifiable Lottery Draws</h3>
                                         <p>
-                                        A blockchain lottery is fully transparent because every draw result is recorded on the public blockchain. The winning numbers are generated from real blockchain data—in FirstBTC example, they are the last digits of a Bitcoin block hash—so no one can change or manipulate them. This means every player can independently verify the result, ensuring 100% fairness and trust.
+                                            A blockchain lottery is fully transparent because every draw result is recorded on the public blockchain. The winning numbers are generated from real blockchain data—in FirstBTC example, they are the last digits of a Bitcoin block hash—so no one can change or manipulate them. This means every player can independently verify the result, ensuring 100% fairness and trust.
                                         </p>
                                         <ul className="on-chain-features">
                                             <li><span>Live block height with countdown to next draw</span></li>
@@ -432,101 +536,6 @@ const NewHome = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row mt-40">
-                            {bonusLotterys.length > 0 ? (
-                                bonusLotterys.map((lottery, index) => (
-                                    <div key={lottery.id || index} className="col-lg-4 col-md-6">
-                                        <div className="bonus-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
-                                            <div className="bonus-header">
-                                                <img 
-                                                    src={lottery.logo || lottery.logo_url} 
-                                                    alt={lottery.name} 
-                                                    className="Lottery-logo-small"
-                                                    onError={(e) => {
-                                                        e.target.style.display = 'none';
-                                                        e.target.parentElement.innerHTML = `<div class="logo-fallback-small">${lottery.name.charAt(0)}</div>`;
-                                                    }}
-                                                />
-                                                {lottery.featured && <span className="badge badge-hot">🔥 Hot</span>}
-                                            </div>
-                                            <h4>{lottery.name}</h4>
-                                            <div className="bonus-offer">{lottery.bonus_text || lottery.bonus || 'Welcome Bonus'}</div>
-                                            {lottery.description && (
-                                                <p className="bonus-description">{lottery.description}</p>
-                                            )}
-                                            <a 
-                                                href={lottery.link || lottery.affiliateLink || '#'} 
-                                                className="tf-btn style-3 w-100"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                Claim Bonus <i className="icon-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                ))
-                            ) : (
-                                // Fallback to hardcoded bonuses if no lotteries from admin
-                                bonuses.map((bonus, index) => (
-                                    <div key={bonus.id} className="col-lg-4 col-md-6">
-                                        <div className="bonus-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
-                                            <div className="bonus-header">
-                                                <img src={bonus.logo} alt={bonus.Lottery} className="Lottery-logo-small" />
-                                                <span className="badge badge-hot">🔥 Hot</span>
-                                            </div>
-                                            <h4>{bonus.Lottery}</h4>
-                                            <div className="bonus-offer">{bonus.offer}</div>
-                                            <div className="bonus-code">
-                                                <span>Code:</span> <strong>{bonus.code}</strong>
-                                            </div>
-                                            <p className="bonus-description">{bonus.description}</p>
-                                            
-                                            {/* Additional Bonuses for FBL */}
-                                            {bonus.additionalBonuses && bonus.additionalBonuses.length > 0 && (
-                                                <div className="additional-bonuses">
-                                                    {bonus.additionalBonuses.map((addBonus, idx) => (
-                                                        <div key={idx} className="additional-bonus-item">
-                                                            <div className="additional-bonus-title">
-                                                                <span className="bonus-icon">🎁</span>
-                                                                <strong>{addBonus.title}</strong>
-                                                            </div>
-                                                            {addBonus.code && (
-                                                                <div className="additional-bonus-code">
-                                                                    <span className="code-label">Code:</span>
-                                                                    <span className="code-value">{addBonus.code}</span>
-                                                                    <button 
-                                                                        className="copy-btn-small" 
-                                                                        onClick={() => navigator.clipboard.writeText(addBonus.code)}
-                                                                        title="Copy code"
-                                                                    >
-                                                                        📋
-                                                                    </button>
-                                                                </div>
-                                                            )}
-                                                            {addBonus.description && (
-                                                                <p className="additional-bonus-desc">{addBonus.description}</p>
-                                                            )}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                            
-                                            <a href="http://firstbtclottery.com/site/referral?code=v6zIr7Yg" className="tf-btn style-3 w-100">
-                                                Claim Bonus <i className="icon-right"></i>
-                                            </a>
-                                            <div className="bonus-expiry">
-                                                ⏰ Expires: {new Date(bonus.expiry).toLocaleDateString()}
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            )}
-                        </div>
-                        <div className="text-center mt-40">
-                            <Link to="/bonuses" className="tf-btn">
-                                View All Bonuses <i className="icon-right"></i>
-                            </Link>
                         </div>
                     </div>
                 </section>
@@ -564,10 +573,10 @@ const NewHome = () => {
                                     </div>
                                     <h2 className="educational-title">What Is a Crypto Lottery?</h2>
                                     <p className="educational-description">
-                                        A crypto lottery is a blockchain-based gambling game where you can play using 
+                                        A crypto lottery is a blockchain-based gambling game where you can play using
                                         cryptocurrency like Bitcoin, Ethereum, or other digital assets.
                                     </p>
-                                    
+
                                     <div className="benefits-grid">
                                         <div className="benefit-item">
                                             <div className="benefit-icon">✓</div>
@@ -605,7 +614,7 @@ const NewHome = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <Link to="/blog" className="tf-btn mt-40">
                                         Learn More <i className="icon-right"></i>
                                     </Link>
@@ -634,7 +643,7 @@ const NewHome = () => {
                                     const authorLabel = post.author || 'Lotterycompare Editorial';
                                     const formattedDate = formatDate(post.date);
                                     const excerpt = post.excerpt || stripHtml(post.content || '').substring(0, 150);
-                                    
+
                                     return (
                                         <article key={post.id} className="blog-card wow fadeInUp" data-wow-delay={`${index * 0.1}s`}>
                                             <Link to={`/blog/${post.slug}`} className="blog-card-image-link">
@@ -691,7 +700,7 @@ const NewHome = () => {
                                     <div className="deco-circle circle-2"></div>
                                     <div className="deco-circle circle-3"></div>
                                 </div>
-                                
+
                                 <div className="newsletter-header">
                                     <div className="newsletter-icon">🎁</div>
                                     <h2 className="newsletter-title">Get Weekly Crypto Lottery Bonuses</h2>
@@ -699,22 +708,22 @@ const NewHome = () => {
                                         Join 10,000+ players receiving exclusive deals, new Lottery launches, and winning strategies
                                     </p>
                                 </div>
-                                
+
                                 <form className="newsletter-form-modern">
                                     <div className="form-group-modern">
                                         <div className="input-icon">📧</div>
-                                        <input 
-                                            type="email" 
-                                            placeholder="Enter your email address" 
-                                            required 
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email address"
+                                            required
                                             className="email-input-modern"
                                         />
                                         <button type="submit" className="subscribe-btn-modern">
                                             Subscribe Now <i className="icon-right"></i>
-                                    </button>
+                                        </button>
                                     </div>
                                 </form>
-                                
+
                                 <div className="newsletter-features">
                                     <div className="feature-item">
                                         <span className="feature-icon">✅</span>

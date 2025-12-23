@@ -4,19 +4,19 @@ import { initAllPlugins } from '../utils/initScripts';
 import SEO from '../components/SEO';
 
 const HowToWork = () => {
-  useEffect(() => { 
+  useEffect(() => {
     initAllPlugins();
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <>
-      <SEO 
-        title="How Crypto Lotteries Work" 
+      <SEO
+        title="How Crypto Lotteries Work"
         description="Learn how blockchain lotteries work, why they're provably fair, and how to get started with crypto gambling. Complete guide for beginners."
         keywords="how crypto lottery works, blockchain lottery guide, provably fair lottery, crypto gambling"
       />
-      
+
       <div className="page-title">
         <div className="tf-tsparticles">
           <div id="tsparticles1" data-color="#fff" data-line="#fff"></div>
@@ -41,7 +41,7 @@ const HowToWork = () => {
 
       <section className="section-how-it-works pt-80 pb-100">
         <div className="tf-container">
-          
+
           {/* 6 Steps */}
           <div className="row mb-80">
             <div className="col-lg-4 col-md-6">
@@ -166,9 +166,9 @@ const HowToWork = () => {
               <li>Receive your winnings to your wallet</li>
             </ol>
             <div className="text-center mt-40">
-              <Link to="/top-Lotterys" className="tf-btn">
+              <a href="https://firstbtclottery.com/site/referral?code=v6zIr7Yg" target="_blank" rel="noopener noreferrer" className="tf-btn">
                 Play Now<i className="icon-right"></i>
-              </Link>
+              </a>
               <Link to="/bonuses" className="tf-btn style-outline ml-20">
                 View Bonuses
               </Link>

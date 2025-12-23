@@ -24,15 +24,25 @@
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
+
 /* Force dark cells (override bootstrap .table defaults) */
-.Lottery-comparison-table > :not(caption) > * > * {
+.Lottery-comparison-table> :not(caption)>*>* {
     background-color: transparent !important;
     border-color: rgba(119, 145, 186, 0.15) !important;
     color: #fff !important;
 }
-.Lottery-comparison-table tbody tr > * { background-color: #0a0a2a !important; }
-.Lottery-comparison-table tbody tr:nth-child(even) > * { background-color: #0f0c30 !important; }
-.Lottery-comparison-table thead th { border-color: rgba(255, 255, 255, 0.15) !important; }
+
+.Lottery-comparison-table tbody tr>* {
+    background-color: #0a0a2a !important;
+}
+
+.Lottery-comparison-table tbody tr:nth-child(even)>* {
+    background-color: #0f0c30 !important;
+}
+
+.Lottery-comparison-table thead th {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
 
 .Lottery-comparison-table thead {
     background: transparent;
@@ -56,12 +66,24 @@
     background: #0f0c30;
 }
 
-.comparison-table .table-responsive { background: transparent; }
-.link-review { margin-left: 12px; color: rgba(255,255,255,0.8); text-decoration: none; }
-.link-review:hover { color: #fff; }
+.comparison-table .table-responsive {
+    background: transparent;
+}
+
+.link-review {
+    margin-left: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+}
+
+.link-review:hover {
+    color: #fff;
+}
 
 /* Blog section spacing */
-.section-blog { margin-bottom: 80px; }
+.section-blog {
+    margin-bottom: 80px;
+}
 
 /* Generic section helpers used on How Crypto lottery’s work? */
 .content-section {
@@ -70,65 +92,212 @@
     border-radius: 16px;
     padding: 40px;
 }
-.content-section h2 { color: #fff; }
-.content-section p, .content-section li { color: rgba(255,255,255,0.8); }
-.content-section .mt-40 { margin-top: 40px; }
-.content-section .mb-40 { margin-bottom: 40px; }
-.content-section .mb-80 { margin-bottom: 80px; }
+
+.content-section h2 {
+    color: #fff;
+}
+
+.content-section p,
+.content-section li {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.content-section .mt-40 {
+    margin-top: 40px;
+}
+
+.content-section .mb-40 {
+    margin-bottom: 40px;
+}
+
+.content-section .mb-80 {
+    margin-bottom: 80px;
+}
 
 .feature-box {
     background: #0d0b2a;
-    border: 1px solid rgba(119,145,186,0.1);
+    border: 1px solid rgba(119, 145, 186, 0.1);
     border-radius: 12px;
     padding: 20px 24px;
     margin-bottom: 18px;
 }
-.feature-box h4 { color: #fff; margin: 0 0 6px 0; }
-.feature-box p { margin: 0; }
 
-.steps-list { display: grid; gap: 14px; }
-.step-item { display: flex; gap: 16px; align-items: flex-start; background: #0d0b2a; border: 1px solid rgba(119,145,186,0.1); border-radius: 12px; padding: 16px 18px; }
-.step-num { background: linear-gradient(90.36deg, #5c27fe 0.96%, #c165dd 99.05%); color: #fff; border-radius: 999px; padding: 6px 12px; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+.feature-box h4 {
+    color: #fff;
+    margin: 0 0 6px 0;
+}
 
-.numbered-list { counter-reset: li; list-style: none; padding: 0; margin: 0; }
-.numbered-list li { position: relative; padding-left: 42px; margin-bottom: 12px; color: rgba(255,255,255,0.85); }
-.numbered-list li::before { counter-increment: li; content: counter(li); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; background: linear-gradient(180deg, #ffcb52 0%, #ff7b02 100%); color: #1d1d1d; }
+.feature-box p {
+    margin: 0;
+}
 
-.bg-section { background: #0a0a2a; border: 1px solid rgba(119,145,186,0.1); border-radius: 16px; }
-.p-60 { padding: 60px; }
+.steps-list {
+    display: grid;
+    gap: 14px;
+}
+
+.step-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: #0d0b2a;
+    border: 1px solid rgba(119, 145, 186, 0.1);
+    border-radius: 12px;
+    padding: 16px 18px;
+}
+
+.step-num {
+    background: linear-gradient(90.36deg, #5c27fe 0.96%, #c165dd 99.05%);
+    color: #fff;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.numbered-list {
+    counter-reset: li;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.numbered-list li {
+    position: relative;
+    padding-left: 42px;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.numbered-list li::before {
+    counter-increment: li;
+    content: counter(li);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    background: linear-gradient(180deg, #ffcb52 0%, #ff7b02 100%);
+    color: #1d1d1d;
+}
+
+.bg-section {
+    background: #0a0a2a;
+    border: 1px solid rgba(119, 145, 186, 0.1);
+    border-radius: 16px;
+}
+
+.p-60 {
+    padding: 60px;
+}
 
 @media (max-width: 768px) {
-    .content-section, .bg-section { padding: 24px; }
+
+    .content-section,
+    .bg-section {
+        padding: 24px;
+    }
 }
 
 /* Block Status Widget */
 .block-status {
     background: #131037;
-    border: 1px solid rgba(119,145,186,0.1);
+    border: 1px solid rgba(119, 145, 186, 0.1);
     border-radius: 16px;
     padding: 20px 24px;
     color: #fff;
 }
-.block-status.compact { padding: 14px 18px; }
-.block-status .label { opacity: 0.8; font-size: 0.9rem; }
-.block-status .value { font-size: 1.6rem; font-weight: 800; margin: 4px 0; }
-.block-status .next { opacity: 0.85; }
-.block-status .progress-wrap { height: 8px; background: #0d0b2a; border-radius: 999px; margin: 12px 0; overflow: hidden; border: 1px solid rgba(119,145,186,0.15); }
-.block-status .progress-bar { height: 100%; background: linear-gradient(90.36deg, #5c27fe 0.96%, #c165dd 99.05%); }
-.block-status .eta { font-size: 0.9rem; opacity: 0.85; }
-.block-status .error { color: #f87171; margin-top: 8px; font-size: 0.9rem; }
+
+.block-status.compact {
+    padding: 14px 18px;
+}
+
+.block-status .label {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.block-status .value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 4px 0;
+}
+
+.block-status .next {
+    opacity: 0.85;
+}
+
+.block-status .progress-wrap {
+    height: 8px;
+    background: #0d0b2a;
+    border-radius: 999px;
+    margin: 12px 0;
+    overflow: hidden;
+    border: 1px solid rgba(119, 145, 186, 0.15);
+}
+
+.block-status .progress-bar {
+    height: 100%;
+    background: linear-gradient(90.36deg, #5c27fe 0.96%, #c165dd 99.05%);
+}
+
+.block-status .eta {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.block-status .error {
+    color: #f87171;
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
 
 /* Page spacing helpers */
-.pt-80 { padding-top: 80px; }
-.pb-80 { padding-bottom: 80px; }
-.pb-100 { padding-bottom: 100px; }
-.mt-40 { margin-top: 40px; }
-.mt-60 { margin-top: 60px; }
-.mt-80 { margin-top: 80px; }
-.mt-100 { margin-top: 100px; }
-.mb-40 { margin-bottom: 40px; }
-.mb-60 { margin-bottom: 60px; }
-.mb-80 { margin-bottom: 80px; }
+.pt-80 {
+    padding-top: 80px;
+}
+
+.pb-80 {
+    padding-bottom: 80px;
+}
+
+.pb-100 {
+    padding-bottom: 100px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mt-60 {
+    margin-top: 60px;
+}
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.mb-60 {
+    margin-bottom: 60px;
+}
+
+.mb-80 {
+    margin-bottom: 80px;
+}
 
 .Lottery-info {
     display: flex;
@@ -251,7 +420,8 @@
 }
 
 /* Bonus Cards */
-.bonus-card, .bonus-card-full {
+.bonus-card,
+.bonus-card-full {
     background: #131037;
     border-radius: 20px;
     padding: 32px 28px;
@@ -264,22 +434,27 @@
     margin-bottom: 30px;
 }
 
-.bonus-card:hover, .bonus-card-full:hover {
+.bonus-card:hover,
+.bonus-card-full:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(92, 39, 254, 0.35);
     border-color: rgba(92, 39, 254, 0.3);
 }
 
-.bonus-card h3, .bonus-card-full h3,
-.bonus-card h4, .bonus-card-full h4 {
+.bonus-card h3,
+.bonus-card-full h3,
+.bonus-card h4,
+.bonus-card-full h4 {
     color: #fff;
 }
 
-.bonus-card p, .bonus-card-full p {
+.bonus-card p,
+.bonus-card-full p {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.bonus-card-header, .bonus-header {
+.bonus-card-header,
+.bonus-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -344,7 +519,8 @@
     opacity: 0.9;
 }
 
-.bonus-expiry, .bonus-timer {
+.bonus-expiry,
+.bonus-timer {
     text-align: center;
     margin-top: 15px;
     color: #dc2626;
@@ -441,7 +617,8 @@
 }
 
 /* Improved Bonus Card Spacing */
-.bonus-card, .bonus-card-full {
+.bonus-card,
+.bonus-card-full {
     background: #131037;
     border-radius: 20px;
     padding: 32px 28px;
@@ -453,13 +630,15 @@
     height: 100%;
 }
 
-.bonus-card:hover, .bonus-card-full:hover {
+.bonus-card:hover,
+.bonus-card-full:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(92, 39, 254, 0.35);
     border-color: rgba(92, 39, 254, 0.3);
 }
 
-.bonus-card-header, .bonus-header {
+.bonus-card-header,
+.bonus-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -468,8 +647,10 @@
     border-bottom: 1px solid rgba(119, 145, 186, 0.1);
 }
 
-.bonus-card h3, .bonus-card-full h3,
-.bonus-card h4, .bonus-card-full h4 {
+.bonus-card h3,
+.bonus-card-full h3,
+.bonus-card h4,
+.bonus-card-full h4 {
     color: #fff;
     margin-bottom: 16px;
     font-weight: 700;
@@ -546,7 +727,8 @@
     margin: 16px 0;
 }
 
-.bonus-card .tf-btn, .bonus-card-full .tf-btn {
+.bonus-card .tf-btn,
+.bonus-card-full .tf-btn {
     margin-top: auto;
     padding: 14px 24px;
     font-weight: 600;
@@ -554,7 +736,8 @@
     transition: all 0.3s ease;
 }
 
-.bonus-card .tf-btn:hover, .bonus-card-full .tf-btn:hover {
+.bonus-card .tf-btn:hover,
+.bonus-card-full .tf-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(92, 39, 254, 0.4);
 }
@@ -562,49 +745,155 @@
 /* Block Result Screenshot Card */
 .block-result-card {
     background: #0a0a2a;
-    border: 1px solid rgba(119,145,186,0.15);
+    border: 1px solid rgba(119, 145, 186, 0.15);
     border-radius: 20px;
     overflow: hidden;
     color: #fff;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
+
 .brc-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 22px 24px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
-    border-bottom: 1px solid rgba(119,145,186,0.15);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-bottom: 1px solid rgba(119, 145, 186, 0.15);
 }
-.brc-icon { font-size: 28px; width: 48px; height: 48px; display: grid; place-items: center; background: #131037; border: 1px solid rgba(119,145,186,0.2); border-radius: 14px; }
-.brc-meta { flex: 1; margin: 0 16px; }
-.brc-label { font-size: 0.9rem; opacity: 0.85; }
-.brc-number { font-weight: 800; font-size: 1.4rem; }
-.brc-status { color: #84cc16; font-weight: 800; }
 
-.brc-body { padding: 18px 24px 22px; }
-.brc-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 10px 0 18px; border-bottom: 1px dashed rgba(119,145,186,0.2); }
-.brc-col { background: #131037; border: 1px solid rgba(119,145,186,0.12); border-radius: 12px; padding: 12px 14px; }
-.brc-key { font-size: 0.85rem; opacity: 0.8; }
-.brc-val { font-weight: 700; margin-top: 4px; }
+.brc-icon {
+    font-size: 28px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    background: #131037;
+    border: 1px solid rgba(119, 145, 186, 0.2);
+    border-radius: 14px;
+}
 
-.brc-winning { display: flex; align-items: baseline; gap: 10px; margin: 16px 0 8px; }
-.brc-code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; letter-spacing: 1px; font-weight: 800; }
+.brc-meta {
+    flex: 1;
+    margin: 0 16px;
+}
 
-.brc-digits { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin: 12px 0 18px; }
-.digit-box { background: radial-gradient(120% 120% at 50% 0%, #222046 10%, #0d0b2a 60%); border: 1px solid rgba(119,145,186,0.2); border-radius: 12px; text-align: center; font-weight: 800; font-size: 1.4rem; }
+.brc-label {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
 
-.brc-cta { display: flex; justify-content: center; margin: 8px 0 6px; }
-.brc-btn { width: 100%; max-width: 420px; }
+.brc-number {
+    font-weight: 800;
+    font-size: 1.4rem;
+}
 
-.brc-breakdown { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
-.brc-winners { color: #84cc16; font-weight: 800; }
-.brc-break-grid { display: grid; grid-template-columns: repeat(5, auto); gap: 10px; opacity: 0.8; font-size: 0.9rem; }
+.brc-status {
+    color: #84cc16;
+    font-weight: 800;
+}
+
+.brc-body {
+    padding: 18px 24px 22px;
+}
+
+.brc-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    padding: 10px 0 18px;
+    border-bottom: 1px dashed rgba(119, 145, 186, 0.2);
+}
+
+.brc-col {
+    background: #131037;
+    border: 1px solid rgba(119, 145, 186, 0.12);
+    border-radius: 12px;
+    padding: 12px 14px;
+}
+
+.brc-key {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.brc-val {
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.brc-winning {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 16px 0 8px;
+}
+
+.brc-code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.brc-digits {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin: 12px 0 18px;
+}
+
+.digit-box {
+    background: radial-gradient(120% 120% at 50% 0%, #222046 10%, #0d0b2a 60%);
+    border: 1px solid rgba(119, 145, 186, 0.2);
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+.brc-cta {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 6px;
+}
+
+.brc-btn {
+    width: 100%;
+    max-width: 420px;
+}
+
+.brc-breakdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.brc-winners {
+    color: #84cc16;
+    font-weight: 800;
+}
+
+.brc-break-grid {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 10px;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
 
 @media (max-width: 768px) {
-    .brc-row { grid-template-columns: 1fr; }
-    .brc-digits { grid-template-columns: repeat(6, 1fr); }
-    .brc-break-grid { grid-template-columns: repeat(3, auto); }
+    .brc-row {
+        grid-template-columns: 1fr;
+    }
+
+    .brc-digits {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .brc-break-grid {
+        grid-template-columns: repeat(3, auto);
+    }
 }
 
 .bonus-type-badge {
@@ -642,7 +931,8 @@
 }
 
 /* Filters */
-.Lottery-filters, .bonus-filters {
+.Lottery-filters,
+.bonus-filters {
     background: #131037;
     padding: 30px;
     border-radius: 12px;
@@ -650,11 +940,13 @@
     border: 1px solid rgba(119, 145, 186, 0.1);
 }
 
-.Lottery-filters h3, .bonus-filters h3 {
+.Lottery-filters h3,
+.bonus-filters h3 {
     color: #fff;
 }
 
-.Lottery-filters label, .bonus-filters label {
+.Lottery-filters label,
+.bonus-filters label {
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -783,8 +1075,15 @@
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .newsletter-title {
@@ -885,21 +1184,21 @@
     .newsletter-modern {
         padding: 40px 25px;
     }
-    
+
     .newsletter-title {
         font-size: 1.6em;
     }
-    
+
     .form-group-modern {
         flex-direction: column;
         padding: 15px;
     }
-    
+
     .subscribe-btn-modern {
         width: 100%;
         padding: 15px;
     }
-    
+
     .newsletter-features {
         flex-direction: column;
         gap: 15px;
@@ -1012,11 +1311,14 @@
     border: 1px solid rgba(119, 145, 186, 0.1);
 }
 
-.review-section h2, .review-section h3, .review-section h4 {
+.review-section h2,
+.review-section h3,
+.review-section h4 {
     color: #fff;
 }
 
-.review-section p, .review-section li {
+.review-section p,
+.review-section li {
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -1175,7 +1477,8 @@
     border-radius: 8px;
 }
 
-.disclaimer-box h3, .disclaimer-box p {
+.disclaimer-box h3,
+.disclaimer-box p {
     color: #fff;
 }
 
@@ -1214,7 +1517,8 @@
     color: #fbbf24;
 }
 
-.warning-signs p, .warning-list li {
+.warning-signs p,
+.warning-list li {
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -1258,7 +1562,8 @@
     border: 1px solid rgba(119, 145, 186, 0.1);
 }
 
-.legal-box h3, .legal-box h4 {
+.legal-box h3,
+.legal-box h4 {
     color: #fff;
 }
 
@@ -1317,8 +1622,15 @@
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .floating-badge .badge-icon {
@@ -1439,7 +1751,7 @@
         padding-left: 0;
         margin-top: 50px;
     }
-    
+
     .educational-title {
         font-size: 2em;
     }
@@ -1449,15 +1761,15 @@
     .floating-badge {
         padding: 12px 15px;
     }
-    
+
     .floating-badge .badge-icon {
         font-size: 1.5em;
     }
-    
+
     .floating-badge .badge-title {
         font-size: 0.9em;
     }
-    
+
     .educational-title {
         font-size: 1.6em;
     }
@@ -1492,27 +1804,27 @@
     .Lottery-comparison-table {
         font-size: 0.85em;
     }
-    
+
     .newsletter-form {
         flex-direction: column;
     }
-    
+
     .filter-buttons {
         flex-direction: column;
     }
-    
+
     .final-scores {
         grid-template-columns: 1fr;
     }
-    
+
     .comparison-table-full .table-responsive {
         display: none;
     }
-    
+
     .grid-column-3 {
         grid-template-columns: 1fr;
     }
-    
+
     /* Featured Lottery Reviews - Tablet Optimization */
     .section-featured-reviews .wg-game .wg-game-image img {
         max-width: 100px !important;
@@ -1520,13 +1832,13 @@
         height: auto !important;
         max-height: 100px !important;
     }
-    
+
     .section-featured-reviews .wg-game .wg-game-image {
         overflow: visible;
         min-height: 130px;
         padding: 15px 10px;
     }
-    
+
     /* Bonus Section - Tablet Optimization */
     .section-bonuses .bonus-card .Lottery-logo-small {
         width: 95px !important;
@@ -1534,44 +1846,44 @@
         max-width: 95px !important;
         max-height: 95px !important;
     }
-    
+
     .section-bonuses .bonus-card .bonus-header {
         overflow: visible;
         min-height: 150px;
         padding: 20px 15px;
     }
-    
+
     .section-bonuses .bonus-card-full .bonus-card-header .Lottery-logo-medium {
         width: 105px !important;
         height: auto !important;
         max-width: 105px !important;
         max-height: 105px !important;
     }
-    
+
     .section-bonuses .bonus-card-full .bonus-card-header {
         overflow: visible;
         min-height: 170px;
         padding: 25px 20px;
     }
-    
+
     /* Additional Bonuses - Tablet */
     .additional-bonuses {
         margin: 18px 0;
         gap: 14px;
     }
-    
+
     .additional-bonus-item {
         padding: 14px;
     }
-    
+
     .additional-bonus-title {
         font-size: 14px;
     }
-    
+
     .additional-bonus-code {
         padding: 9px 12px;
     }
-    
+
     .additional-bonus-desc {
         font-size: 12px;
     }
@@ -1581,24 +1893,24 @@
     .Lottery-comparison-table {
         font-size: 0.75em;
     }
-    
+
     .Lottery-comparison-table th,
     .Lottery-comparison-table td {
         padding: 10px 8px;
     }
-    
+
     .Lottery-info {
         display: flex;
         align-items: center;
         gap: 8px;
     }
-    
+
     .Lottery-logo {
         max-width: 40px !important;
         width: 40px;
         height: 40px;
     }
-    
+
     /* Top Lotterys Mobile - Ensure Logos Visible */
     .section-Lotterys-list .Lottery-comparison-table .Lottery-logo {
         width: 50px !important;
@@ -1607,120 +1919,126 @@
         visibility: visible !important;
         opacity: 1 !important;
     }
-    
+
     .section-Lotterys-list .Lottery-comparison-table .Lottery-info {
         display: flex !important;
         align-items: center;
         gap: 10px;
     }
-    
+
     .section-Lotterys-list .Lottery-comparison-table .Lottery-info img {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
     }
-    
+
     /* Additional Bonuses - Mobile */
     .additional-bonuses {
         margin: 16px 0;
         gap: 12px;
     }
-    
+
     .additional-bonus-item {
         padding: 12px;
     }
-    
+
     .additional-bonus-title {
         font-size: 13px;
         gap: 8px;
     }
-    
+
     .bonus-icon {
         font-size: 16px;
     }
-    
+
     .additional-bonus-code {
         padding: 8px 10px;
         gap: 8px;
     }
-    
+
     .additional-bonus-code .code-label {
         font-size: 11px;
     }
-    
+
     .additional-bonus-code .code-value {
         font-size: 12px;
     }
-    
+
     .copy-btn-small {
         padding: 5px 8px;
         font-size: 12px;
     }
-    
+
     .additional-bonus-desc {
         font-size: 11px;
         line-height: 1.5;
     }
-    
+
     .action-buttons {
         display: flex;
         flex-direction: column;
         gap: 6px;
     }
-    
+
     .action-buttons .tf-btn {
         padding: 8px 12px !important;
         font-size: 12px !important;
     }
-    
+
     .bonus-text {
         font-size: 12px;
     }
-    
+
     .grid-column-3 {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     /* Mobile responsive for bonus cards */
-    .bonus-card, .bonus-card-full {
+    .bonus-card,
+    .bonus-card-full {
         padding: 20px;
     }
-    
-    .bonus-card-header, .bonus-header {
+
+    .bonus-card-header,
+    .bonus-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
-    
+
     .Lottery-logo-small {
         width: 50px !important;
         height: 50px !important;
         max-width: 50px;
     }
-    
+
     .Lottery-logo-medium {
         width: 70px !important;
         height: 70px !important;
         max-width: 70px;
     }
-    
-    .bonus-offer, .bonus-offer-large {
+
+    .bonus-offer,
+    .bonus-offer-large {
         font-size: 1em;
     }
-    
-    .bonus-card h3, .bonus-card-full h3 {
+
+    .bonus-card h3,
+    .bonus-card-full h3 {
         font-size: 1.1em;
     }
-    
-    .bonus-card h4, .bonus-card-full h4 {
+
+    .bonus-card h4,
+    .bonus-card-full h4 {
         font-size: 0.95em;
     }
-    
-    .bonus-card p, .bonus-card-full p {
+
+    .bonus-card p,
+    .bonus-card-full p {
         font-size: 0.9em;
     }
-    
+
     /* Featured Lottery Reviews - Mobile Logo Optimization */
     .section-featured-reviews .wg-game .wg-game-image {
         display: flex;
@@ -1736,7 +2054,7 @@
         overflow: visible;
         min-height: 120px;
     }
-    
+
     .section-featured-reviews .wg-game .wg-game-image img {
         max-width: 90px !important;
         width: 90px !important;
@@ -1750,7 +2068,7 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         display: block;
     }
-    
+
     .section-featured-reviews .wg-game .badge-featured {
         position: absolute;
         top: 5px;
@@ -1761,7 +2079,7 @@
         white-space: nowrap;
         z-index: 10;
     }
-    
+
     /* Bonus Section - Mobile Logo Optimization */
     .section-bonuses .bonus-card .bonus-header {
         flex-direction: column;
@@ -1775,7 +2093,7 @@
         overflow: visible;
         min-height: 140px;
     }
-    
+
     .section-bonuses .bonus-card .Lottery-logo-small {
         width: 90px !important;
         height: auto !important;
@@ -1789,7 +2107,7 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         display: block;
     }
-    
+
     .section-bonuses .bonus-card .logo-fallback-small {
         width: 90px !important;
         height: 90px !important;
@@ -1803,13 +2121,13 @@
         border-radius: 12px;
         margin-bottom: 10px;
     }
-    
+
     .section-bonuses .bonus-card .badge-hot {
         margin-top: 8px;
         padding: 6px 12px;
         font-size: 11px;
     }
-    
+
     /* Bonus Card Full - Mobile Logo Optimization */
     .section-bonuses .bonus-card-full .bonus-card-header .Lottery-logo-medium {
         width: 100px !important;
@@ -1824,7 +2142,7 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         display: block;
     }
-    
+
     .section-bonuses .bonus-card-full .bonus-card-header {
         flex-direction: column;
         align-items: center;
@@ -1838,7 +2156,7 @@
         overflow: visible;
         min-height: 160px;
     }
-    
+
     .section-bonuses .bonus-card-full .bonus-card-header .badges {
         display: flex;
         gap: 8px;
@@ -1852,40 +2170,43 @@
         width: 35px;
         height: 35px;
     }
-    
+
     .Lottery-logo-small {
         width: 45px !important;
         height: 45px !important;
     }
-    
+
     .Lottery-logo-medium {
         width: 60px !important;
         height: 60px !important;
     }
-    
+
     .Lottery-logo-large {
         width: 90px !important;
         height: 90px !important;
     }
-    
-    .bonus-card, .bonus-card-full {
+
+    .bonus-card,
+    .bonus-card-full {
         padding: 16px;
     }
-    
-    .bonus-card h3, .bonus-card-full h3 {
+
+    .bonus-card h3,
+    .bonus-card-full h3 {
         font-size: 1em;
     }
-    
-    .bonus-offer, .bonus-offer-large {
+
+    .bonus-offer,
+    .bonus-offer-large {
         font-size: 0.95em;
     }
-    
+
     /* Featured Lottery Reviews - Extra Small Mobile */
     .section-featured-reviews .wg-game .wg-game-image {
         padding: 12px 8px;
         min-height: 110px;
     }
-    
+
     .section-featured-reviews .wg-game .wg-game-image img {
         max-width: 75px !important;
         width: 75px !important;
@@ -1893,14 +2214,14 @@
         max-height: 75px !important;
         padding: 4px;
     }
-    
+
     /* Bonus Section - Extra Small Mobile */
     .section-bonuses .bonus-card .bonus-header {
         padding: 15px 12px;
         min-height: 130px;
         gap: 10px;
     }
-    
+
     .section-bonuses .bonus-card .Lottery-logo-small {
         width: 75px !important;
         height: auto !important;
@@ -1908,7 +2229,7 @@
         max-height: 75px !important;
         padding: 4px;
     }
-    
+
     .section-bonuses .bonus-card-full .bonus-card-header .Lottery-logo-medium {
         width: 85px !important;
         height: auto !important;
@@ -1916,7 +2237,7 @@
         max-height: 85px !important;
         padding: 5px;
     }
-    
+
     .section-bonuses .bonus-card-full .bonus-card-header {
         padding: 20px 16px;
         min-height: 150px;
@@ -2194,7 +2515,7 @@
     padding: 10px 12px;
     min-width: 0;
     width: 100%;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(119, 145, 186, 0.1);
     border-radius: 8px;
     text-align: center;
@@ -2237,17 +2558,17 @@
         min-width: 0;
         width: 100%;
     }
-    
+
     .break-count {
         font-size: 17px;
         letter-spacing: 0.3px;
         max-width: 100%;
     }
-    
+
     .break-digits {
         font-size: 11px;
     }
-    
+
     .brc-break-grid {
         gap: 10px;
     }
@@ -2821,7 +3142,7 @@
     gap: 12px;
 }
 
-.Lottery-info > div {
+.Lottery-info>div {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -2927,8 +3248,15 @@
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .jackpot-info {
@@ -3117,8 +3445,13 @@
 }
 
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .draw-info-content {
@@ -3228,3 +3561,83 @@
     }
 }
 
+
+/* ===== FIX CARD OVERLAP ISSUES ON AFFILIATE PAGE ===== */
+
+/* Ensure grid items don't overlap */
+.page-affiliate .grid-column-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 30px;
+    margin-bottom: 40px;
+}
+
+/* Fix getstart-item cards positioning */
+.page-affiliate .getstart-item {
+    height: auto;
+    min-height: 280px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+}
+
+.page-affiliate .getstart-item .wrapper {
+    height: 100%;
+    position: relative;
+    overflow: visible;
+}
+
+/* Fix number positioning to not overlap with other cards */
+.page-affiliate .getstart-item .number {
+    position: absolute;
+    font-size: 100px !important;
+    top: auto !important;
+    bottom: -20px !important;
+    right: 10px !important;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Make card content larger and more readable */
+.page-affiliate .getstart-item .content .title {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.page-affiliate .getstart-item .content p {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Responsive fixes for affiliate page cards */
+@media (max-width: 991px) {
+    .page-affiliate .grid-column-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-affiliate .grid-column-3 {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .page-affiliate .getstart-item {
+        min-height: auto;
+    }
+
+    .page-affiliate .getstart-item .number {
+        font-size: 80px !important;
+    }
+
+    .page-affiliate .getstart-item .content .title {
+        font-size: 1.25em;
+    }
+
+    .page-affiliate .getstart-item .content p {
+        font-size: 14px;
+    }
+}

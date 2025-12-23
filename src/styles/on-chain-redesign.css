@@ -363,3 +363,191 @@
   }
 }
 
+
+/* ===== VS LOTTERY COMPARISON SECTION ===== */
+
+.section-vs-comparison {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #0a0118 0%, #1a0f2e 100%);
+}
+
+.vs-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.vs-lottery-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-lottery-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vs-lottery-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.vs-lottery-card:hover::before {
+  opacity: 1;
+}
+
+/* Featured Card - First BTC Lottery */
+.vs-lottery-card.vs-featured {
+  background: linear-gradient(145deg, rgba(254, 140, 69, 0.08) 0%, rgba(149, 76, 223, 0.05) 100%);
+  border: 2px solid rgba(254, 140, 69, 0.3);
+  box-shadow: 0 10px 40px rgba(254, 140, 69, 0.15);
+}
+
+.vs-lottery-card.vs-featured::before {
+  background: linear-gradient(90deg, var(--Main-color), var(--Sub-color-3), var(--Main-color));
+  opacity: 1;
+}
+
+.vs-lottery-card.vs-featured:hover {
+  box-shadow: 0 25px 50px rgba(254, 140, 69, 0.25);
+  border-color: rgba(254, 140, 69, 0.5);
+}
+
+.vs-lottery-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.lottery-flag {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.vs-lottery-header .lottery-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  flex: 1;
+}
+
+.featured-badge {
+  background: linear-gradient(135deg, var(--Main-color), var(--Sub-color-3));
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vs-lottery-body {
+  margin-bottom: 20px;
+}
+
+.lottery-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lottery-stat:last-of-type {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
+  text-align: right;
+}
+
+.stat-value.jackpot {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4ade80;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-value.highlight {
+  color: var(--Main-color);
+  font-weight: 700;
+}
+
+.lottery-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.vs-lottery-footer {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.vs-lottery-footer .play-now-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 16px 30px;
+  font-size: 15px;
+}
+
+/* Responsive for VS section */
+@media (max-width: 991px) {
+  .vs-comparison-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .vs-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vs-lottery-card {
+    padding: 25px;
+  }
+
+  .vs-lottery-header .lottery-name {
+    font-size: 18px;
+  }
+
+  .lottery-flag {
+    font-size: 30px;
+  }
+}

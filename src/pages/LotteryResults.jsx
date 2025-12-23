@@ -144,12 +144,12 @@ const LotteryResults = () => {
 
   return (
     <>
-      <SEO 
-        title="FirstBTCLottery Result" 
+      <SEO
+        title="FirstBTCLottery Result"
         description="Check the latest FirstBTCLottery Result and winning numbers. View draw results and prize winners."
         keywords="FirstBTCLottery Result, winning numbers, draw results, lottery winners"
       />
-      
+
       <div className="page-title">
         <div className="tf-tsparticles">
           <div id="tsparticles1" data-color="#fff" data-line="#fff"></div>
@@ -182,7 +182,7 @@ const LotteryResults = () => {
                     FirstBTCLottery Result
                   </h2>
                   <p className="sub-title wow fadeInUp fs-14" data-wow-delay="0.1s">
-                    Check the latest completed lottery draws and winning numbers
+                    View some of First BTC Lottery Results, for more updated ones, check their site as there is a winner every 10 minutes.
                   </p>
                 </div>
               </div>
