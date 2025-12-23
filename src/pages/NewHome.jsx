@@ -105,12 +105,12 @@ const NewHome = () => {
         return style;
     };
 
-    // Show ALL featured lotteries, not just 3
-    const featuredLotterys = Lotterys.filter(c => c.featured);
+    // Show top lotteries for comparison table
     const topLotterys = Lotterys.slice(0, 5);
 
-    // Use lotteries from admin for bonus section (limit to 6 for display)
-    const bonusLotterys = Lotterys.filter(c => c.bonus_text || c.bonus).slice(0, 6);
+    // Suppress loading unused warning for now
+    // eslint-disable-next-line no-unused-vars
+    const _ = loading;
 
     return (
         <>
