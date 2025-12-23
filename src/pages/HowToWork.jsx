@@ -95,66 +95,37 @@ const HowToWork = () => {
             ))}
           </div>
 
-          {/* Premium Comparison Section */}
-          <div className="comparison-container">
-            <div className="comparison-header wow fadeInUp">
-              <h2 className="title">Crypto Lotteries vs Traditional Lotteries</h2>
-              <p className="subtitle">
-                A comparison <span className="accent">between</span> centralized systems <span className="accent">and</span> Web3
-              </p>
-            </div>
-
-            <div className="comparison-grid">
-              {/* Traditional Lotteries */}
-              <div className="comparison-card type-traditional wow fadeInLeft">
-                <div className="card-header">
-                  <span className="icon">💩</span>
-                  <h3>Traditional Lotteries</h3>
+          {/* What Makes It Different */}
+          <div className="content-section wow fadeInUp mb-80">
+            <h2>What Makes Crypto Lotteries Different?</h2>
+            <div className="row mt-40">
+              <div className="col-lg-6">
+                <div className="feature-box">
+                  <h4>✓ Provably Fair Technology</h4>
+                  <p>Every game result can be verified on the blockchain. You can check that the Lottery didn't manipulate the outcome.</p>
                 </div>
-                <div className="card-description">
-                  Traditional lotteries are operated by <span className="highlight">centralized organizations</span> that control the draw process and winning number generation.
-                  While they often offer very large jackpots, players must rely on <strong>trust</strong>, as results are <strong>not publicly verifiable</strong> in real time and are subject to geographic and regulatory restrictions.
+                <div className="feature-box">
+                  <h4>✓ No KYC Required</h4>
+                  <p>Most Crypto Lottery don't require identity verification. Play anonymously using just your wallet address.</p>
                 </div>
-                <ul className="comparison-features">
-                  {[
-                    'Centralized systems',
-                    'Weekly draws',
-                    'Trust-based outcomes',
-                    'Large jackpots',
-                    'KYC required'
-                  ].map((feature, i) => (
-                    <li key={i} className="feature-pill">
-                      <span className="feature-dot"></span>
-                      <span className="feature-text">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="feature-box">
+                  <h4>✓ Lower House Edge</h4>
+                  <p>Blockchain Lotterys often have lower overhead costs, resulting in better odds and higher payouts for players.</p>
+                </div>
               </div>
-
-              {/* Crypto Lotteries */}
-              <div className="comparison-card type-crypto wow fadeInRight">
-                <div className="card-header">
-                  <span className="icon">⛓️</span>
-                  <h3>Crypto Lotteries</h3>
+              <div className="col-lg-6">
+                <div className="feature-box">
+                  <h4>✓ Instant Withdrawals</h4>
+                  <p>Traditional Lotterys take days to process withdrawals. Crypto Lottery send winnings to your wallet instantly.</p>
                 </div>
-                <div className="card-description">
-                  Crypto lotteries emerged to solve the <strong>transparency problem</strong> in winning number generation.
-                  Winning numbers are derived from <span className="highlight">public blockchain data</span>, allowing anyone to verify results independently <strong>without</strong> relying on an operator or centralized authority.
+                <div className="feature-box">
+                  <h4>✓ Global Access</h4>
+                  <p>Play from anywhere in the world. No geographic restrictions or banking limitations.</p>
                 </div>
-                <ul className="comparison-features">
-                  {[
-                    'Decentralized systems',
-                    'Hourly jackpots',
-                    'Publicly verifiable results',
-                    'Smaller jackpots',
-                    'No KYC required'
-                  ].map((feature, i) => (
-                    <li key={i} className="feature-pill">
-                      <span className="feature-dot"></span>
-                      <span className="feature-text">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="feature-box">
+                  <h4>✓ Transparent Odds</h4>
+                  <p>All game odds and RTP (Return to Player) rates are publicly verifiable on the blockchain.</p>
+                </div>
               </div>
             </div>
           </div>

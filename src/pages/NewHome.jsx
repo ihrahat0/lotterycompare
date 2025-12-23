@@ -328,43 +328,57 @@ const NewHome = () => {
                     </div>
                 </section>
 
-                {/* How Crypto lottery’s work? */}
-                <section className="section-how-it-works pt-100 pb-100 bg-section">
+                {/* Crypto vs Traditional Comparison Section */}
+                <section className="section-comparison-redesign pt-100 pb-100">
                     <div className="tf-container">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="heading-section text-center">
-                                    <h2 className="title wow fadeInUp">How Crypto lotteries work?</h2>
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <div className="heading-section text-center mb-60">
+                                    <h2 className="title wow fadeInUp">Crypto Lotteries vs Traditional Lotteries</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
-                                        Revolutionizing the traditional lotteries
+                                        A comparison between centralized systems and Web3
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div className="row mt-60">
-                            <div className="col-lg-4 col-md-6">
-                                <div className="how-it-works-card wow fadeInUp">
-                                    <div className="step-number">1</div>
-                                    <div className="icon">💰</div>
-                                    <h4>Play or Deposit</h4>
-                                    <p>Choose your favorite crypto lottery or Lottery. Make a deposit using BTC, ETH, or other supported cryptocurrencies.</p>
-                                </div>
+
+                        <div className="comparison-wrapper">
+                            <div className="vs-badge">VS</div>
+
+                            {/* Traditional Lotteries */}
+                            <div className="comparison-card traditional wow fadeInLeft">
+                                <div className="card-icon">💩</div>
+                                <h3>Traditional Lotteries</h3>
+                                <p className="desc">
+                                    Traditional lotteries are operated by <span className="highlight-text">centralized organizations</span> that control the draw process and winning number generation.
+                                    While they often offer very <span className="highlight-text">large jackpots</span>, players must rely on trust, as results are <span className="highlight-text">not publicly verifiable</span> in real time
+                                    and are subject to geographic and regulatory restrictions.
+                                </p>
+                                <ul className="comparison-features">
+                                    <li>Centralized systems</li>
+                                    <li>Weekly draws</li>
+                                    <li>Trust-based outcomes</li>
+                                    <li>Large jackpots</li>
+                                    <li>KYC required</li>
+                                </ul>
                             </div>
-                            <div className="col-lg-4 col-md-6">
-                                <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.1s">
-                                    <div className="step-number">2</div>
-                                    <div className="icon">⛓️</div>
-                                    <h4>Blockchain Draw</h4>
-                                    <p>All draws are verified and winning numbers are drawn from blockchain. You can check the fairness of every single draw on Blockchain Explorer.</p>
-                                </div>
-                            </div>
-                            <div className="col-lg-4 col-md-6">
-                                <div className="how-it-works-card wow fadeInUp" data-wow-delay="0.2s">
-                                    <div className="step-number">3</div>
-                                    <div className="icon">⚡</div>
-                                    <h4>Instant Payout</h4>
-                                    <p>Win and get paid instantly to your crypto wallet. No waiting, no delays — your winnings are yours immediately by smart contracts</p>
-                                </div>
+
+                            {/* Crypto Lotteries */}
+                            <div className="comparison-card crypto wow fadeInRight">
+                                <div className="card-icon">🔗</div>
+                                <h3>Crypto Lotteries</h3>
+                                <p className="desc">
+                                    Crypto lotteries emerged to <span className="highlight-text">solve the transparency problem</span> in winning number generation.
+                                    Winning numbers are derived from <span className="highlight-text">public blockchain data</span>,
+                                    allowing anyone to verify results independently <span className="highlight-text">without relying on an operator</span> or centralized authority.
+                                </p>
+                                <ul className="comparison-features">
+                                    <li>Decentralized systems</li>
+                                    <li>Hourly jackpots</li>
+                                    <li>Publicly verifiable results</li>
+                                    <li>Smaller jackpots</li>
+                                    <li>No KYC required</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
