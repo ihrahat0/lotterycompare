@@ -141,7 +141,7 @@ const NewHome = () => {
                                             </span>
                                         </h1>
                                         <div className="text">
-                                            Compare trusted and proven global lotteries
+                                            LotteryCompare is an independent website that helps players compare online lotteries, crypto lotteries, and bitcoin lottery platforms in one place. We analyze lottery providers based on fairness, transparency, odds, jackpots, draw frequency, and user experience, so you can make informed decisions before playing. Whether you are looking for a traditional online lottery or a modern crypto lottery powered by blockchain, LotteryCompare provides clear comparisons, up-to-date information, and unbiased insights to help you choose the best lottery for your needs.
                                         </div>
                                         <div className="button-group" style={{ display: 'inline-flex' }}>
                                             <a href="#comparison-table" className="tf-btn">
@@ -179,7 +179,7 @@ const NewHome = () => {
                             <div className="col-12">
                                 <div className="heading-section">
                                     <h2 className="title wow fadeInUp">
-                                        🎯 Lottery Comparison: Traditional vs First BTC Lottery
+                                        Compare Online Lottery Vs. Bitcoin Lottery
                                     </h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
                                         See why verified on-chain lottery is the future of gaming
@@ -334,7 +334,7 @@ const NewHome = () => {
                         <div className="row justify-content-center">
                             <div className="col-lg-8">
                                 <div className="heading-section text-center mb-60">
-                                    <h2 className="title wow fadeInUp">Crypto Lotteries vs Traditional Lotteries</h2>
+                                    <h2 className="title wow fadeInUp">Crypto Lottery vs Traditional Lottery</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
                                         A comparison between centralized systems and Web3
                                     </p>
@@ -345,10 +345,10 @@ const NewHome = () => {
                         <div className="comparison-wrapper">
                             <div className="vs-badge">VS</div>
 
-                            {/* Traditional Lotteries */}
+                            {/* Traditional Lottery */}
                             <div className="comparison-card traditional wow fadeInLeft">
-                                <div className="card-icon">💩</div>
-                                <h3>Traditional Lotteries</h3>
+                                <div className="card-icon">✏️</div>
+                                <h3>Traditional Lottery</h3>
                                 <p className="desc">
                                     Traditional lotteries are operated by <span className="highlight-text">centralized organizations</span> that control the draw process and winning number generation.
                                     While they often offer very <span className="highlight-text">large jackpots</span>, players must rely on trust, as results are <span className="highlight-text">not publicly verifiable</span> in real time
@@ -363,10 +363,10 @@ const NewHome = () => {
                                 </ul>
                             </div>
 
-                            {/* Crypto Lotteries */}
+                            {/* Crypto Lottery */}
                             <div className="comparison-card crypto wow fadeInRight">
                                 <div className="card-icon">🔗</div>
-                                <h3>Crypto Lotteries</h3>
+                                <h3>Crypto Lottery</h3>
                                 <p className="desc">
                                     Crypto lotteries emerged to <span className="highlight-text">solve the transparency problem</span> in winning number generation.
                                     Winning numbers are derived from <span className="highlight-text">public blockchain data</span>,
