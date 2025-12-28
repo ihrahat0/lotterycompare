@@ -1,1 +1,23 @@
-User buys a lottery that has 6 numbers. And the 6 numbers are got from the bitcoin mining block's hash's last 6 digit that happens every 10 minutes. If the lottery number matches the blocks digit, you get reward of matched numbers according 1,2,3 etc digit matches. The entire 6 digit match gets a jackpot.
+1. in the crypto lotteries vs traditional lotteries section in the landing page,
+Change the wording:
+- Crypto Lottery and Traditional Lottery
+- Both in Title (Heading) and under the Emoji
+- remove the poop emoj, put pencil emoji.
+- remove vs thing, Just make a compare thing but in better design font sized font. Make all a good design and proper font size. 
+
+2. change the heading "Lottery comparation: Tradintional ......" to "Compare Online Lottery Vs. Bitcoin Lottery"
+
+3. For the table there, make sure its HTML, helps ranking (important). 
+
+4. Add a description of what this site does:
+write this below Site title “Top Recommended Lotteries of 2025, “Guess Numbers, win
+Jackpot”
+below it write:
+LotteryCompare is an independent website that helps players compare online lotteries,
+crypto lotteries, and bitcoin lottery platforms in one place. We analyze lottery
+providers based on fairness, transparency, odds, jackpots, draw frequency, and user
+experience, so you can make informed decisions before playing. Whether you are
+looking for a traditional online lottery or a modern crypto lottery powered by
+blockchain, LotteryCompare provides clear comparisons, up-to-date information, and unbiased insights to help you choose the best lottery for your needs.
+
+5. Make the disclaimer and the terms and condition page better and well designed as well

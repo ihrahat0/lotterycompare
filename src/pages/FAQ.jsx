@@ -1,159 +1,143 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { initAllPlugins } from '../utils/initScripts';
 import SEO from '../components/SEO';
 
 const FAQ = () => {
-  useEffect(() => {
-    initAllPlugins();
-    window.scrollTo(0, 0);
-  }, []);
+    useEffect(() => {
+        initAllPlugins();
+        window.scrollTo(0, 0);
+    }, []);
 
-  const [openBySection, setOpenBySection] = useState({});
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [searchTerm, setSearchTerm] = useState('');
 
-  const toggleQuestion = (sectionId, index) => {
-    setOpenBySection(prev => ({
-      ...prev,
-      [sectionId]: prev[sectionId] === index ? null : index
-    }));
-  };
+    const faqs = [
+        { question: "How do we review crypto casinos?", answer: "We use a rigorous 50-point inspection process covering security, licensing, payout speed, bonus fairness, and game variety." },
+        { question: "Are Bitcoin lotteries safe?", answer: "True Bitcoin lotteries that use blockchain data for draws are verifiable and generally safer from manipulation." },
+        { question: "What is the difference between a crypto casino and a blockchain lottery?", answer: "A crypto casino is a standard gambling site that accepts crypto. A blockchain lottery uses the blockchain technology itself to determine winners, offering public verification." },
+        { question: "Do I need KYC to play?", answer: "Most crypto-first platforms allow you to play with just an email and wallet address. However, regulated traditional lotteries always require identity verification." },
+        { question: "How fast are withdrawals?", answer: "On top-rated crypto sites we list, withdrawals are typically automated and instant, taking only as long as the blockchain network confirmation (minutes)." },
+        { question: "Is LotteryCompare a gambling operator?", answer: "No. We are an independent review and comparison portal. We do not accept bets or issue payouts. We provide information to help you make safe choices." },
+        { question: "What cryptocurrencies can I use?", answer: "Bitcoin, Ethereum, Litecoin, and Tether are most common. Some sites support hundreds of altcoins." },
+        { question: "Can I play on mobile?", answer: "Yes, 100% of the sites we recommend are fully mobile-responsive. Some also offer dedicated Android or iOS apps." },
+        { question: "What is a 'provably fair' game?", answer: "Provably fair means the game uses an algorithmic system (usually involving server and client seeds) that allows you to mathematically verify that the result wasn't rigged after the round ends." },
+        { question: "Are the bonuses real money?", answer: "Bonuses are play credits that become withdrawable real money only after you meet 'wagering requirements' (e.g., betting the amount 30x)." },
+    ];
 
-  const faqSections = [
-    {
-      id: 'crypto-lottery',
-      title: 'Crypto Lottery FAQ',
-      active: true,
-      questions: [
-        {
-          q: 'What is a crypto lottery site?',
-          a: 'A crypto lottery is an online lottery that uses cryptocurrency for buying tickets, receiving prizes, and ensuring transparency. Instead of traditional systems that rely on centralized operators, crypto lotteries run on blockchain technology—meaning every draw, transaction, and payout is recorded publicly. This makes the process faster, borderless, and verifiable by anyone.'
-        },
-        {
-          q: 'How are prizes paid out at crypto lottery sites?',
-          a: 'Prizes are usually paid directly to the player’s account or crypto wallet after the winning draw. On blockchain-based lottery sites, payouts happen automatically through smart contracts—meaning your winnings are sent instantly and securely to your crypto wallet with no manual processing or middlemen.'
-        },
-        {
-          q: 'Can I buy lottery tickets anonymously?',
-          a: 'On most traditional lottery sites, you need to provide personal information for verification and withdrawals. However, in blockchain-based lotteries, you can usually play without sharing personal details—your crypto wallet address acts as your identity. This means you can buy tickets and receive winnings without creating an account or providing KYC, while still keeping everything transparent and verifiable on the blockchain.'
-        },
-        {
-          q: 'How do crypto lotteries prove they’re fair?',
-          a: 'Provably fair crypto lotteries use blockchain technology to guarantee fairness in every draw. The winning numbers are generated from publicly available blockchain data—like a Bitcoin block hash—so the outcome can’t be changed or manipulated. Because the results are recorded on the blockchain, anyone can verify that each draw was random and honest.'
-        }
-      ]
-    }
-  ];
+    const filteredFaqs = faqs.filter(faq =>
+        faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-  return (
-    <>
-      <SEO 
-        title="Frequently asked questions" 
-        description="Find answers to frequently asked questions about our lottery platform. Get help and support."
-        keywords="FAQ, help, support, lottery questions, customer service"
-      />
-      
-      <div className="page-title">
-        <div className="tf-tsparticles">
-          <div id="tsparticles1" data-color="#fff" data-line="#fff"></div>
-        </div>
-        <div className="tf-container">
-          <div className="row">
-            <div className="col-12">
-              <div className="content">
-                <h1 className="title">Frequently Asked Questions</h1>
-                <ul className="breadcrumbs">
-                  <li><Link to="/">Home</Link></li>
-                  <li><i className="icon-next"></i></li>
-                  <li>Page</li>
-                  <li><i className="icon-next"></i></li>
-                  <li>FAQ</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+        }))
+    };
 
-      <div className="main-content">
-        <section className="section-search tf-spacing-1">
-          <div className="tf-container">
-            <div className="col-12">
-              <div className="row">
-                <div className="form-help bg-multi-color">
-                  <div className="wrap-form">
-                    <div className="heading-section">
-                      <div className="title">
-                        Hi we're here to help you
-                      </div>
-                      <p>Please check this FAQ first before contacting us.</p>
-                    </div>
-                    <form action="#" className="form-search">
-                      <fieldset>
-                        <input type="text" placeholder="Enter your question or keyword" required/>
-                      </fieldset>
-                      <button className="button-submit" type="submit">
-                        <i className="icon-search"></i>
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+    return (
+        <>
+            <SEO
+                title="FAQ | Crypto Gambling Guide"
+                description="Answers to common questions about crypto casinos and bitcoin lotteries."
+                keywords="crypto casino faq, bitcoin lottery questions"
+                canonical="https://lotterycompare.com/faq"
+            />
+            <Helmet>
+                <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+            </Helmet>
 
-        <section className="section-faq">
-          <div className="tf-container">
-            <div className="row">
-              <div className="col-xl-3">
-                <div className="faq-wrap">
-                  <div className="top">
-                    <div className="faq-wrap-title">
-                      Category FAQ
-                    </div>
-                    <div className="line"></div>
-                  </div>
-                  <div className="faq-wrap-tabs">
-                    <ul className="faq-wrap-menu">
-                      {faqSections.map((section, index) => (
-                        <li key={section.id} className={`item-title ${section.active ? 'active' : ''}`} data-target={`#${section.id}`}>
-                          <a href={`#${section.id}`}>{section.title}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-9">
-                <div className="faq-content">
-                  {faqSections.map((section, sectionIndex) => (
-                    <div key={section.id} className={`faq-wrap-content-tab ${section.active ? '' : ''}`} id={section.id}>
-                      <div className={`tf-accordion ${sectionIndex < faqSections.length - 1 ? 'pb-18' : ''}`}>
-                        <h3 className="title-accordion wow fadeInUp" data-wow-delay="0s">{section.title}</h3>
-                        {section.questions.map((q, index) => {
-                          const isActive = openBySection[section.id] === index;
-                          return (
-                          <div key={index} className={`tf-toggle ${isActive ? 'active' : ''}`}>
-                            <div className={`toggle-title ${isActive ? 'active' : ''}`} onClick={() => toggleQuestion(section.id, index)} style={{cursor:'pointer'}}>
-                              <div className="title">{q.q}</div>
-                              <div className="icon"></div>
+            <div className="page-title">
+                <div className="tf-container">
+                    <div className="row justify-content-center">
+                        <div className="col-lg-8 text-center">
+                            <h1 className="premium-title" style={{ marginBottom: 24 }}>How can we help?</h1>
+                            <p className="premium-subtitle" style={{ marginBottom: 50 }}>
+                                Browse our knowledge base or search for specific topics.
+                            </p>
+
+                            <div style={{ position: 'relative', maxWidth: 600, margin: '0 auto' }}>
+                                <input
+                                    type="text"
+                                    placeholder="Search for answers..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    style={{
+                                        width: '100%',
+                                        padding: '20px 24px 20px 60px',
+                                        borderRadius: 100,
+                                        border: '1px solid rgba(255,255,255,0.1)',
+                                        background: 'rgba(255,255,255,0.05)',
+                                        color: '#fff',
+                                        fontSize: '1.2rem',
+                                        outline: 'none',
+                                        height: '64px'
+                                    }}
+                                />
+                                <span style={{ position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%)', color: '#6366f1', fontSize: 24 }}>🔍</span>
                             </div>
-                            <div className="toggle-content">
-                              {isActive && <p>{q.a}</p>}
-                            </div>
-                          </div>
-                        );})}
-                      </div>
+                        </div>
                     </div>
-                  ))}
                 </div>
-              </div>
             </div>
-          </div>
-        </section>
-      </div>
-    </>
-  );
+
+            <div className="main-content">
+                <section className="tf-section pb-5">
+                    <div className="tf-container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <div className="premium-accordion">
+                                    {filteredFaqs.length > 0 ? (
+                                        filteredFaqs.map((faq, index) => (
+                                            <div
+                                                key={index}
+                                                className={`accordion-item ${activeIndex === index ? 'active' : ''}`}
+                                                onClick={() => setActiveIndex(activeIndex === index ? -1 : index)}
+                                            >
+                                                <div className="accordion-header">
+                                                    <span>{faq.question}</span>
+                                                    <div className="accordion-icon">
+                                                        <i className="icon-arrow-down"></i>
+                                                    </div>
+                                                </div>
+                                                {activeIndex === index && (
+                                                    <div className="accordion-content">
+                                                        <p>{faq.answer}</p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="premium-card text-center">
+                                            <div style={{ fontSize: 48, marginBottom: 16 }}>🤔</div>
+                                            <h4 style={{ marginBottom: 8 }}>No results for "{searchTerm}"</h4>
+                                            <p>Try "bonus", "withdraw", or "safety".</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row justify-content-center" style={{ marginTop: 60 }}>
+                            <div className="col-lg-8 text-center">
+                                <div className="premium-card" style={{ borderColor: 'rgba(99, 102, 241, 0.2)' }}>
+                                    <h3 style={{ marginBottom: 16 }}>Still have questions?</h3>
+                                    <p style={{ marginBottom: 32 }}>We're here to help you navigate the crypto gaming world.</p>
+                                    <Link to="/contact" className="btn-premium">Contact Support</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </>
+    );
 };
 
 export default FAQ;

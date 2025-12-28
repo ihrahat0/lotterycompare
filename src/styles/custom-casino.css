@@ -3337,50 +3337,55 @@
     border-collapse: separate;
     border-spacing: 0;
     min-width: 1000px;
+    background: #ffffff;
+    border-radius: 16px;
     /* Force scroll on mobile */
 }
 
 .detailed-compare-table th,
 .detailed-compare-table td {
-    padding: 18px 20px;
+    padding: 20px 24px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: #fff;
+    border-bottom: 1px solid rgba(13, 11, 42, 0.1);
+    color: #0a0a2a;
     vertical-align: middle;
 }
 
 .detailed-compare-table thead th {
-    font-weight: 700;
-    font-size: 16px;
-    color: #fff;
-    background: rgba(19, 16, 55, 0.95);
+    font-weight: 800;
+    font-size: 20px;
+    color: #0a0a2a;
+    background: #ffffff;
     white-space: nowrap;
     position: sticky;
     top: 0;
     z-index: 20;
+    border-bottom: 2px solid rgba(13, 11, 42, 0.1);
 }
 
 .detailed-compare-table thead th:first-child {
-    background: linear-gradient(90deg, #131037 95%, rgba(19, 16, 55, 0));
+    background: #ffffff;
     position: sticky;
     left: 0;
     z-index: 30;
-    min-width: 200px;
+    min-width: 220px;
+    font-size: 20px;
 }
 
 .detailed-compare-table tbody th {
-    background: #131037;
+    background: #ffffff;
     position: sticky;
     left: 0;
     z-index: 10;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 700;
+    font-size: 18px;
+    color: #0a0a2a;
+    border-right: 1px solid rgba(13, 11, 42, 0.1);
 }
 
 .detailed-compare-table tbody tr:hover td,
 .detailed-compare-table tbody tr:hover th {
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(13, 11, 42, 0.03);
 }
 
 .detailed-compare-table tbody tr:last-child td,
@@ -3392,14 +3397,17 @@
 .detailed-compare-table th:nth-child(2),
 .detailed-compare-table td:nth-child(2) {
     background: rgba(92, 39, 254, 0.05);
-    border-left: 1px solid rgba(92, 39, 254, 0.2);
-    border-right: 1px solid rgba(92, 39, 254, 0.2);
+    border-left: 2px solid rgba(92, 39, 254, 0.3);
+    border-right: 2px solid rgba(92, 39, 254, 0.3);
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .detailed-compare-table thead th:nth-child(2) {
-    background: rgba(92, 39, 254, 0.15);
-    color: #fff;
+    background: rgba(92, 39, 254, 0.1);
+    color: #0a0a2a;
     font-weight: 800;
+    font-size: 22px;
 }
 
 /* Feature Row Icons */

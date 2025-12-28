@@ -1,0 +1,404 @@
+/* ============================================
+   Premium Design System v5.0
+   Maximum Readability & Premium Spacing
+   ============================================ */
+
+/* ============================================
+   1. CSS Variables
+   ============================================ */
+:root {
+    /* Colors */
+    --p-bg-base: #070709;
+    --p-bg-card: #0d0d12;
+    --p-bg-card-hover: #111118;
+    --p-bg-highlight: #16161f;
+    --p-accent: #6366f1;
+    --p-accent-light: #818cf8;
+    --p-accent-purple: #a855f7;
+    --p-accent-sky: #38bdf8;
+    --p-accent-green: #22c55e;
+    --p-accent-red: #ef4444;
+    --p-text-white: #ffffff;
+    --p-text-gray: #9ca3af;
+    --p-text-dim: #6b7280;
+    --p-border: rgba(255, 255, 255, 0.08);
+    --p-border-hover: rgba(255, 255, 255, 0.15);
+
+    /* Spacing & Radius */
+    --p-radius: 16px;
+    --p-radius-lg: 24px;
+    --p-spacing-section: 80px;
+
+    /* TYPOGRAPHY - INCREASED SIZES */
+    --p-font-base: 18px;
+    /* Was 16px */
+    --p-font-sm: 1rem;
+    /* 16px */
+    --p-font-md: 1.125rem;
+    /* 18px */
+    --p-font-lg: 1.25rem;
+    /* 20px */
+    --p-font-xl: 1.5rem;
+    /* 24px */
+    --p-font-2xl: 2rem;
+    /* 32px */
+    --p-font-3xl: 3.5rem;
+    /* 56px */
+}
+
+/* ============================================
+   2. Page Layout
+   ============================================ */
+html {
+    font-size: var(--p-font-base) !important;
+}
+
+body {
+    font-size: 1rem !important;
+    /* 18px */
+    line-height: 1.7 !important;
+    background-color: var(--p-bg-base) !important;
+    color: var(--p-text-gray) !important;
+}
+
+.page-title {
+    position: relative;
+    z-index: 10;
+    padding: 160px 0 80px !important;
+    background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 60%) !important;
+}
+
+.main-content {
+    position: relative;
+    z-index: 20;
+    background: var(--p-bg-base) !important;
+}
+
+.tf-section {
+    position: relative;
+    padding: var(--p-spacing-section) 0 !important;
+}
+
+/* Particles */
+.tf-tsparticles {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0 !important;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/* ============================================
+   3. Typography
+   ============================================ */
+.premium-title {
+    font-size: clamp(2.5rem, 5vw, var(--p-font-3xl));
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--p-text-white);
+    margin-bottom: 24px;
+}
+
+.premium-subtitle {
+    font-size: var(--p-font-lg) !important;
+    /* 20px */
+    color: var(--p-text-gray);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+h2,
+h3,
+h4 {
+    color: var(--p-text-white);
+}
+
+/* ============================================
+   4. Premium Cards
+   ============================================ */
+.premium-card {
+    background: var(--p-bg-card) !important;
+    border: 1px solid var(--p-border) !important;
+    border-radius: var(--p-radius-lg) !important;
+    padding: 40px !important;
+    transition: all 0.3s ease;
+}
+
+.premium-card:hover {
+    background: var(--p-bg-card-hover) !important;
+    border-color: var(--p-border-hover) !important;
+    transform: translateY(-4px);
+}
+
+.premium-card h3 {
+    font-size: var(--p-font-xl) !important;
+    /* 24px */
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.premium-card h4 {
+    font-size: var(--p-font-lg) !important;
+    /* 20px */
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.premium-card p {
+    font-size: var(--p-font-md) !important;
+    /* 18px */
+    color: var(--p-text-gray) !important;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* ============================================
+   5. Premium Lists
+   ============================================ */
+.premium-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.premium-list li {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    padding: 20px 0 !important;
+    font-size: var(--p-font-md) !important;
+    /* 18px */
+    color: var(--p-text-gray) !important;
+    border-bottom: 1px solid var(--p-border);
+}
+
+.premium-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0 !important;
+}
+
+.premium-list li:first-child {
+    padding-top: 0 !important;
+}
+
+.premium-list li::before {
+    display: none !important;
+}
+
+.list-icon-check {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    background: rgba(34, 197, 94, 0.15);
+    border-radius: 50%;
+    color: var(--p-accent-green);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ============================================
+   6. Premium Accordion
+   ============================================ */
+.premium-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.premium-accordion .accordion-item {
+    background: var(--p-bg-card) !important;
+    border: 1px solid var(--p-border) !important;
+    border-radius: var(--p-radius) !important;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.premium-accordion .accordion-item:hover {
+    border-color: var(--p-border-hover) !important;
+}
+
+.premium-accordion .accordion-item.active {
+    background: var(--p-bg-highlight) !important;
+    border-color: var(--p-accent) !important;
+}
+
+.premium-accordion .accordion-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
+    padding: 24px 32px !important;
+    margin: 0 !important;
+    font-size: var(--p-font-lg) !important;
+    /* 20px */
+    font-weight: 500 !important;
+    color: var(--p-text-white) !important;
+    background: transparent !important;
+    border: none !important;
+    text-align: left;
+}
+
+.premium-accordion .accordion-header span {
+    flex: 1;
+    padding-right: 24px;
+}
+
+.premium-accordion .accordion-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: rgba(99, 102, 241, 0.15);
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease;
+}
+
+.premium-accordion .accordion-item.active .accordion-icon {
+    background: var(--p-accent);
+    transform: rotate(180deg);
+}
+
+.premium-accordion .accordion-icon i {
+    font-size: 12px;
+    color: var(--p-accent-light);
+}
+
+.premium-accordion .accordion-item.active .accordion-icon i {
+    color: white;
+}
+
+.premium-accordion .accordion-content {
+    padding: 0 32px 32px 32px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.premium-accordion .accordion-content p {
+    margin: 0 !important;
+    font-size: var(--p-font-md) !important;
+    /* 18px */
+    line-height: 1.7 !important;
+    color: var(--p-text-gray) !important;
+}
+
+/* ============================================
+   7. Premium Tables
+   ============================================ */
+.premium-table-container {
+    background: var(--p-bg-card);
+    border: 1px solid var(--p-border);
+    border-radius: var(--p-radius-lg);
+    padding: 12px;
+    overflow-x: auto;
+}
+
+.premium-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.premium-table th {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    /* Increased */
+    letter-spacing: 1px;
+    color: var(--p-text-dim);
+    padding: 20px 24px;
+    font-weight: 700;
+    text-align: left;
+    border-bottom: 1px solid var(--p-border);
+}
+
+.premium-table td {
+    padding: 24px;
+    font-size: var(--p-font-md);
+    /* 18px */
+    color: var(--p-text-white);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--p-border);
+}
+
+/* ============================================
+   8. Premium Buttons
+   ============================================ */
+.btn-premium {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 40px;
+    background: linear-gradient(135deg, var(--p-accent), var(--p-accent-purple));
+    color: white !important;
+    font-size: var(--p-font-md);
+    /* 18px */
+    font-weight: 600;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px -5px rgba(99, 102, 241, 0.4);
+}
+
+.btn-premium:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px -5px rgba(168, 85, 247, 0.5);
+    color: white !important;
+}
+
+/* ============================================
+   9. Feature Grid
+   ============================================ */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+/* ============================================
+   10. Hero Badge
+   ============================================ */
+.hero-badge {
+    display: inline-block;
+    padding: 10px 24px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 100px;
+    color: var(--p-accent-light);
+    font-size: var(--p-font-sm);
+    /* 16px */
+    font-weight: 600;
+}
+
+/* ============================================
+   11. Utility Classes
+   ============================================ */
+.mb-40 {
+    margin-bottom: 40px !important;
+}
+
+.mb-30 {
+    margin-bottom: 30px !important;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.text-center {
+    text-align: center;
+}

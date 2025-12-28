@@ -132,11 +132,12 @@ const NewHome = () => {
                                 <div className="page-title-home-content">
                                     <div className="content">
                                         <h1 className="title">
-                                            🎁 Top Recommended Lotteries of 2025 <br />
+                                            🎁 Top Recommended Lotteries of 2025, <br />
+                                            “Guess Numbers, win Jackpot” <br />
                                             <span className="d-block animationtext slide">
                                                 <span className="cd-words-wrapper">
-                                                    <span className="item-text is-visible">GUESS NUMBERS, WIN JACKPOT</span>
-                                                    <span className="item-text is-hidden">of 2025</span>
+                                                    <span className="item-text is-visible">START WINNING TODAY</span>
+                                                    <span className="item-text is-hidden">OF 2025</span>
                                                 </span>
                                             </span>
                                         </h1>
@@ -334,7 +335,7 @@ const NewHome = () => {
                         <div className="row justify-content-center">
                             <div className="col-lg-8">
                                 <div className="heading-section text-center mb-60">
-                                    <h2 className="title wow fadeInUp">Crypto Lottery vs Traditional Lottery</h2>
+                                    <h2 className="title wow fadeInUp">Crypto Lottery and Traditional Lottery</h2>
                                     <p className="wow fadeInUp" data-wow-delay="0.1s">
                                         A comparison between centralized systems and Web3
                                     </p>
@@ -343,7 +344,7 @@ const NewHome = () => {
                         </div>
 
                         <div className="comparison-wrapper">
-                            <div className="vs-badge">VS</div>
+                            {/* VS Badge removed for cleaner compare design */}
 
                             {/* Traditional Lottery */}
                             <div className="comparison-card traditional wow fadeInLeft">
@@ -796,4 +797,3 @@ const NewHome = () => {
 };
 
 export default NewHome;
-

@@ -18,6 +18,7 @@ import './styles/new-mobile-menu.css';
 import './styles/professional-lottery-card.css';
 import './assets/font/fonts.css';
 import './assets/icon/icomoon/style.css';
+import './styles/premium-redesign.css';
 
 // Critical components - load immediately
 import Header from './components/Header';
@@ -30,9 +31,7 @@ const Home = lazy(() => import('./pages/Home'));
 const NewHome = lazy(() => import('./pages/NewHome'));
 const Contact = lazy(() => import('./pages/Contact'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
-const LotteryResults = lazy(() => import('./pages/LotteryResults'));
 const Affiliate = lazy(() => import('./pages/Affiliate'));
-const HowToWork = lazy(() => import('./pages/HowToWork'));
 const WinnerList = lazy(() => import('./pages/WinnerList'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const Blog = lazy(() => import('./pages/Blog'));
@@ -44,6 +43,9 @@ const BonusesPage = lazy(() => import('./pages/BonusesPage'));
 const ResponsibleGaming = lazy(() => import('./pages/ResponsibleGaming'));
 const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions'));
 const Disclaimer = lazy(() => import('./pages/Disclaimer'));
+const BitcoinLotteries = lazy(() => import('./pages/BitcoinLotteries'));
+const FirstBTCReview = lazy(() => import('./pages/FirstBTCReview'));
+const TraditionalLottery = lazy(() => import('./pages/TraditionalLottery'));
 const AdminLogin = lazy(() => import('./admin/AdminLogin'));
 const AdminPanel = lazy(() => import('./admin/AdminPanel'));
 const AdminRoute = lazy(() => import('./admin/AdminRoute'));
@@ -168,17 +170,18 @@ function App() {
               <Route path="/top-casinos" element={<TopCasinos />} />
               <Route path="/casino/:id" element={<CasinoReview />} />
               <Route path="/bonuses" element={<BonusesPage />} />
-              <Route path="/how-to-work" element={<HowToWork />} />
               <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
               <Route path="/terms" element={<TermsAndConditions />} />
               <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route path="/bitcoin-lotteries" element={<BitcoinLotteries />} />
+              <Route path="/traditional-online-lottery" element={<TraditionalLottery />} />
 
 
               {/* Keep existing routes */}
               <Route path="/contact" element={<Contact />} />
               <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/lottery-results" element={<LotteryResults />} />
-              <Route path="/firstbtclottery" element={<Affiliate />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/firstbtclottery" element={<FirstBTCReview />} />
               <Route path="/affiliate" element={<Affiliate />} />
               <Route path="/winner-list" element={<WinnerList />} />
               <Route path="/faq" element={<FAQ />} />

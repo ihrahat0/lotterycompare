@@ -60,13 +60,13 @@ const Header = () => {
                                                     <Link to="/about-us">About Us</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/lottery-results">Lottery Results</Link>
+                                                    <Link to="/bitcoin-lotteries">Bitcoin Lotteries</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/traditional-online-lottery">Traditional Online Lottery</Link>
                                                 </li>
                                                 <li>
                                                     <Link to="/firstbtclottery">FIRSTBTCLottery</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/how-to-work">How it works</Link>
                                                 </li>
                                                 <li>
                                                     <Link to="/terms">Terms & Conditions</Link>
@@ -75,7 +75,7 @@ const Header = () => {
                                                     <Link to="/disclaimer">Disclaimer</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/faq">Faq</Link>
+                                                    <Link to="/faq">FAQ</Link>
                                                 </li>
 
                                             </ul>
