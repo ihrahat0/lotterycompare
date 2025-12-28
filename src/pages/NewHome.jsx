@@ -131,7 +131,7 @@ const NewHome = () => {
                             <div className="col-12">
                                 <div className="page-title-home-content">
                                     <div className="content">
-                                        <h1 className="title">
+                                        <h1 style={{ fontSize: '40px' }} className="title">
                                             🎁 Top Recommended Lotteries of 2025, <br />
                                             “Guess Numbers, win Jackpot” <br />
                                             <span className="d-block animationtext slide">
